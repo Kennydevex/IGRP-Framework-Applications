@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>IGRP</name>
+	<name>IGRP-Application</name>
 	<comment></comment>
 	<projects>
-		<project>ClienteRestTest</project>
+		<project>IGRP-Application</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
