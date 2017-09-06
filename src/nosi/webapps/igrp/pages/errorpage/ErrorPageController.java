@@ -17,7 +17,7 @@ public class ErrorPageController extends Controller {
 		if(Igrp.getInstance().getUser().isAuthenticated()){
 			Igrp.getInstance().getFlashMessage().addMessage("error", "Falha na execução da operação");
 			ErrorPage model = new ErrorPage();
-			ErrorPageView view = new ErrorPageView(model);
+			ErrorPageView view = new ErrorPageView(model); 
 			return this.renderView(view);
 		}
 		else
