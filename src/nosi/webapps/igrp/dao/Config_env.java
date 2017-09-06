@@ -124,5 +124,14 @@ public class Config_env extends BaseActiveRecord<Config_env> implements Serializ
 	public void setApplication(Application application) {
 		this.application = application;
 	}
+
+	@Override
+	public String toString() {
+		return "Config_env [id=" + id + ", port=" + port + ", type_db=" + type_db + ", host=" + host + ", name_db="
+				+ name_db + ", username=" + username + ", password=" + password + ", charset=" + charset + ", name="
+				+ name + ", application=" + application + "]";
+	}
+	
+	
 	
 }
