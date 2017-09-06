@@ -33,12 +33,9 @@ public class PersistenceUtils {
 		List<Config_env> configs = new Config_env().findAll();
 		if(configs!=null){
 			for(Config_env c:configs){
-				System.out.println(c);
 				String url = getUrl(c.getType_db(),c.getHost(),c.getPort(), c.getName_db());
 				setConnection(c.getType_db(), c.getName(), url, c.getUsername(), c.getPassword());
 			}
-		}else{
-			System.err.println("Error");
 		}
 	}
 	private static void setConnection(String dbmsName,String connectioName,String url,String user,String password){
