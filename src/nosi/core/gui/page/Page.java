@@ -16,7 +16,6 @@ import nosi.core.xml.XMLWritter;
 import nosi.webapps.igrp.dao.Action;
 import nosi.webapps.igrp.dao.Application;
 
-
 /**
  * @author Marcel Iekiny
  * Apr 15, 2017
