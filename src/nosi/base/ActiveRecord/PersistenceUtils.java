@@ -79,4 +79,14 @@ public class PersistenceUtils {
 		}
 		return "jdbc:h2:./WebContent/WEB-INF/config/db/"+db_name;
 	}
+
+	public static void confiOtherConnections(String app) {
+		List<Config_env> configs = new Config_env().find().andWhere("application.dad", "=", app).all();
+		if(configs!=null){
+			for(Config_env c:configs){
+				String url = getUrl(c.getType_db(),c.getHost(),c.getPort(), c.getName_db());
+				setConnection(c.getType_db(), c.getName(), url, c.getUsername(), c.getPassword());
+			}
+		}
+	}
 }
