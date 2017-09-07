@@ -122,10 +122,10 @@ public class AgendaController extends Controller {
 		
 		AgendaView view = new AgendaView(model);
 		
-		Map<String, String> comboBox1 = new HashMap<String,String>();
+		Map<Integer, String> comboBox1 = new HashMap<Integer,String>();
 		comboBox1.put(null, "--- Escolher ---");
-		for(ServBalcao obj : ServBalcao.getAllServBalcao())
-			comboBox1.put(obj.getId().intValue() + "", obj.getId().intValue() + "");
+		for(ServBalcao obj : ServBalcao.getAllServico_por_Balcao())
+			comboBox1.put(obj.getId(), obj.getNome_servico() +"/"+ obj.getNome_balcao());
 		view.servico.setValue(comboBox1);
 		
 		Map<String, String> comboBox4 = new HashMap<String,String>();
