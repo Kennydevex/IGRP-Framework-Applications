@@ -23,7 +23,21 @@ public class ServBalcao {
 	private int id_servico;
 	private String estado;
 	private int porton;
+	private String nome_balcao;
+	private String nome_servico;
 	
+	public String getNome_balcao() {
+		return nome_balcao;
+	}
+	public void setNome_balcao(String nome_balcao) {
+		this.nome_balcao = nome_balcao;
+	}
+	public String getNome_servico() {
+		return nome_servico;
+	}
+	public void setNome_servico(String nome_servico) {
+		this.nome_servico = nome_servico;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -85,7 +99,36 @@ public class ServBalcao {
 		}
 		return aux != null ? aux : new ArrayList<ServBalcao>();
 }
-	
+	public static List<ServBalcao> getAllServico_por_Balcao() {
+		
+		List<ServBalcao> aux = null;
+		
+		try {
+			ClientConfig config = new DefaultClientConfig();
+			 
+	        Client client = Client.create(RestRequestHelper.applySslSecurity(config));
+	        
+	        String url = RestRequestHelper.baseUrl_ + "/_getselect_servico_balcao";
+	        
+	        WebResource resource = client.resource(url);
+	        
+	        ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+	        
+	   	 	String jsonResult = response.getEntity(String.class);
+	   	 	
+	        if(response.getStatus() == 200) {
+		        aux = RestRequestHelper.convertJsonToDaoColl(jsonResult, "Entries", "Entry", new TypeToken<List<ServBalcao>>(){}.getType());
+	        }
+	        else {
+	       	 System.out.println("Error");
+	       	 //System.out.println(RestRequestHelper.convertToDefaultFault(jsonResult));
+	        }
+	       client.destroy();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return aux != null ? aux : new ArrayList<ServBalcao>();
+}
 	@Override
 	public String toString() {
 		return "ServBalcao [id=" + id + ", id_balcao=" + id_balcao + ", id_servico=" + id_servico + ", estado=" + estado
