@@ -18,8 +18,8 @@ public class DashBoardView extends View {
 	public DashBoardView(DashBoard model){
 		this.setPageTitle("Dashboard");
 			
-		chart_1 = new IGRPChart("chart_1","Consulta por Sexo");
-		chart_2 = new IGRPChart("chart_2","Consulta por Sexo ao Longo do Ano");
+		chart_1 = new IGRPChart("chart_1");
+		chart_2 = new IGRPChart("chart_2");
 
 		toolsbar_1 = new IGRPToolsBar("toolsbar_1");
 		btn_nova_consulta = new IGRPButton("Nova Consulta","marcacao_consulta","DashBoard","nova_consulta","_self","success|fa-plus-circle","","");

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="images/IGRP/IGRP2.3/app/agenda/agdashboard/AGDashboard.xsl" type="text/xsl"?>
 <rows>
-<link_img>/IGRP/images/IGRP/IGRP2.3</link_img>
     <site>
         <welcome_note>Ola</welcome_note>
         <footer_note>2011 - Copyright NOSI</footer_note>
@@ -34,12 +33,38 @@
     </plsql>
     <content>
         <title>Dashboard Agenda Eletronica</title>
+        <sectionheader_1 type="sectionheader" xml-type="form" gen-type="container" gen-group="">
+            <fields>
+                <sectionheader_1_text type="text" name="p_sectionheader_1_text" persist="true" maxlength="4000">
+                    <value>
+                        <![CDATA[Dashboard Agendamento]]>
+                    </value>
+                </sectionheader_1_text>
+            </fields>
+        </sectionheader_1>
         <form_1 type="form" xml-type="form" gen-type="container" gen-group="">
             <fields>
-                <entidade name="p_entidade" type="lookup" action="" page="" app="" lookup_type="LOOKUP" class="primary" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
+                <entidade name="p_entidade" type="select" multiple="false" domain="" maxlength="30" required="false" change="false" disabled="false" right="false">
                     <label>Entidade</label>
-                    <value/>
-                    <lookup>http://igrp.teste.gov.cv/images/IGRP.bootstrap/app/BOOTSTRAP/xml/lookup.test.xml</lookup>
+                    <list>
+                        <option/>
+                        <option>
+                            <text>Option 1</text>
+                            <value>1</value>
+                        </option>
+                        <option>
+                            <text>Option 2</text>
+                            <value>2</value>
+                        </option>
+                        <option>
+                            <text>Option 3</text>
+                            <value>3</value>
+                        </option>
+                        <option>
+                            <text>Option 4</text>
+                            <value>4</value>
+                        </option>
+                    </list>
                 </entidade>
                 <data_de_ name="p_data_de_" type="date" format="IGRP_datePicker" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" class="primary">
                     <label>Data de </label>
@@ -54,45 +79,45 @@
                 <item type="form" code="" class="primary" rel="pesquisar">
                     <title>Pesquisar</title>
                     <app>agenda</app>
-                    <page>AddServicos</page>
+                    <page>AGDashboard</page>
                     <link>index</link>
-                    <parameter/>
+                    <parameter>undefinedimages/IGRP/IGRP2.3/app/agenda/agdashboard/AGDashboard.xsl?</parameter>
                     <target>submit</target>
                     <img>primary|fa-search</img>
                 </item>
             </tools-bar>
         </form_1>
-        <box_1 type="box" xml-type="form" gen-type="container" gen-group="">
+        <box_1 type="box" xml-type="form" title="Agendamento do Dia" gen-type="container" gen-group="">
             <fields/>
         </box_1>
-        <agendamentos_do_dia type="statbox" xml-type="form" gen-type="container" gen-group="">
+        <agenda_solicitada type="statbox" xml-type="form" gen-type="container" gen-group="">
             <fields>
-                <agendamentos_do_dia_tit name="p_agendamentos_do_dia_tit" type="text" maxlength="4000" persist="true">
+                <agenda_solicitada_tit name="p_agenda_solicitada_tit" type="text" maxlength="4000" persist="true">
                     <label>Box Title</label>
-                    <value>Box Title</value>
-                </agendamentos_do_dia_tit>
-                <agendamentos_do_dia_val name="p_agendamentos_do_dia_val" type="text" maxlength="4000" persist="true">
+                    <value>Agendas Solicitadas</value>
+                </agenda_solicitada_tit>
+                <agenda_solicitada_val name="p_agenda_solicitada_val" type="text" maxlength="4000" persist="true">
                     <label>Value</label>
                     <value>895</value>
-                </agendamentos_do_dia_val>
-                <agendamentos_do_dia_txt name="p_agendamentos_do_dia_txt" type="text" maxlength="4000" persist="true">
+                </agenda_solicitada_val>
+                <agenda_solicitada_txt name="p_agenda_solicitada_txt" type="text" maxlength="4000" persist="true">
                     <label>Url Text</label>
                     <value>Read More...</value>
-                </agendamentos_do_dia_txt>
-                <agendamentos_do_dia_url name="p_agendamentos_do_dia_url" type="text" maxlength="4000" persist="true">
+                </agenda_solicitada_txt>
+                <agenda_solicitada_url name="p_agenda_solicitada_url" type="text" maxlength="4000" persist="true">
                     <label>Url</label>
                     <value>http://www.example.com</value>
-                </agendamentos_do_dia_url>
-                <agendamentos_do_dia_bg name="p_agendamentos_do_dia_bg" type="text" maxlength="4000" persist="true">
+                </agenda_solicitada_url>
+                <agenda_solicitada_bg name="p_agenda_solicitada_bg" type="text" maxlength="4000" persist="true">
                     <label>Background</label>
                     <value>cp-yellow</value>
-                </agendamentos_do_dia_bg>
-                <agendamentos_do_dia_icn name="p_agendamentos_do_dia_icn" type="text" maxlength="4000" persist="true">
+                </agenda_solicitada_bg>
+                <agenda_solicitada_icn name="p_agenda_solicitada_icn" type="text" maxlength="4000" persist="true">
                     <label>Icon</label>
                     <value>fa-calendar-check-o</value>
-                </agendamentos_do_dia_icn>
+                </agenda_solicitada_icn>
             </fields>
-        </agendamentos_do_dia>
+        </agenda_solicitada>
         <chart_1 type="chart" xml-type="chart" title="Agendamentos por balcão" gen-type="container" gen-group="">
             <caption/>
             <chart_type>column</chart_type>
@@ -130,43 +155,71 @@
                 </row>
             </value>
             <colors>
-                <col>#cc122e</col>
-                <col>#ec0f9d</col>
-                <col>#5317d9</col>
-                <col>#7c8ea2</col>
+                <col>#0381f3</col>
+                <col>#3e03cc</col>
+                <col>#82455d</col>
+                <col>#dca646</col>
             </colors>
         </chart_1>
-        <agendamentos_atendidos type="circlestatbox" xml-type="form" gen-type="container" gen-group="">
+        <agendas_confirmadas type="statbox" xml-type="form" gen-type="container" gen-group="">
             <fields>
-                <agendamentos_atendidos_tit name="p_agendamentos_atendidos_tit" type="text" maxlength="4000" persist="true">
-                    <label>Circle Box Title</label>
-                    <value>Circle Box Title</value>
-                </agendamentos_atendidos_tit>
-                <agendamentos_atendidos_lbl name="p_agendamentos_atendidos_lbl" type="text" maxlength="4000" persist="true">
-                    <label>Percent Text</label>
-                    <value>percent</value>
-                </agendamentos_atendidos_lbl>
-                <agendamentos_atendidos_val name="p_agendamentos_atendidos_val" type="text" maxlength="4000">
-                    <label>Percent Value</label>
-                    <value>58.5</value>
-                </agendamentos_atendidos_val>
-                <agendamentos_atendidos_desc name="p_agendamentos_atendidos_desc" type="text" maxlength="4000" persist="true">
-                    <label>Description</label>
-                    <value>Some Text Here</value>
-                </agendamentos_atendidos_desc>
-                <agendamentos_atendidos_url name="p_agendamentos_atendidos_url" type="text" maxlength="4000">
-                    <label>Link</label>
+                <agendas_confirmadas_tit name="p_agendas_confirmadas_tit" type="text" maxlength="4000" persist="true">
+                    <label>Box Title</label>
+                    <value>Agendas Confirmadas</value>
+                </agendas_confirmadas_tit>
+                <agendas_confirmadas_val name="p_agendas_confirmadas_val" type="text" maxlength="4000" persist="true">
+                    <label>Value</label>
+                    <value>895</value>
+                </agendas_confirmadas_val>
+                <agendas_confirmadas_txt name="p_agendas_confirmadas_txt" type="text" maxlength="4000" persist="true">
+                    <label>Url Text</label>
+                    <value>Read More...</value>
+                </agendas_confirmadas_txt>
+                <agendas_confirmadas_url name="p_agendas_confirmadas_url" type="text" maxlength="4000" persist="true">
+                    <label>Url</label>
                     <value>http://www.example.com</value>
-                </agendamentos_atendidos_url>
-                <agendamentos_atendidos_bg name="p_agendamentos_atendidos_bg" type="text" maxlength="4000" persist="true">
+                </agendas_confirmadas_url>
+                <agendas_confirmadas_bg name="p_agendas_confirmadas_bg" type="text" maxlength="4000" persist="true">
                     <label>Background</label>
-                    <value>cp-teal</value>
-                </agendamentos_atendidos_bg>
+                    <value>cp-cyan</value>
+                </agendas_confirmadas_bg>
+                <agendas_confirmadas_icn name="p_agendas_confirmadas_icn" type="text" maxlength="4000" persist="true">
+                    <label>Icon</label>
+                    <value>fa-check</value>
+                </agendas_confirmadas_icn>
             </fields>
-        </agendamentos_atendidos>
+        </agendas_confirmadas>
         <box_2 type="box" xml-type="form" gen-type="container" gen-group="">
             <fields/>
         </box_2>
+        <agendas_realizadas type="statbox" xml-type="form" gen-type="container" gen-group="">
+            <fields>
+                <agendas_realizadas_tit name="p_agendas_realizadas_tit" type="text" maxlength="4000" persist="true">
+                    <label>Box Title</label>
+                    <value>Agendas Realizadas</value>
+                </agendas_realizadas_tit>
+                <agendas_realizadas_val name="p_agendas_realizadas_val" type="text" maxlength="4000" persist="true">
+                    <label>Value</label>
+                    <value>895</value>
+                </agendas_realizadas_val>
+                <agendas_realizadas_txt name="p_agendas_realizadas_txt" type="text" maxlength="4000" persist="true">
+                    <label>Url Text</label>
+                    <value>Read More...</value>
+                </agendas_realizadas_txt>
+                <agendas_realizadas_url name="p_agendas_realizadas_url" type="text" maxlength="4000" persist="true">
+                    <label>Url</label>
+                    <value>http://www.example.com</value>
+                </agendas_realizadas_url>
+                <agendas_realizadas_bg name="p_agendas_realizadas_bg" type="text" maxlength="4000" persist="true">
+                    <label>Background</label>
+                    <value>cp-emerald</value>
+                </agendas_realizadas_bg>
+                <agendas_realizadas_icn name="p_agendas_realizadas_icn" type="text" maxlength="4000" persist="true">
+                    <label>Icon</label>
+                    <value>fa-check</value>
+                </agendas_realizadas_icn>
+            </fields>
+        </agendas_realizadas>
         <chart_2 type="chart" xml-type="chart" title="Agendamentos por assunto" gen-type="container" gen-group="">
             <caption/>
             <chart_type>bar</chart_type>
@@ -204,10 +257,10 @@
                 </row>
             </value>
             <colors>
-                <col>#dd925e</col>
-                <col>#587cd9</col>
-                <col>#c621a0</col>
-                <col>#2c5b53</col>
+                <col>#429b38</col>
+                <col>#9c2ef6</col>
+                <col>#fc0311</col>
+                <col>#922d4d</col>
             </colors>
         </chart_2>
         <chart_5 type="chart" xml-type="chart" title="Agendamento por Serviço" gen-type="container" gen-group="">
@@ -247,10 +300,10 @@
                 </row>
             </value>
             <colors>
-                <col>#365282</col>
-                <col>#ef93ce</col>
-                <col>#9acd9c</col>
-                <col>#4fe066</col>
+                <col>#e2357a</col>
+                <col>#e4dfc3</col>
+                <col>#757ae7</col>
+                <col>#2159b4</col>
             </colors>
         </chart_5>
         <chart_3 type="chart" xml-type="chart" title="Agendamentos por estado" gen-type="container" gen-group="">
@@ -290,10 +343,10 @@
                 </row>
             </value>
             <colors>
-                <col>#b1a615</col>
-                <col>#d45ef8</col>
-                <col>#30a337</col>
-                <col>#b2d2c1</col>
+                <col>#cfa79b</col>
+                <col>#d42c21</col>
+                <col>#4cba0f</col>
+                <col>#042c92</col>
             </colors>
         </chart_3>
     </content>

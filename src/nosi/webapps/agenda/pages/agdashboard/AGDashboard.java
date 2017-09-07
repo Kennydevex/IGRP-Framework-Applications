@@ -1,71 +1,64 @@
 /*---------------------- Create Model ----------------------*/
 package nosi.webapps.agenda.pages.agdashboard;
+import nosi.core.config.Config;
 import nosi.core.webapp.Model;
 import nosi.core.webapp.RParam;
+import nosi.core.gui.components.IGRPSeparatorList.Pair;
+import nosi.core.webapp.SeparatorList;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AGDashboard extends Model{		
+	@RParam(rParamName = "p_sectionheader_1_text")
+	private String sectionheader_1_text;
 	@RParam(rParamName = "p_entidade")
 	private String entidade;
 	@RParam(rParamName = "p_data_de_")
 	private String data_de_;
 	@RParam(rParamName = "p_data_ate")
 	private String data_ate;
-	@RParam(rParamName = "p_agendamentos_do_dia_tit")
-	private String agendamentos_do_dia_tit;
-	@RParam(rParamName = "p_agendamentos_do_dia_val")
-	private String agendamentos_do_dia_val;
-	@RParam(rParamName = "p_agendamentos_do_dia_txt")
-	private String agendamentos_do_dia_txt;
-	@RParam(rParamName = "p_agendamentos_do_dia_url")
-	private String agendamentos_do_dia_url;
-	@RParam(rParamName = "p_agendamentos_do_dia_bg")
-	private String agendamentos_do_dia_bg;
-	@RParam(rParamName = "p_agendamentos_do_dia_icn")
-	private String agendamentos_do_dia_icn;
-	@RParam(rParamName = "p_agendamentos_atendidos_tit")
-	private String agendamentos_atendidos_tit;
-	@RParam(rParamName = "p_agendamentos_atendidos_lbl")
-	private String agendamentos_atendidos_lbl;
-	@RParam(rParamName = "p_agendamentos_atendidos_val")
-	private String agendamentos_atendidos_val;
-	@RParam(rParamName = "p_agendamentos_atendidos_desc")
-	private String agendamentos_atendidos_desc;
-	@RParam(rParamName = "p_agendamentos_atendidos_url")
-	private String agendamentos_atendidos_url;
-	@RParam(rParamName = "p_agendamentos_atendidos_bg")
-	private String agendamentos_atendidos_bg;
+	@RParam(rParamName = "p_agenda_solicitada_tit")
+	private String agenda_solicitada_tit;
+	@RParam(rParamName = "p_agenda_solicitada_val")
+	private String agenda_solicitada_val;
+	@RParam(rParamName = "p_agenda_solicitada_txt")
+	private String agenda_solicitada_txt;
+	@RParam(rParamName = "p_agenda_solicitada_url")
+	private String agenda_solicitada_url;
+	@RParam(rParamName = "p_agenda_solicitada_bg")
+	private String agenda_solicitada_bg;
+	@RParam(rParamName = "p_agenda_solicitada_icn")
+	private String agenda_solicitada_icn;
+	@RParam(rParamName = "p_agendas_confirmadas_tit")
+	private String agendas_confirmadas_tit;
+	@RParam(rParamName = "p_agendas_confirmadas_val")
+	private String agendas_confirmadas_val;
+	@RParam(rParamName = "p_agendas_confirmadas_txt")
+	private String agendas_confirmadas_txt;
+	@RParam(rParamName = "p_agendas_confirmadas_url")
+	private String agendas_confirmadas_url;
+	@RParam(rParamName = "p_agendas_confirmadas_bg")
+	private String agendas_confirmadas_bg;
+	@RParam(rParamName = "p_agendas_confirmadas_icn")
+	private String agendas_confirmadas_icn;
+	@RParam(rParamName = "p_agendas_realizadas_tit")
+	private String agendas_realizadas_tit;
+	@RParam(rParamName = "p_agendas_realizadas_val")
+	private String agendas_realizadas_val;
+	@RParam(rParamName = "p_agendas_realizadas_txt")
+	private String agendas_realizadas_txt;
+	@RParam(rParamName = "p_agendas_realizadas_url")
+	private String agendas_realizadas_url;
+	@RParam(rParamName = "p_agendas_realizadas_bg")
+	private String agendas_realizadas_bg;
+	@RParam(rParamName = "p_agendas_realizadas_icn")
+	private String agendas_realizadas_icn;
 
-	private ArrayList<Chart_1> chart_1 = new ArrayList<>();
-	public void setChart_1(ArrayList<Chart_1> chart_1){
-		this.chart_1 = chart_1;
+	public void setSectionheader_1_text(String sectionheader_1_text){
+		this.sectionheader_1_text = sectionheader_1_text;
 	}
-	public ArrayList<Chart_1> getchart_1(){
-		return this.chart_1;
-	}
-
-	private ArrayList<Chart_2> chart_2 = new ArrayList<>();
-	public void setChart_2(ArrayList<Chart_2> chart_2){
-		this.chart_2 = chart_2;
-	}
-	public ArrayList<Chart_2> getchart_2(){
-		return this.chart_2;
-	}
-
-	private ArrayList<Chart_5> chart_5 = new ArrayList<>();
-	public void setChart_5(ArrayList<Chart_5> chart_5){
-		this.chart_5 = chart_5;
-	}
-	public ArrayList<Chart_5> getchart_5(){
-		return this.chart_5;
-	}
-
-	private ArrayList<Chart_3> chart_3 = new ArrayList<>();
-	public void setChart_3(ArrayList<Chart_3> chart_3){
-		this.chart_3 = chart_3;
-	}
-	public ArrayList<Chart_3> getchart_3(){
-		return this.chart_3;
+	public String getSectionheader_1_text(){
+		return this.sectionheader_1_text;
 	}
 	
 	public void setEntidade(String entidade){
@@ -89,256 +82,146 @@ public class AGDashboard extends Model{
 		return this.data_ate;
 	}
 	
-	public void setAgendamentos_do_dia_tit(String agendamentos_do_dia_tit){
-		this.agendamentos_do_dia_tit = agendamentos_do_dia_tit;
+	public void setAgenda_solicitada_tit(String agenda_solicitada_tit){
+		this.agenda_solicitada_tit = agenda_solicitada_tit;
 	}
-	public String getAgendamentos_do_dia_tit(){
-		return this.agendamentos_do_dia_tit;
-	}
-	
-	public void setAgendamentos_do_dia_val(String agendamentos_do_dia_val){
-		this.agendamentos_do_dia_val = agendamentos_do_dia_val;
-	}
-	public String getAgendamentos_do_dia_val(){
-		return this.agendamentos_do_dia_val;
+	public String getAgenda_solicitada_tit(){
+		return this.agenda_solicitada_tit;
 	}
 	
-	public void setAgendamentos_do_dia_txt(String agendamentos_do_dia_txt){
-		this.agendamentos_do_dia_txt = agendamentos_do_dia_txt;
+	public void setAgenda_solicitada_val(String agenda_solicitada_val){
+		this.agenda_solicitada_val = agenda_solicitada_val;
 	}
-	public String getAgendamentos_do_dia_txt(){
-		return this.agendamentos_do_dia_txt;
-	}
-	
-	public void setAgendamentos_do_dia_url(String agendamentos_do_dia_url){
-		this.agendamentos_do_dia_url = agendamentos_do_dia_url;
-	}
-	public String getAgendamentos_do_dia_url(){
-		return this.agendamentos_do_dia_url;
+	public String getAgenda_solicitada_val(){
+		return this.agenda_solicitada_val;
 	}
 	
-	public void setAgendamentos_do_dia_bg(String agendamentos_do_dia_bg){
-		this.agendamentos_do_dia_bg = agendamentos_do_dia_bg;
+	public void setAgenda_solicitada_txt(String agenda_solicitada_txt){
+		this.agenda_solicitada_txt = agenda_solicitada_txt;
 	}
-	public String getAgendamentos_do_dia_bg(){
-		return this.agendamentos_do_dia_bg;
-	}
-	
-	public void setAgendamentos_do_dia_icn(String agendamentos_do_dia_icn){
-		this.agendamentos_do_dia_icn = agendamentos_do_dia_icn;
-	}
-	public String getAgendamentos_do_dia_icn(){
-		return this.agendamentos_do_dia_icn;
+	public String getAgenda_solicitada_txt(){
+		return this.agenda_solicitada_txt;
 	}
 	
-	public void setAgendamentos_atendidos_tit(String agendamentos_atendidos_tit){
-		this.agendamentos_atendidos_tit = agendamentos_atendidos_tit;
+	public void setAgenda_solicitada_url(String agenda_solicitada_url){
+		this.agenda_solicitada_url = agenda_solicitada_url;
 	}
-	public String getAgendamentos_atendidos_tit(){
-		return this.agendamentos_atendidos_tit;
-	}
-	
-	public void setAgendamentos_atendidos_lbl(String agendamentos_atendidos_lbl){
-		this.agendamentos_atendidos_lbl = agendamentos_atendidos_lbl;
-	}
-	public String getAgendamentos_atendidos_lbl(){
-		return this.agendamentos_atendidos_lbl;
+	public String getAgenda_solicitada_url(){
+		return this.agenda_solicitada_url;
 	}
 	
-	public void setAgendamentos_atendidos_val(String agendamentos_atendidos_val){
-		this.agendamentos_atendidos_val = agendamentos_atendidos_val;
+	public void setAgenda_solicitada_bg(String agenda_solicitada_bg){
+		this.agenda_solicitada_bg = agenda_solicitada_bg;
 	}
-	public String getAgendamentos_atendidos_val(){
-		return this.agendamentos_atendidos_val;
-	}
-	
-	public void setAgendamentos_atendidos_desc(String agendamentos_atendidos_desc){
-		this.agendamentos_atendidos_desc = agendamentos_atendidos_desc;
-	}
-	public String getAgendamentos_atendidos_desc(){
-		return this.agendamentos_atendidos_desc;
+	public String getAgenda_solicitada_bg(){
+		return this.agenda_solicitada_bg;
 	}
 	
-	public void setAgendamentos_atendidos_url(String agendamentos_atendidos_url){
-		this.agendamentos_atendidos_url = agendamentos_atendidos_url;
+	public void setAgenda_solicitada_icn(String agenda_solicitada_icn){
+		this.agenda_solicitada_icn = agenda_solicitada_icn;
 	}
-	public String getAgendamentos_atendidos_url(){
-		return this.agendamentos_atendidos_url;
+	public String getAgenda_solicitada_icn(){
+		return this.agenda_solicitada_icn;
 	}
 	
-	public void setAgendamentos_atendidos_bg(String agendamentos_atendidos_bg){
-		this.agendamentos_atendidos_bg = agendamentos_atendidos_bg;
+	public void setAgendas_confirmadas_tit(String agendas_confirmadas_tit){
+		this.agendas_confirmadas_tit = agendas_confirmadas_tit;
 	}
-	public String getAgendamentos_atendidos_bg(){
-		return this.agendamentos_atendidos_bg;
+	public String getAgendas_confirmadas_tit(){
+		return this.agendas_confirmadas_tit;
+	}
+	
+	public void setAgendas_confirmadas_val(String agendas_confirmadas_val){
+		this.agendas_confirmadas_val = agendas_confirmadas_val;
+	}
+	public String getAgendas_confirmadas_val(){
+		return this.agendas_confirmadas_val;
+	}
+	
+	public void setAgendas_confirmadas_txt(String agendas_confirmadas_txt){
+		this.agendas_confirmadas_txt = agendas_confirmadas_txt;
+	}
+	public String getAgendas_confirmadas_txt(){
+		return this.agendas_confirmadas_txt;
+	}
+	
+	public void setAgendas_confirmadas_url(String agendas_confirmadas_url){
+		this.agendas_confirmadas_url = agendas_confirmadas_url;
+	}
+	public String getAgendas_confirmadas_url(){
+		return this.agendas_confirmadas_url;
+	}
+	
+	public void setAgendas_confirmadas_bg(String agendas_confirmadas_bg){
+		this.agendas_confirmadas_bg = agendas_confirmadas_bg;
+	}
+	public String getAgendas_confirmadas_bg(){
+		return this.agendas_confirmadas_bg;
+	}
+	
+	public void setAgendas_confirmadas_icn(String agendas_confirmadas_icn){
+		this.agendas_confirmadas_icn = agendas_confirmadas_icn;
+	}
+	public String getAgendas_confirmadas_icn(){
+		return this.agendas_confirmadas_icn;
+	}
+	
+	public void setAgendas_realizadas_tit(String agendas_realizadas_tit){
+		this.agendas_realizadas_tit = agendas_realizadas_tit;
+	}
+	public String getAgendas_realizadas_tit(){
+		return this.agendas_realizadas_tit;
+	}
+	
+	public void setAgendas_realizadas_val(String agendas_realizadas_val){
+		this.agendas_realizadas_val = agendas_realizadas_val;
+	}
+	public String getAgendas_realizadas_val(){
+		return this.agendas_realizadas_val;
+	}
+	
+	public void setAgendas_realizadas_txt(String agendas_realizadas_txt){
+		this.agendas_realizadas_txt = agendas_realizadas_txt;
+	}
+	public String getAgendas_realizadas_txt(){
+		return this.agendas_realizadas_txt;
+	}
+	
+	public void setAgendas_realizadas_url(String agendas_realizadas_url){
+		this.agendas_realizadas_url = agendas_realizadas_url;
+	}
+	public String getAgendas_realizadas_url(){
+		return this.agendas_realizadas_url;
+	}
+	
+	public void setAgendas_realizadas_bg(String agendas_realizadas_bg){
+		this.agendas_realizadas_bg = agendas_realizadas_bg;
+	}
+	public String getAgendas_realizadas_bg(){
+		return this.agendas_realizadas_bg;
+	}
+	
+	public void setAgendas_realizadas_icn(String agendas_realizadas_icn){
+		this.agendas_realizadas_icn = agendas_realizadas_icn;
+	}
+	public String getAgendas_realizadas_icn(){
+		return this.agendas_realizadas_icn;
 	}
 
-
-	public class Chart_1{
-		private String Ano;
-		private String X1;
-		private String X2;
-		private String X3;
-		private String X4;
-		public void setAno(String Ano){
-			this.Ano = Ano;
+	public static class Chart{
+		private String Descricao;
+		private String Quantidade;
+		public String getDescricao() {
+			return Descricao;
 		}
-		public String getAno(){
-			return this.Ano;
+		public void setDescricao(String descricao) {
+			Descricao = descricao;
 		}
-
-		public void setX1(String X1){
-			this.X1 = X1;
+		public String getQuantidade() {
+			return Quantidade;
 		}
-		public String getX1(){
-			return this.X1;
-		}
-
-		public void setX2(String X2){
-			this.X2 = X2;
-		}
-		public String getX2(){
-			return this.X2;
-		}
-
-		public void setX3(String X3){
-			this.X3 = X3;
-		}
-		public String getX3(){
-			return this.X3;
-		}
-
-		public void setX4(String X4){
-			this.X4 = X4;
-		}
-		public String getX4(){
-			return this.X4;
-		}
-
-	}
-	public class Chart_2{
-		private String Ano;
-		private String X1;
-		private String X2;
-		private String X3;
-		private String X4;
-		public void setAno(String Ano){
-			this.Ano = Ano;
-		}
-		public String getAno(){
-			return this.Ano;
-		}
-
-		public void setX1(String X1){
-			this.X1 = X1;
-		}
-		public String getX1(){
-			return this.X1;
-		}
-
-		public void setX2(String X2){
-			this.X2 = X2;
-		}
-		public String getX2(){
-			return this.X2;
-		}
-
-		public void setX3(String X3){
-			this.X3 = X3;
-		}
-		public String getX3(){
-			return this.X3;
-		}
-
-		public void setX4(String X4){
-			this.X4 = X4;
-		}
-		public String getX4(){
-			return this.X4;
-		}
-
-	}
-	public class Chart_5{
-		private String Ano;
-		private String X1;
-		private String X2;
-		private String X3;
-		private String X4;
-		public void setAno(String Ano){
-			this.Ano = Ano;
-		}
-		public String getAno(){
-			return this.Ano;
-		}
-
-		public void setX1(String X1){
-			this.X1 = X1;
-		}
-		public String getX1(){
-			return this.X1;
-		}
-
-		public void setX2(String X2){
-			this.X2 = X2;
-		}
-		public String getX2(){
-			return this.X2;
-		}
-
-		public void setX3(String X3){
-			this.X3 = X3;
-		}
-		public String getX3(){
-			return this.X3;
-		}
-
-		public void setX4(String X4){
-			this.X4 = X4;
-		}
-		public String getX4(){
-			return this.X4;
-		}
-
-	}
-	public class Chart_3{
-		private String Ano;
-		private String X1;
-		private String X2;
-		private String X3;
-		private String X4;
-		public void setAno(String Ano){
-			this.Ano = Ano;
-		}
-		public String getAno(){
-			return this.Ano;
-		}
-
-		public void setX1(String X1){
-			this.X1 = X1;
-		}
-		public String getX1(){
-			return this.X1;
-		}
-
-		public void setX2(String X2){
-			this.X2 = X2;
-		}
-		public String getX2(){
-			return this.X2;
-		}
-
-		public void setX3(String X3){
-			this.X3 = X3;
-		}
-		public String getX3(){
-			return this.X3;
-		}
-
-		public void setX4(String X4){
-			this.X4 = X4;
-		}
-		public String getX4(){
-			return this.X4;
+		public void setQuantidade(String quantidade) {
+			Quantidade = quantidade;
 		}
 
 	}

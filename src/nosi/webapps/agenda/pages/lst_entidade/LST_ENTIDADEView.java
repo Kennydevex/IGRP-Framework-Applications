@@ -38,7 +38,7 @@ public class LST_ENTIDADEView extends View {
 		p_id.propertie().add("name","p_id").add("type","hidden").add("maxlength","30").add("tag","id");
 
 		toolsbar_1 = new IGRPToolsBar("toolsbar_1");
-		btn_nova_entidade = new IGRPButton("Nova Entidade","agenda","LST_ENTIDADE","nova_entidade","modal","success|fa-plus-square","","");
+		btn_nova_entidade = new IGRPButton("Nova Entidade","agenda","LST_ENTIDADE","nova_entidade","_self","success|fa-plus-square","","");
 		btn_nova_entidade.propertie.add("type","specific").add("code","").add("rel","nova_entidade");
 		btn_pesquisar = new IGRPButton("Pesquisar","agenda","LST_ENTIDADE","pesquisar","submit_form","default|fa-search","","");
 		btn_pesquisar.propertie.add("type","form").add("code","").add("class","default").add("rel","pesquisar");
