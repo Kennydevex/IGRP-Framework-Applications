@@ -31,18 +31,17 @@ public class RecuperacaoController extends Controller {
 		/*---- Insert your code here... ----*/										
 		Recuperacao model = new Recuperacao();
 		RecuperacaoView view = new RecuperacaoView(model);
-		
-		view.tipo_objeto.setValue(IgrpHelper.toMap(new Objeto().find().andWhere("id_organica", "=", Permission.getCurrentOrganization()).all(), "id", "objeto"));
+		view.tipo_objeto.setValue(IgrpHelper.toMap(new Objeto().find().andWhere("id_organica", "=", Permission.getCurrentOrganization()).all(), "id", "objeto", "--- Escolher Tipo Objecto ---"));
 		HashMap<Integer,String> td = new HashMap<>();
-		td.put(1, "Passaporte");
+		td.put(null, "--- Escolher Tipo Documento ---");
+		td.put(1, "Passaporte"); 
 		td.put(2, "Livro");
 		view.tipo_documento.setValue(td);
-		view.campo.setValue(IgrpHelper.toMap(new Campos().find().andWhere("estado", "=", "ATIVO").all(), "id", "campo"));
+		view.campo.setValue(IgrpHelper.toMap(new Campos().find().andWhere("estado", "=", "ATIVO").all(), "id", "campo", "--- Escolher Campo ---"));
 		view.data_de_registo.setValue(DateHelper.convertDate(new Date(System.currentTimeMillis()).toString(),"yyyy-MM-dd","dd-MM-yyyy"));
 		return this.renderView(view);
 							/*---- End ----*/
 	}
-
 
 	public Response actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
 		/*---- Insert your code here... ----*/										

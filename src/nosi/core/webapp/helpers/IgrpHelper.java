@@ -30,21 +30,6 @@ public final class IgrpHelper {
 		return map;
 	}
 	
-	/*public static Map<Object, Object> toMap(List<Object> keys, List<Object> values, String prompt) {
-		Map<Object, Object> map = new HashMap<>();
-		if(prompt != null)
-			map.put(null, prompt);
-		for(int i = 0; i < keys.size(); i++) {
-			map.put(keys.get(i) + "", values.get(i) + "");
-			System.out.println(keys.get(i) + "");
-		}
-		return map;
-	}
-	
-	public static Map<Object, Object> toMap(List<Object> keys, List<Object> values) {
-		return toMap(keys, values, null);
-	}
-	*/
 	// Help to convert String[] parameters to any Java primitive type
 	public static Object convertToArray(String []array, String primitiveType){
 		switch(primitiveType){
