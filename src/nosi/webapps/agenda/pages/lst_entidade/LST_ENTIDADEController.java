@@ -47,7 +47,7 @@ public class LST_ENTIDADEController extends Controller {
 
 	public Response actionNova_entidade() throws IOException{
 		/*---- Insert your code here... ----*/					
-		Config.target = "_blank";
+//		Config.target = "_blank";
 		return this.redirect("agenda","ENTIDADE","index");
 				/*---- End ----*/
 	}
