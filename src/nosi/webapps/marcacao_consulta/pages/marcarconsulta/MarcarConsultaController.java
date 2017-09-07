@@ -53,7 +53,7 @@ public class MarcarConsultaController extends Controller {
 			boolean check = c.disponibilidade(model.getData_consulta(),medico.getId(),c.getEspecialidade().getId());
 			if(!check){
 				Igrp.getInstance().getFlashMessage().addMessage("warning", "Esgotau o limite de consulta para este medico. Nao pode marcar consulta neste medico");	
-				return this.redirect("marcao_consulta","MarcarConsulta","index");	
+				return this.redirect("marcacao_consulta","MarcarConsulta","index");	
 			}
 			c = c.insert();
 			if(check && c!=null){
