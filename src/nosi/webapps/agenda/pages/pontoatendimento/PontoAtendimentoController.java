@@ -5,7 +5,6 @@
 package nosi.webapps.agenda.pages.pontoatendimento;
 /*---- Import your packages here... ----*/
 import nosi.core.webapp.Controller;
-import nosi.core.config.Config;
 import nosi.core.webapp.Igrp;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import nosi.webapps.agenda.dao.Balcao;
 import nosi.webapps.agenda.dao.Entidade;
 import nosi.webapps.agenda.dao.ServBalcao;
 import nosi.webapps.agenda.dao.Servicos;
+import nosi.core.config.Config;
 
 /*---- End ----*/
 
@@ -25,7 +25,7 @@ public class PontoAtendimentoController extends Controller {
 
 
 	public Response actionIndex() throws IOException, IllegalArgumentException, IllegalAccessException{
-		/*---- Insert your code here... ----*/						
+		/*---- Insert your code here... ----*/
 		PontoAtendimento model = new PontoAtendimento();
 		String ichange = Igrp.getInstance().getRequest().getParameter("ichange");
 		List<PontoAtendimento.Table_1> table1 = new ArrayList<>();
@@ -62,7 +62,7 @@ public class PontoAtendimentoController extends Controller {
 				for(Balcao b:balcoes){
 					PontoAtendimento.Table_1 t1 = new PontoAtendimento.Table_1();
 					t1.setPonto_atendimento_desc(b.getNome_balcao());	
-					t1.setPonto_atendimento("webapps?r=agenda/PontoAtendimento/index&amp;ichange=p_entidade&amp;p_id_balcao="+b.getId());
+					t1.setPonto_atendimento("agenda","PontoAtendimento","index&amp;ichange=p_entidade&amp;p_id_balcao="+b.getId());
 					t1.setP_id_balcao(""+b.getId());
 					t1.setEstado_list(b.getEstado());					
 					table1.add(t1);
@@ -117,10 +117,10 @@ public class PontoAtendimentoController extends Controller {
 			view.btn_gravar.setLink("editar&p_id_balcao="+id_balcao);
 		}
 		if(model.getEntidade()!=null && !model.getEntidade().equals("")){
-			view.btn_novo.setLink("novo&p_id_entidade="+model.getEntidade());
+			view.btn_novo_servico.setLink("novo&p_id_entidade="+model.getEntidade());
 		}
 		return this.renderView(view);
-					/*---- End ----*/
+		/*---- End ----*/
 	}
 
 
@@ -166,15 +166,7 @@ public class PontoAtendimentoController extends Controller {
 		Config.target="_blank";
 		return this.redirect("agenda","AddServicos","index&p_id_entidade="+(id_entidade!=null?id_entidade:""));
 					/*---- End ----*/
-	}
-	
-
-	public Response actionConfigurar() throws IOException{
-		/*---- Insert your code here... ----*/						
-		return this.redirect("agenda","AddServicos","index");
-					/*---- End ----*/
-	}
-	
+	}	
 
 	public Response actionRemover() throws IOException{
 		/*---- Insert your code here... ----*/		
@@ -278,5 +270,6 @@ public class PontoAtendimentoController extends Controller {
 		return this.redirect("agenda","AddServicos","index&p_id="+id);
 					/*---- End ----*/
 	}
-	/*---- End ----*/
+	
+	/*---- Insert your actions here... ----*//*---- End ----*/
 }

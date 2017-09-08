@@ -1,12 +1,16 @@
 /*---------------------- Create Model ----------------------*/
 package nosi.webapps.agenda.pages.pontoatendimento;
+import nosi.core.config.Config;
 import nosi.core.webapp.Model;
 import nosi.core.webapp.RParam;
+import nosi.core.gui.components.IGRPSeparatorList.Pair;
+import nosi.core.webapp.SeparatorList;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PontoAtendimento extends Model{		
-	@RParam(rParamName = "p_page_title_text")
-	private String page_title_text;
+	@RParam(rParamName = "p_sectionheader_1_text")
+	private String sectionheader_1_text;
 	@RParam(rParamName = "p_entidade")
 	private String entidade;
 	@RParam(rParamName = "p_ponto")
@@ -30,27 +34,29 @@ public class PontoAtendimento extends Model{
 	@RParam(rParamName = "p_estado")
 	private String p_estado;
 
-	private ArrayList<Table_1> table_1 = new ArrayList<>();
-	public void setTable_1(ArrayList<Table_1> table_1){
+	@SeparatorList(name = Table_1.class)
+	private List<Table_1> table_1 = new ArrayList<>();
+	public void setTable_1(List<Table_1> table_1){
 		this.table_1 = table_1;
 	}
-	public ArrayList<Table_1> gettable_1(){
+	public List<Table_1> gettable_1(){
 		return this.table_1;
 	}
 
-	private ArrayList<Table_2> table_2 = new ArrayList<>();
-	public void setTable_2(ArrayList<Table_2> table_2){
+	@SeparatorList(name = Table_2.class)
+	private List<Table_2> table_2 = new ArrayList<>();
+	public void setTable_2(List<Table_2> table_2){
 		this.table_2 = table_2;
 	}
-	public ArrayList<Table_2> gettable_2(){
+	public List<Table_2> gettable_2(){
 		return this.table_2;
 	}
 	
-	public void setPage_title_text(String page_title_text){
-		this.page_title_text = page_title_text;
+	public void setSectionheader_1_text(String sectionheader_1_text){
+		this.sectionheader_1_text = sectionheader_1_text;
 	}
-	public String getPage_title_text(){
-		return this.page_title_text;
+	public String getSectionheader_1_text(){
+		return this.sectionheader_1_text;
 	}
 	
 	public void setEntidade(String entidade){
@@ -136,14 +142,14 @@ public class PontoAtendimento extends Model{
 		private String ponto_atendimento_desc;
 		private String estado_list;
 		private String p_id_balcao;
-		public void setPonto_atendimento(String ponto_atendimento){
-			this.ponto_atendimento = ponto_atendimento;
+		public void setPonto_atendimento(String app,String page,String action){
+			this.ponto_atendimento = Config.getResolveUrl(app, page, action);
 		}
 		public String getPonto_atendimento(){
 			return this.ponto_atendimento;
 		}
-		public void setPonto_atendimento_desc(String ponto_atendimento_desc){
-			this.ponto_atendimento_desc = ponto_atendimento_desc;
+		public void setPonto_atendimento_desc(String ponto_atendimento_check){
+			this.ponto_atendimento_desc = ponto_atendimento_check;
 		}
 		public String getPonto_atendimento_desc(){
 			return this.ponto_atendimento_desc;
@@ -197,5 +203,15 @@ public class PontoAtendimento extends Model{
 		}
 
 	}
+	@Override
+	public String toString() {
+		return "PontoAtendimento [entidade=" + entidade + ", ponto=" + ponto + ", n_de_servicos=" + n_de_servicos
+				+ ", localizacao=" + localizacao + ", fuso_horario=" + fuso_horario + ", confirmacao_automatica="
+				+ confirmacao_automatica + ", horario_de_atendimento=" + horario_de_atendimento + ", hora_inicio="
+				+ hora_inicio + ", hora_fim=" + hora_fim + ", p_id_ponto_atendimento=" + p_id_ponto_atendimento
+				+ ", p_estado=" + p_estado + "]";
+	}
+	
+	
 }
 /*-------------------------*/
