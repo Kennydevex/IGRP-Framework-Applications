@@ -71,66 +71,32 @@
                         </option>
                     </list>
                 </tipo_objeto>
-                <n_do_negocio name="p_n_do_negocio" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false">
-                    <label>Nº do negócio</label>
-                    <value>4</value>
-                </n_do_negocio>
-                <n_de_processo name="p_n_de_processo" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false">
-                    <label>Nº de processo</label>
-                    <value>4</value>
-                </n_de_processo>
                 <data_de_registo name="p_data_de_registo" type="date" format="IGRP_datePicker" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" class="default">
                     <label>Data de registo</label>
                     <value/>
                 </data_de_registo>
-                <nome name="p_nome" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
-                    <label>Nome</label>
-                    <value>Laudantium mollit sed laudanti</value>
-                </nome>
-                <tipo_documento name="p_tipo_documento" type="select" multiple="false" domain="" maxlength="30" required="false" change="false" disabled="false" right="false">
-                    <label>Tipo Documento</label>
-                    <list>
-                        <option/>
-                        <option>
-                            <text>Option 1</text>
-                            <value>1</value>
-                        </option>
-                        <option>
-                            <text>Option 2</text>
-                            <value>2</value>
-                        </option>
-                        <option>
-                            <text>Option 3</text>
-                            <value>3</value>
-                        </option>
-                        <option>
-                            <text>Option 4</text>
-                            <value>4</value>
-                        </option>
-                    </list>
-                </tipo_documento>
-                <n_de_documento name="p_n_de_documento" type="number" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" min="" max="">
-                    <label>Nº de Documento</label>
-                    <value>11</value>
-                </n_de_documento>
+                <descricao name="p_descricao" type="text" maxlength="100" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
+                    <label>Descricao</label>
+                    <value>Officia sit amet laudantium amet</value>
+                </descricao>
                 <localizacao_fisica name="p_localizacao_fisica" type="separator" maxlength="30" placeholder="" right="false">
                     <label>Localização Física</label>
                 </localizacao_fisica>
                 <estante name="p_estante" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
                     <label>Estante</label>
-                    <value>Officia amet labore anim magna</value>
+                    <value>Ut sed sit labore rem</value>
                 </estante>
                 <pasta name="p_pasta" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
                     <label>Pasta</label>
-                    <value>Elit stract sit amet perspicia</value>
+                    <value>Iste rem ut rem magna</value>
                 </pasta>
                 <livro name="p_livro" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
                     <label>Livro</label>
-                    <value>Officia mollit sit iste adipis</value>
+                    <value>Adipiscing officia mollit stra</value>
                 </livro>
                 <folha name="p_folha" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
                     <label>Folha</label>
-                    <value>Amet anim natus stract magna</value>
+                    <value>Consectetur sit voluptatem adi</value>
                 </folha>
                 <adicionar_ficheiro name="p_adicionar_ficheiro" type="separator" maxlength="30" placeholder="" right="false">
                     <label>Adicionar Ficheiro</label>
@@ -142,82 +108,49 @@
                 <hidden name="p_id" type="hidden" maxlength="30" tag="id"/>
             </fields>
         </form_1>
-        <separatorlist_1 type="separatorlist" xml-type="separatorlist" gen-clean="true" gen-type="container" gen-group="true">
+        <formlist_1 type="formlist" xml-type="formlist" gen-clean="true" gen-type="container" gen-group="true">
             <fields>
-                <informacoes_adicionais name="p_informacoes_adicionais" type="separator" maxlength="30" placeholder="" right="false" desc="true">
-                    <label>Informações Adicionais</label>
-                </informacoes_adicionais>
-                <campo name="p_campo" type="select" multiple="false" domain="" maxlength="30" required="true" change="false" disabled="false" right="false" desc="true">
+                <campo name="p_campo" type="plaintext" maxlength="30" right="false" desc="true">
                     <label>Campo</label>
-                    <list>
-                        <option/>
-                        <option>
-                            <text>Option 1</text>
-                            <value>1</value>
-                        </option>
-                        <option>
-                            <text>Option 2</text>
-                            <value>2</value>
-                        </option>
-                        <option>
-                            <text>Option 3</text>
-                            <value>3</value>
-                        </option>
-                        <option>
-                            <text>Option 4</text>
-                            <value>4</value>
-                        </option>
-                    </list>
                 </campo>
-                <valor name="p_valor" type="textarea" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" desc="true">
+                <valor name="p_valor" type="text" maxlength="200" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" desc="true">
                     <label>Valor</label>
-                    <value>Dolor labore deserunt mollit u</value>
                 </valor>
             </fields>
             <table>
                 <value>
                     <row>
-                        <informacoes_adicionais name="p_informacoes_adicionais" desc="true"/>
-                        <informacoes_adicionais_desc name="p_informacoes_adicionais_desc"/>
-                        <campo name="p_campo" desc="true">2</campo>
-                        <campo_desc name="p_campo_desc">2</campo_desc>
-                        <valor name="p_valor" desc="true">Iste officia deserunt laudanti</valor>
-                        <valor_desc name="p_valor_desc">Iste officia deserunt laudanti</valor_desc>
+                        <campo name="p_campo" desc="true">Elit laudantium labore adipisc</campo>
+                        <campo_desc name="p_campo_desc">Elit laudantium labore adipisc</campo_desc>
+                        <valor name="p_valor" desc="true">Sit anim laudantium perspiciatis doloremque</valor>
+                        <valor_desc name="p_valor_desc">Sit anim laudantium perspiciatis doloremque</valor_desc>
                     </row>
                     <row>
-                        <informacoes_adicionais name="p_informacoes_adicionais" desc="true"/>
-                        <informacoes_adicionais_desc name="p_informacoes_adicionais_desc"/>
-                        <campo name="p_campo" desc="true">2</campo>
-                        <campo_desc name="p_campo_desc">2</campo_desc>
-                        <valor name="p_valor" desc="true">Amet laudantium magna consecte</valor>
-                        <valor_desc name="p_valor_desc">Amet laudantium magna consecte</valor_desc>
+                        <campo name="p_campo" desc="true">Voluptatem sed amet elit adipi</campo>
+                        <campo_desc name="p_campo_desc">Voluptatem sed amet elit adipi</campo_desc>
+                        <valor name="p_valor" desc="true">Sit officia amet sit labore</valor>
+                        <valor_desc name="p_valor_desc">Sit officia amet sit labore</valor_desc>
                     </row>
                     <row>
-                        <informacoes_adicionais name="p_informacoes_adicionais" desc="true"/>
-                        <informacoes_adicionais_desc name="p_informacoes_adicionais_desc"/>
-                        <campo name="p_campo" desc="true">2</campo>
-                        <campo_desc name="p_campo_desc">2</campo_desc>
-                        <valor name="p_valor" desc="true">Doloremque omnis aperiam deser</valor>
-                        <valor_desc name="p_valor_desc">Doloremque omnis aperiam deser</valor_desc>
+                        <campo name="p_campo" desc="true">Ut omnis sed mollit rem</campo>
+                        <campo_desc name="p_campo_desc">Ut omnis sed mollit rem</campo_desc>
+                        <valor name="p_valor" desc="true">Totam lorem stract rem dolor</valor>
+                        <valor_desc name="p_valor_desc">Totam lorem stract rem dolor</valor_desc>
                     </row>
                     <row>
-                        <informacoes_adicionais name="p_informacoes_adicionais" desc="true"/>
-                        <informacoes_adicionais_desc name="p_informacoes_adicionais_desc"/>
-                        <campo name="p_campo" desc="true">2</campo>
-                        <campo_desc name="p_campo_desc">2</campo_desc>
-                        <valor name="p_valor" desc="true">Magna amet officia adipiscing</valor>
-                        <valor_desc name="p_valor_desc">Magna amet officia adipiscing</valor_desc>
+                        <campo name="p_campo" desc="true">Totam anim officia sit magna</campo>
+                        <campo_desc name="p_campo_desc">Totam anim officia sit magna</campo_desc>
+                        <valor name="p_valor" desc="true">Aperiam amet mollit stract labore</valor>
+                        <valor_desc name="p_valor_desc">Aperiam amet mollit stract labore</valor_desc>
                     </row>
                     <row>
-                        <informacoes_adicionais name="p_informacoes_adicionais" desc="true"/>
-                        <informacoes_adicionais_desc name="p_informacoes_adicionais_desc"/>
-                        <campo name="p_campo" desc="true">2</campo>
-                        <campo_desc name="p_campo_desc">2</campo_desc>
-                        <valor name="p_valor" desc="true">Aliqua elit omnis officia rem</valor>
-                        <valor_desc name="p_valor_desc">Aliqua elit omnis officia rem</valor_desc>
+                        <campo name="p_campo" desc="true">Voluptatem unde consectetur ac</campo>
+                        <campo_desc name="p_campo_desc">Voluptatem unde consectetur ac</campo_desc>
+                        <valor name="p_valor" desc="true">Totam omnis anim dolor iste</valor>
+                        <valor_desc name="p_valor_desc">Totam omnis anim dolor iste</valor_desc>
                     </row>
                 </value>
             </table>
-        </separatorlist_1>
+        </formlist_1>
     </content>
 </rows>
