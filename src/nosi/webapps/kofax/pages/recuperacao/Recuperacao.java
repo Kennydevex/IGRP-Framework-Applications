@@ -13,18 +13,10 @@ public class Recuperacao extends Model{
 	private String identificacao;
 	@RParam(rParamName = "p_tipo_objeto")
 	private String tipo_objeto;
-	@RParam(rParamName = "p_n_do_negocio")
-	private float n_do_negocio;
-	@RParam(rParamName = "p_n_de_processo")
-	private float n_de_processo;
 	@RParam(rParamName = "p_data_de_registo")
 	private String data_de_registo;
-	@RParam(rParamName = "p_nome")
-	private String nome;
-	@RParam(rParamName = "p_tipo_documento")
-	private String tipo_documento;
-	@RParam(rParamName = "p_n_de_documento")
-	private float n_de_documento;
+	@RParam(rParamName = "p_descricao")
+	private String descricao;
 	@RParam(rParamName = "p_localizacao_fisica")
 	private String localizacao_fisica;
 	@RParam(rParamName = "p_estante")
@@ -42,13 +34,13 @@ public class Recuperacao extends Model{
 	@RParam(rParamName = "p_id")
 	private String p_id;
 
-	@SeparatorList(name = Separatorlist_1.class)
-	private List<Separatorlist_1> separatorlist_1 = new ArrayList<>();
-	public void setSeparatorlist_1(List<Separatorlist_1> separatorlist_1){
-		this.separatorlist_1 = separatorlist_1;
+	@SeparatorList(name = Formlist_1.class)
+	private List<Formlist_1> formlist_1 = new ArrayList<>();
+	public void setFormlist_1(List<Formlist_1> formlist_1){
+		this.formlist_1 = formlist_1;
 	}
-	public List<Separatorlist_1> getseparatorlist_1(){
-		return this.separatorlist_1;
+	public List<Formlist_1> getformlist_1(){
+		return this.formlist_1;
 	}
 	
 	public void setIdentificacao(String identificacao){
@@ -65,20 +57,6 @@ public class Recuperacao extends Model{
 		return this.tipo_objeto;
 	}
 	
-	public void setN_do_negocio(float n_do_negocio){
-		this.n_do_negocio = n_do_negocio;
-	}
-	public float getN_do_negocio(){
-		return this.n_do_negocio;
-	}
-	
-	public void setN_de_processo(float n_de_processo){
-		this.n_de_processo = n_de_processo;
-	}
-	public float getN_de_processo(){
-		return this.n_de_processo;
-	}
-	
 	public void setData_de_registo(String data_de_registo){
 		this.data_de_registo = data_de_registo;
 	}
@@ -86,25 +64,11 @@ public class Recuperacao extends Model{
 		return this.data_de_registo;
 	}
 	
-	public void setNome(String nome){
-		this.nome = nome;
+	public void setDescricao(String descricao){
+		this.descricao = descricao;
 	}
-	public String getNome(){
-		return this.nome;
-	}
-	
-	public void setTipo_documento(String tipo_documento){
-		this.tipo_documento = tipo_documento;
-	}
-	public String getTipo_documento(){
-		return this.tipo_documento;
-	}
-	
-	public void setN_de_documento(float n_de_documento){
-		this.n_de_documento = n_de_documento;
-	}
-	public float getN_de_documento(){
-		return this.n_de_documento;
+	public String getDescricao(){
+		return this.descricao;
 	}
 	
 	public void setLocalizacao_fisica(String localizacao_fisica){
@@ -164,17 +128,9 @@ public class Recuperacao extends Model{
 	}
 
 
-	public static class Separatorlist_1{
-		private Pair informacoes_adicionais;
+	public static class Formlist_1{
 		private Pair campo;
 		private Pair valor;
-		public void setInformacoes_adicionais(Pair informacoes_adicionais){
-			this.informacoes_adicionais = informacoes_adicionais;
-		}
-		public Pair getInformacoes_adicionais(){
-			return this.informacoes_adicionais;
-		}
-
 		public void setCampo(Pair campo){
 			this.campo = campo;
 		}
