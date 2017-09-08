@@ -13,13 +13,13 @@
                 <link rel="stylesheet" type="text/css" href="{$path}/plugins/separatorlist/igrp.separatorlist.css"/>
                 <link rel="stylesheet" type="text/css" href="{$path}/core/igrp/table/igrp.tables.css"/>
                 <link rel="stylesheet" type="text/css" href="{$path}/core/igrp/table/dataTables.bootstrap.css"/>
-                <!-- IMG CSS INCLUDES -->
-                <link rel="stylesheet" type="text/css" href="{$path}/plugins/croppie/croppie.css"/>
                 <!-- SELECT CSS INCLUDES -->
                 <link rel="stylesheet" type="text/css" href="{$path}/plugins/select2/select2.min.css"/>
                 <link rel="stylesheet" type="text/css" href="{$path}/plugins/select2/select2.style.css"/>
                 <!-- DATE CSS INCLUDES -->
                 <link rel="stylesheet" type="text/css" href="{$path}/plugins/datetimepicker/css/datetimepicker.css"/>
+                <!-- IMG CSS INCLUDES -->
+                <link rel="stylesheet" type="text/css" href="{$path}/plugins/croppie/croppie.css"/>
                 <style/>
             </head>
             <body class="{$bodyClass} sidebar-off">
@@ -30,7 +30,7 @@
                             <xsl:call-template name="IGRP-sidebar"/>
                             <div class="col-sm-9 col-md-10 col-md-offset-2 col-sm-offset-3 main" id="igrp-contents">
                                 <div class="content">
-                                    <div class="row" id="row-cc8ba9c0">
+                                    <div class="row" id="row-0f11e5d5">
                                         <div class="gen-column col-md-12">
                                             <div class="gen-inner">
                                                 <xsl:apply-templates mode="igrp-messages" select="rows/content/messages"/>
@@ -49,20 +49,6 @@
                                                         <div class="box-body">
                                                             <div role="form">
                                                                 <xsl:apply-templates mode="form-hidden-fields" select="rows/content/form_1/fields"/>
-                                                                <xsl:if test="rows/content/form_1/fields/adicionar_ficheiro">
-                                                                    <div class="box-head subtitle gen-fields-holder" text-color="1">
-                                                                        <span>
-                                                                            <xsl:value-of select="rows/content/form_1/fields/adicionar_ficheiro/label"/>
-                                                                        </span>
-                                                                    </div>
-                                                                </xsl:if>
-                                                                <xsl:if test="rows/content/form_1/fields/imagem">
-                                                                    <div class="col-sm-12  holder-croppie gen-fields-holder" item-name="imagem">
-                                                                        <div class="row">
-                                                                            <img src="{rows/content/form_1/fields/imagem/value}" data-label="{rows/content/form_1/fields/imagem/label}" name="imagem" id="id-imagem" width="500" height="400" class=" croppie"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </xsl:if>
                                                                 <xsl:if test="rows/content/form_1/fields/identificacao">
                                                                     <div class="box-head subtitle gen-fields-holder" text-color="1">
                                                                         <span>
@@ -254,6 +240,20 @@
                                                                         </input>
                                                                     </div>
                                                                 </xsl:if>
+                                                                <xsl:if test="rows/content/form_1/fields/adicionar_ficheiro">
+                                                                    <div class="box-head subtitle gen-fields-holder" text-color="1">
+                                                                        <span>
+                                                                            <xsl:value-of select="rows/content/form_1/fields/adicionar_ficheiro/label"/>
+                                                                        </span>
+                                                                    </div>
+                                                                </xsl:if>
+                                                                <xsl:if test="rows/content/form_1/fields/imagem">
+                                                                    <div class="col-sm-12  holder-croppie gen-fields-holder" item-name="imagem">
+                                                                        <div class="row">
+                                                                            <img src="{rows/content/form_1/fields/imagem/value}" data-label="{rows/content/form_1/fields/imagem/label}" name="imagem" id="id-imagem" width="500" height="400" class=" croppie"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </xsl:if>
                                                             </div>
                                                         </div>
                                                         <xsl:apply-templates select="rows/content/form_1/tools-bar" mode="form-buttons"/>
@@ -409,21 +409,21 @@
                 <script type="text/javascript" src="{$path}/core/igrp/form/igrp.forms.js"/>
                 <!-- SEPARATORLIST JS INCLUDES -->
                 <script type="text/javascript" src="{$path}/plugins/separatorlist/igrp.separatorlist.js"/>
-                <!-- IMG JS INCLUDES -->
-                <script type="text/javascript" src="{$path}/plugins/croppie/croppie.min.js"/>
-                <script type="text/javascript" src="{$path}/plugins/croppie/croppie.js"/>
                 <!-- SELECT JS INCLUDES -->
                 <script type="text/javascript" src="{$path}/plugins/select2/select2.full.min.js"/>
                 <script type="text/javascript" src="{$path}/plugins/select2/select2.init.js"/>
                 <!-- DATE JS INCLUDES -->
                 <script type="text/javascript" src="{$path}/plugins/datetimepicker/js/datetimepicker.js"/>
                 <script type="text/javascript" src="{$path}/plugins/datetimepicker/js/dtp.init.js"/>
+                <!-- IMG JS INCLUDES -->
+                <script type="text/javascript" src="{$path}/plugins/croppie/croppie.min.js"/>
+                <script type="text/javascript" src="{$path}/plugins/croppie/croppie.js"/>
             </body>
         </html>
     </xsl:template>
-    <xsl:include href="../../../xsl/tmpl/IGRP-functions.tmpl.xsl?v=1504615691898"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-variables.tmpl.xsl?v=1504615691898"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-home-include.tmpl.xsl?v=1504615691898"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-utils.tmpl.xsl?v=1504615691898"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-form-utils.tmpl.xsl?v=1504615691898"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-functions.tmpl.xsl?v=1504871017103"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-variables.tmpl.xsl?v=1504871017103"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-home-include.tmpl.xsl?v=1504871017103"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-utils.tmpl.xsl?v=1504871017103"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-form-utils.tmpl.xsl?v=1504871017103"/>
 </xsl:stylesheet>

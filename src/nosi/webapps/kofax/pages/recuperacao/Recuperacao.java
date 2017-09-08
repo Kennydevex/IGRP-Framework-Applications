@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recuperacao extends Model{		
-	@RParam(rParamName = "p_adicionar_ficheiro")
-	private String adicionar_ficheiro;
-	@RParam(rParamName = "p_imagem")
-	private String imagem;
 	@RParam(rParamName = "p_identificacao")
 	private String identificacao;
 	@RParam(rParamName = "p_tipo_objeto")
@@ -39,6 +35,10 @@ public class Recuperacao extends Model{
 	private String livro;
 	@RParam(rParamName = "p_folha")
 	private String folha;
+	@RParam(rParamName = "p_adicionar_ficheiro")
+	private String adicionar_ficheiro;
+	@RParam(rParamName = "p_imagem")
+	private String imagem;
 	@RParam(rParamName = "p_id")
 	private String p_id;
 
@@ -49,20 +49,6 @@ public class Recuperacao extends Model{
 	}
 	public List<Separatorlist_1> getseparatorlist_1(){
 		return this.separatorlist_1;
-	}
-	
-	public void setAdicionar_ficheiro(String adicionar_ficheiro){
-		this.adicionar_ficheiro = adicionar_ficheiro;
-	}
-	public String getAdicionar_ficheiro(){
-		return this.adicionar_ficheiro;
-	}
-	
-	public void setImagem(String imagem){
-		this.imagem = imagem;
-	}
-	public String getImagem(){
-		return this.imagem;
 	}
 	
 	public void setIdentificacao(String identificacao){
@@ -154,6 +140,20 @@ public class Recuperacao extends Model{
 	}
 	public String getFolha(){
 		return this.folha;
+	}
+	
+	public void setAdicionar_ficheiro(String adicionar_ficheiro){
+		this.adicionar_ficheiro = adicionar_ficheiro;
+	}
+	public String getAdicionar_ficheiro(){
+		return this.adicionar_ficheiro;
+	}
+	
+	public void setImagem(String imagem){
+		this.imagem = imagem;
+	}
+	public String getImagem(){
+		return this.imagem;
 	}
 	
 	public void setP_id(String p_id){
