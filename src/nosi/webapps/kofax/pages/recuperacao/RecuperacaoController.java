@@ -28,7 +28,7 @@ public class RecuperacaoController extends Controller {
 
 
 	public Response actionIndex() throws IOException{
-		/*---- Insert your code here... ----*/										
+		/*---- Insert your code here... ----*/												
 		Recuperacao model = new Recuperacao();
 		RecuperacaoView view = new RecuperacaoView(model);
 		view.tipo_objeto.setValue(IgrpHelper.toMap(new Objeto().find().andWhere("id_organica", "=", Permission.getCurrentOrganization()).all(), "id", "objeto", "--- Escolher Tipo Objecto ---"));
@@ -40,11 +40,12 @@ public class RecuperacaoController extends Controller {
 		view.campo.setValue(IgrpHelper.toMap(new Campos().find().andWhere("estado", "=", "ATIVO").all(), "id", "campo", "--- Escolher Campo ---"));
 		view.data_de_registo.setValue(DateHelper.convertDate(new Date(System.currentTimeMillis()).toString(),"yyyy-MM-dd","dd-MM-yyyy"));
 		return this.renderView(view);
-							/*---- End ----*/
+								/*---- End ----*/
 	}
 
+
 	public Response actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
-		/*---- Insert your code here... ----*/										
+		/*---- Insert your code here... ----*/												
 		Recuperacao model = new Recuperacao();
 //		if(Igrp.getInstance().getRequest().getMethod().toUpperCase().equals("POST")){
 //			model.load();
@@ -65,13 +66,13 @@ public class RecuperacaoController extends Controller {
 //			Objeto obj = new Objeto().findOne(model.getTipo_objeto());
 //			Dados dados = new Dados(obj, ""+model.getN_do_negocio(), model.getN_de_processo(), model.getNome(), model.getTipo_documento(), model.getN_de_documento(), model.getEstante(), model.getPasta(), model.getLivro(), model.getFolha(), model.getData_de_registo(), xml.toString(), imgInBytes);
 //			if(dados.insert()!=null){
-//				Igrp.getInstance().getFlashMessage().addMessage("success", "OperaÃ§Ã£o realizada com sucesso!");
+//				Igrp.getInstance().getFlashMessage().addMessage("success", "OperaÃƒÂ§ÃƒÂ£o realizada com sucesso!");
 //			}else{
-//				Igrp.getInstance().getFlashMessage().addMessage("error", "OperaÃ§Ã£o falhau!");
+//				Igrp.getInstance().getFlashMessage().addMessage("error", "OperaÃƒÂ§ÃƒÂ£o falhau!");
 //			}
 //		}
 		return this.redirect("kofax","Recuperacao","index");
-							/*---- End ----*/
+								/*---- End ----*/
 	}
 	
 	/*---- Insert your actions here... ----*//*---- End ----*/
