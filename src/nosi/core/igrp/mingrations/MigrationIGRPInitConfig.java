@@ -93,7 +93,7 @@ public class MigrationIGRPInitConfig {
 			
 			List<Profile> profiles = new ArrayList<>();
 			profiles.add(new Profile(1, "ENV", prof1, user1, org));
-			profiles.add(new Profile(1, "PROF", prof1, user1, org));
+			profiles.add(new Profile(2, "PROF", prof1, user1, org));
 			profiles.add(new Profile(4, "MEN", prof0, user0, org));
 			profiles.add(new Profile(5, "MEN", prof0, user0, org));
 			profiles.add(new Profile(6, "MEN", prof0, user0, org));
@@ -197,9 +197,9 @@ public class MigrationIGRPInitConfig {
 		
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(2, "ENV", prof, user, org));
-		profiles.add(new Profile(2, "PROF", prof, user, org));
+		profiles.add(new Profile(3, "PROF", prof, user, org));
 		profiles.add(new Profile(2, "ENV", prof_a, user_a, org));
-		profiles.add(new Profile(3, "PROF", prof_a, user_a, org));
+		profiles.add(new Profile(4, "PROF", prof_a, user_a, org));
 		profiles.add(new Profile(16, "MEN", prof0, user0, org));
 		profiles.add(new Profile(17, "MEN", prof0, user0, org));
 		profiles.add(new Profile(18, "MEN", prof0, user0, org));
@@ -272,7 +272,7 @@ public class MigrationIGRPInitConfig {
 		
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(3, "ENV", prof, user, org));
-		profiles.add(new Profile(4, "PROF", prof, user, org));
+		profiles.add(new Profile(5, "PROF", prof, user, org));
 		profiles.add(new Profile(25, "MEN", prof0, user0, org));
 		profiles.add(new Profile(26, "MEN", prof0, user0, org));
 		profiles.add(new Profile(27, "MEN", prof0, user0, org));
@@ -339,7 +339,7 @@ public class MigrationIGRPInitConfig {
 		
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(4, "ENV", prof, user, org));
-		profiles.add(new Profile(4, "PROF", prof, user, org));
+		profiles.add(new Profile(6, "PROF", prof, user, org));
 		profiles.add(new Profile(29, "MEN", prof0, user0, org));
 		profiles.add(new Profile(30, "MEN", prof0, user0, org));
 		profiles.add(new Profile(31, "MEN", prof0, user0, org));
