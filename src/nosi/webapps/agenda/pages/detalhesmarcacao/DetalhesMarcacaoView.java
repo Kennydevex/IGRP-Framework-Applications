@@ -85,11 +85,11 @@ public class DetalhesMarcacaoView extends View {
 
 		toolsbar_1 = new IGRPToolsBar("toolsbar_1");
 		btn_confirmar_presenca = new IGRPButton("Confirmar Presenca","agenda","DetalhesMarcacao","confirmarPresenca","alert_submit","warning|fa-hand-pointer-o","","");
-		btn_confirmar_presenca.propertie.add("type","specific").add("code","").add("rel","confirmar_presenca");
+		btn_confirmar_presenca.propertie.add("type","specific").add("code","").add("rel","confirmar_presenca").add("flg_transaction","true");
 		btn_cancelar_agenda = new IGRPButton("Cancelar Agenda","agenda","DetalhesMarcacao","cancelarAgenda","alert_submit","danger|fa-remove","","");
-		btn_cancelar_agenda.propertie.add("type","specific").add("code","").add("rel","cancelar_agenda");
+		btn_cancelar_agenda.propertie.add("type","specific").add("code","").add("rel","cancelar_agenda").add("flg_transaction","true");
 		btn_confirmar_agenda = new IGRPButton("Confirmar Agenda","agenda","DetalhesMarcacao","confirmarAgenda","alert_submit","success|fa-check","","");
-		btn_confirmar_agenda.propertie.add("type","specific").add("code","").add("rel","confirmar_agenda");
+		btn_confirmar_agenda.propertie.add("type","specific").add("code","").add("rel","confirmar_agenda").add("flg_transaction","true");
 		
 	}
 		
