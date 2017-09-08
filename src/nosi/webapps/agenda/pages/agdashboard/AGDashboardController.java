@@ -24,6 +24,7 @@ public class AGDashboardController extends Controller {
 	public Response actionIndex() throws IOException, IllegalArgumentException, IllegalAccessException{
 		/*---- Insert your code here... ----*/						
 		AGDashboard model = new AGDashboard();
+		model.setData_de_(DateHelper.getCurrentDate("dd-MM-yyyy"));
 		String filter = "";
 		if(Igrp.getInstance().getRequest().getMethod().equalsIgnoreCase("POST")){
 			model.load();
@@ -32,10 +33,17 @@ public class AGDashboardController extends Controller {
 			filter += (model.getData_ate()!=null && !model.getData_ate().equals("") && (model.getData_de_()==null || model.getData_de_().equals("")))?" AND ag_t_marcacao.data_marcacao='"+DateHelper.convertDate(model.getData_ate(), "dd-MM-yyyy", "yyyy-MM-dd")+"'":"";
 			filter += (model.getData_ate()!=null && model.getData_de_()!=null && !model.getData_de_().equals("") && !model.getData_ate().equals(""))?" AND ag_t_marcacao.data_marcacao>='"+DateHelper.convertDate(model.getData_de_(), "dd-MM-yyyy", "yyyy-MM-dd")+"' AND ag_t_marcacao.data_marcacao<='"+DateHelper.convertDate(model.getData_ate(), "dd-MM-yyyy", "yyyy-MM-dd")+"'":"";
 		}
+		
+		if(filter.equals("")){
+			filter +=" AND ag_t_marcacao.data_marcacao='"+DateHelper.getCurrentDate()+"'";
+			model.setData_de_(DateHelper.getCurrentDate("dd-MM-yyyy"));
+		}
+		
 		List<DashBoard> balcoes_chart = DashBoard.getChartBalcao(filter);
 		List<DashBoard> servicos_chart = DashBoard.getChartServico(filter);
 		List<DashBoard> estado_chart = DashBoard.getChartEstado(filter);
 		List<DashBoard> assunto_chart = DashBoard.getChartAssunto(filter);
+		
 		List<DashBoard> agenda_dia_chart_1 = DashBoard.getChartEstado(filter+" AND ag_t_marcacao.estado='ATIVO'");
 		List<DashBoard> agenda_dia_chart_2 = DashBoard.getChartEstado(filter+" AND ag_t_marcacao.estado='CONFIRMADO'");
 		List<DashBoard> agenda_dia_chart_3 = DashBoard.getChartEstado(filter+" AND ag_t_marcacao.estado='REALIZADO'");

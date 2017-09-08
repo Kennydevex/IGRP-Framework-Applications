@@ -90,6 +90,7 @@ public class DashBoard implements Serializable{
 	}
 	
 	public static List<DashBoard> getChartAgendaDia(String filter){
+		System.out.println(filter);
 		return getData("agenda_dias_grafico", "_postagenda_dias_grafico", filter);
 	}
 }
