@@ -256,7 +256,7 @@ public class MigrationIGRPInitConfig {
 		actions.add(new Action("ListaObjeto", "index", null, "kofax/listaobjeto/ListaObjeto.xsl", "Listar Objetos", "Listar Objetos", "2.3", 1, app));
 		actions.add(new Action("NovoObjeto", "index", null, "kofax/novoobjeto/NovoObjeto.xsl", "Registar Novo Objeto", "Registar Novo Objeto", "2.3", 1, app));
 		actions.add(new Action("Recuperacao", "index", null, "kofax/recuperacao/Recuperacao.xsl", "Recuperacao de Arquivo", "Recuperacao de Arquivo", "2.3", 1, app));
-		
+		actions.add(new Action("Pesquisa_arquivo", "index", null, "kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl", "Pesquisa arquivo", "Pesquisa arquivo", "2.3", 1, app));
 		for(Action ac:actions){
 			ac.insert();
 		}
@@ -265,6 +265,7 @@ public class MigrationIGRPInitConfig {
 		menus.add(new Menu("Listar Objetos", 1, 1, 0, "_self", actions.get(0), app, menus.get(0)));
 		menus.add(new Menu("Configurar Objeto", 1, 1, 0, "_self", actions.get(1), app, menus.get(0)));
 		menus.add(new Menu("Configurar Recuperação de Arquivo", 1, 1, 0, "_self", actions.get(2), app, menus.get(0)));
+		menus.add(new Menu("Pesquisar Arquivo", 1, 1, 0, "_self", actions.get(3), app, menus.get(0)));
 		
 		for(Menu m:menus){
 			m.insert();
@@ -276,9 +277,11 @@ public class MigrationIGRPInitConfig {
 		profiles.add(new Profile(25, "MEN", prof0, user0, org));
 		profiles.add(new Profile(26, "MEN", prof0, user0, org));
 		profiles.add(new Profile(27, "MEN", prof0, user0, org));
+		profiles.add(new Profile(28, "MEN", prof0, user0, org));
 		profiles.add(new Profile(25, "MEN", prof, user0, org));
 		profiles.add(new Profile(26, "MEN", prof, user0, org));
 		profiles.add(new Profile(27, "MEN", prof, user0, org));
+		profiles.add(new Profile(28, "MEN", prof, user0, org));
 		
 		for(Profile p:profiles){
 			p.insert();
@@ -340,18 +343,18 @@ public class MigrationIGRPInitConfig {
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(4, "ENV", prof, user, org));
 		profiles.add(new Profile(6, "PROF", prof, user, org));
-		profiles.add(new Profile(29, "MEN", prof0, user0, org));
 		profiles.add(new Profile(30, "MEN", prof0, user0, org));
 		profiles.add(new Profile(31, "MEN", prof0, user0, org));
 		profiles.add(new Profile(32, "MEN", prof0, user0, org));
 		profiles.add(new Profile(33, "MEN", prof0, user0, org));
 		profiles.add(new Profile(34, "MEN", prof0, user0, org));
-		profiles.add(new Profile(29, "MEN", prof, user0, org));
+		profiles.add(new Profile(35, "MEN", prof0, user0, org));
 		profiles.add(new Profile(30, "MEN", prof, user0, org));
 		profiles.add(new Profile(31, "MEN", prof, user0, org));
 		profiles.add(new Profile(32, "MEN", prof, user0, org));
 		profiles.add(new Profile(33, "MEN", prof, user0, org));
 		profiles.add(new Profile(34, "MEN", prof, user0, org));
+		profiles.add(new Profile(35, "MEN", prof, user0, org));
 		
 		for(Profile p:profiles){
 			p.insert();
