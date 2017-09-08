@@ -144,6 +144,18 @@ public class MigrationIGRPInitConfig {
 		
 		ProfileType prof = new ProfileType("Administrador", "Agenda.Admin", 1, org, app, null);
 		prof = prof.insert();
+		ProfileType prof_a = new ProfileType("Demo", "Agenda.Demo", 1, org, app, null);
+		prof_a = prof_a.insert();
+		User user_a = new User("AgendaTeste", "agendateste@nosi.cv", "fe01ce2a7fbac8fafaed7c982a04e229", "ADMIN", null, 1, null, 123456789, "agenda.demo",null, null, null, null, null,null, 2017, 2017);
+		user_a = user_a.insert();
+		
+		Transaction t1 = new Transaction("agenda_DetalhesMarcacao_confirmar_agenda", "Permissao para confirmar agenda", 1, app);
+		Transaction t2 = new Transaction("agenda_DetalhesMarcacao_cancelar_agenda", "Permissao para cancelar agenda", 1, app);
+		Transaction t3 = new Transaction("agenda_DetalhesMarcacao_confirmar_presenca", "Permissao para confirmar presença", 1, app);
+		
+		t1.insert();
+		t2.insert();
+		t3.insert();
 		
 		List<Action> actions = new ArrayList<>();
 		actions.add(new Action("AddServicos", "index", null, "agenda/addservicos/AddServicos.xsl", "Adicionar Serviços", "Adicionar Serviços", "2.3", 1, app));
@@ -186,6 +198,8 @@ public class MigrationIGRPInitConfig {
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(2, "ENV", prof, user, org));
 		profiles.add(new Profile(2, "PROF", prof, user, org));
+		profiles.add(new Profile(2, "ENV", prof_a, user_a, org));
+		profiles.add(new Profile(3, "PROF", prof_a, user_a, org));
 		profiles.add(new Profile(16, "MEN", prof0, user0, org));
 		profiles.add(new Profile(17, "MEN", prof0, user0, org));
 		profiles.add(new Profile(18, "MEN", prof0, user0, org));
@@ -202,6 +216,15 @@ public class MigrationIGRPInitConfig {
 		profiles.add(new Profile(21, "MEN", prof, user0, org));
 		profiles.add(new Profile(22, "MEN", prof, user0, org));
 		profiles.add(new Profile(23, "MEN", prof, user0, org));
+		profiles.add(new Profile(21, "MEN", prof_a, user_a, org));
+		
+		//Permissoes para transacao para o utilizador Admin da Agenda
+		profiles.add(new Profile(1, "TRANS", prof0, user0, org));
+		profiles.add(new Profile(2, "TRANS", prof0, user0, org));
+		profiles.add(new Profile(3, "TRANS", prof0, user0, org));
+		profiles.add(new Profile(1, "TRANS", prof, user0, org));
+		profiles.add(new Profile(2, "TRANS", prof, user0, org));
+		profiles.add(new Profile(3, "TRANS", prof, user0, org));
 		
 		for(Profile p:profiles){
 			p.insert();
@@ -249,7 +272,7 @@ public class MigrationIGRPInitConfig {
 		
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(3, "ENV", prof, user, org));
-		profiles.add(new Profile(3, "PROF", prof, user, org));
+		profiles.add(new Profile(4, "PROF", prof, user, org));
 		profiles.add(new Profile(25, "MEN", prof0, user0, org));
 		profiles.add(new Profile(26, "MEN", prof0, user0, org));
 		profiles.add(new Profile(27, "MEN", prof0, user0, org));

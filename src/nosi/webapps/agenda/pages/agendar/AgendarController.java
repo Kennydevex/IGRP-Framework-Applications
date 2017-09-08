@@ -61,7 +61,7 @@ public class AgendarController extends Controller {
 					marcacao.setData_marcacao(Marcacao.convertDate(model.getP_data_fk()[i], "dd-MM-yyyy", "yyyy-MM-dd"));
 					marcacao.setNome(model.getP_nome_fk()[i]);
 					marcacao.setTipo_documento(model.getTipo_documento_de_identificacao());
-					if(current_data.compareTo(marcacao.getData_marcacao()) >= 0){
+					if(current_data.compareTo(marcacao.getData_marcacao()) <=0){
 						marcacao.setHr_marcacao(model.getP_hora_fk()[i]);
 						if(marcacao.verificaDisponibilidade()){
 							marcacao.setEmail(model.getEmail());
