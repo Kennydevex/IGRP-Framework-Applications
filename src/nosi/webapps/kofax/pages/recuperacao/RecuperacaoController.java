@@ -58,8 +58,7 @@ public class RecuperacaoController extends Controller {
 		return this.renderView(view);
 									/*---- End ----*/
 	}
-
-
+	
 	public Response actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
 		/*---- Insert your code here... ----*/														
 		Recuperacao model = new Recuperacao();
