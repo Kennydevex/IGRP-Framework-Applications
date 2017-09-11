@@ -5,6 +5,8 @@
 package nosi.webapps.kofax.pages.pesquisa_arquivo_pdf;
 /*---- Import your packages here... ----*/
 import nosi.core.webapp.Controller;
+import nosi.core.webapp.Igrp;
+
 import java.io.IOException;
 import nosi.core.webapp.Response;
 
@@ -12,15 +14,19 @@ import nosi.core.webapp.Response;
 
 public class Pesquisa_arquivo_pdfController extends Controller {		
 
-
-	public Response actionIndex() throws IOException{
+	public Response actionIndex() throws IOException, IllegalArgumentException, IllegalAccessException{
 		/*---- Insert your code here... ----*/
 		Pesquisa_arquivo_pdf model = new Pesquisa_arquivo_pdf();
+		
+		if(Igrp.getInstance().getRequest().getMethod().equalsIgnoreCase("POST")) {
+			model.load();
+			
+		}
+		
 		Pesquisa_arquivo_pdfView view = new Pesquisa_arquivo_pdfView(model);
 		return this.renderView(view);
 		/*---- End ----*/
 	}
-
 
 	public Response actionPesquisar() throws IOException{
 		/*---- Insert your code here... ----*/
