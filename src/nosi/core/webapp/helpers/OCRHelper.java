@@ -34,7 +34,7 @@ public class OCRHelper {
 			  Ocr.RECOGNIZE_TYPE_ALL, Ocr.OUTPUT_FORMAT_PDF,
 			  new Ocr.PropertyBuilder()
 			    .setPdfOutputFile(fileNamePDF+".pdf")
-			    .setPdfTextVisible(true)
+			    .setPdfTextVisible(false)
 			);
 	} 
 	
