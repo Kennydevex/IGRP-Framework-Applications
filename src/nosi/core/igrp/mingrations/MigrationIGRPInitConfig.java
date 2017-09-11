@@ -258,6 +258,8 @@ public class MigrationIGRPInitConfig {
 		actions.add(new Action("Recuperacao", "index", null, "kofax/recuperacao/Recuperacao.xsl", "Recuperacao de Arquivo", "Recuperacao de Arquivo", "2.3", 1, app));
 		actions.add(new Action("Pesquisa_arquivo", "index", null, "kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl", "Pesquisa arquivo", "Pesquisa arquivo", "2.3", 1, app));
 		actions.add(new Action("Pesquisa_arquivo_pdf", "index", null, "kofax/pesquisa_arquivo_pdf/Pesquisa_arquivo_pdf.xsl", "Pesquisa arquivo Pdf", "Pesquisa arquivo Pdf", "2.3", 1, app));
+		actions.add(new Action("DetalhesArquivo", "index", null, "kofax/detalhesarquivo/DetalhesArquivo.xsl", "Detalhes Arquivo", "Detalhes Arquivo", "2.3", 1, app));
+		
 		for(Action ac:actions){
 			ac.insert();
 		}

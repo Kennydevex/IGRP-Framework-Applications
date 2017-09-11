@@ -33,6 +33,8 @@
                                     <div class="row" id="row-9a106532">
                                         <div class="gen-column col-md-12">
                                             <div class="gen-inner">
+                                               <div class="igrp-msg-wrapper">
+                                               </div>
                                                 <xsl:apply-templates mode="igrp-messages" select="rows/content/messages"/>
                                                 <xsl:if test="rows/content/toolsbar_1">
                                                     <div class="toolsbar-holder boxed gen-container-item " gen-structure="toolsbar" gen-fields=".btns-holder a.btn" gen-class="" item-name="toolsbar_1">
