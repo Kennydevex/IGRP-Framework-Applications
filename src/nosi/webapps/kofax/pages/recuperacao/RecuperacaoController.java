@@ -76,6 +76,9 @@ public class RecuperacaoController extends Controller {
 			d.setPasta(model.getPasta());
 			d.setObjeto(new Objeto().findOne(model.getTipo_objeto()));
 			d.setConteudo(" ");
+			if(img!=null){
+				d.setMime_type(img.getContentType());
+			}
 			d = d.insert();
 			if(d!=null){
 				d.setFile_name(d.getFile_name()+"_"+d.getId()+"."+FileHelper.getFileExtension(img));
