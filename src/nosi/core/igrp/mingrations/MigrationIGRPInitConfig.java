@@ -136,7 +136,7 @@ public class MigrationIGRPInitConfig {
 		app.setDad("agenda");
 		app.setDescription("Agenda Eletronica");
 		app.setName("Agenda Eletronica");
-		app.setImg_src("default.png");
+		app.setImg_src("Google-Calendar-icon.png");
 		app.setStatus(1);
 		app = app.insert();
 		Organization org = new Organization("Org.Agenda", "Agenda", 1, app, user, null);
@@ -239,8 +239,8 @@ public class MigrationIGRPInitConfig {
 		Application app = new Application();
 		app.setDad("kofax");
 		app.setDescription("Kofax - Recuperação de Arquivo");
-		app.setName("Kofax");
-		app.setImg_src("default.png");
+		app.setName("NoScan");
+		app.setImg_src("noscan.png");
 		app.setStatus(1);
 		app = app.insert();
 		
