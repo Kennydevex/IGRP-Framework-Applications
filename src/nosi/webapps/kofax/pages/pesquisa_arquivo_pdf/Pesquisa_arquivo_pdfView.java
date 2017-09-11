@@ -28,7 +28,7 @@ public class Pesquisa_arquivo_pdfView extends View {
 		sectionheader_1 = new IGRPSectionHeader("sectionheader_1","");
 		conteudo = new TextField(model,"conteudo");
 		conteudo.setLabel("Conteúdo");
-		conteudo.propertie().add("name","p_conteudo").add("type","text").add("maxlength","30").add("required","false").add("change","false").add("readonly","false").add("disabled","false").add("placeholder","Digite  alguma coisa para pesquisar o Pdf ").add("right","false");
+		conteudo.propertie().add("name","p_conteudo").add("type","text").add("maxlength","30").add("required","false").add("change","false").add("readonly","false").add("disabled","false").add("placeholder","Digite o conteudo que quer pesquisar").add("right","false");
 		caminho_do_arquivo = new TextField(model,"caminho_do_arquivo");
 		caminho_do_arquivo.setLabel("Caminho do Arquivo");
 		caminho_do_arquivo.setValue("");
