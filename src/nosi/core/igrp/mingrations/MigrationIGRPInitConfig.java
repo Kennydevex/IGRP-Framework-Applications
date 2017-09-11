@@ -130,7 +130,7 @@ public class MigrationIGRPInitConfig {
 		}
 	}
 	
-	
+	//configuração da aplicação Agenda electronica
 	private static void configAppAgenda(User user0,User user,ProfileType prof0){
 		Application app = new Application();
 		app.setDad("agenda");
@@ -234,11 +234,11 @@ public class MigrationIGRPInitConfig {
 		menus = null;
 		actions = null;
 	}
-	
+	//configuração da aplicação NoScan
 	private static void configAppKofax(User user0,User user,ProfileType prof0){
 		Application app = new Application();
 		app.setDad("kofax");
-		app.setDescription("Kofax - Recuperação de Arquivo");
+		app.setDescription("NoScan - Recuperação de Arquivo");
 		app.setName("NoScan");
 		app.setImg_src("noscan.png");
 		app.setStatus(1);
@@ -257,6 +257,7 @@ public class MigrationIGRPInitConfig {
 		actions.add(new Action("NovoObjeto", "index", null, "kofax/novoobjeto/NovoObjeto.xsl", "Registar Novo Objeto", "Registar Novo Objeto", "2.3", 1, app));
 		actions.add(new Action("Recuperacao", "index", null, "kofax/recuperacao/Recuperacao.xsl", "Recuperacao de Arquivo", "Recuperacao de Arquivo", "2.3", 1, app));
 		actions.add(new Action("Pesquisa_arquivo", "index", null, "kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl", "Pesquisa arquivo", "Pesquisa arquivo", "2.3", 1, app));
+		actions.add(new Action("Pesquisa_arquivo_pdf", "index", null, "kofax/pesquisa_arquivo_pdf/Pesquisa_arquivo_pdf.xsl", "Pesquisa arquivo Pdf", "Pesquisa arquivo Pdf", "2.3", 1, app));
 		for(Action ac:actions){
 			ac.insert();
 		}
@@ -266,7 +267,7 @@ public class MigrationIGRPInitConfig {
 		menus.add(new Menu("Configurar Objeto", 1, 1, 0, "_self", actions.get(1), app, menus.get(0)));
 		menus.add(new Menu("Configurar Recuperação de Arquivo", 1, 1, 0, "_self", actions.get(2), app, menus.get(0)));
 		menus.add(new Menu("Pesquisar Arquivo", 1, 1, 0, "_self", actions.get(3), app, menus.get(0)));
-		
+		menus.add(new Menu("Pesquisar Arquivo Pdf", 1, 1, 0, "_self", actions.get(4), app, menus.get(0)));
 		for(Menu m:menus){
 			m.insert();
 		}
@@ -278,11 +279,13 @@ public class MigrationIGRPInitConfig {
 		profiles.add(new Profile(26, "MEN", prof0, user0, org));
 		profiles.add(new Profile(27, "MEN", prof0, user0, org));
 		profiles.add(new Profile(28, "MEN", prof0, user0, org));
+		profiles.add(new Profile(29, "MEN", prof0, user0, org));
+		
 		profiles.add(new Profile(25, "MEN", prof, user0, org));
 		profiles.add(new Profile(26, "MEN", prof, user0, org));
 		profiles.add(new Profile(27, "MEN", prof, user0, org));
 		profiles.add(new Profile(28, "MEN", prof, user0, org));
-		
+		profiles.add(new Profile(29, "MEN", prof, user0, org));
 		for(Profile p:profiles){
 			p.insert();
 		}
@@ -291,7 +294,7 @@ public class MigrationIGRPInitConfig {
 		menus = null;
 		actions = null;
 	}
-	
+	//configuração da aplicação Marcacao de consulta
 	private static void configAppMarcacaoConsulta(User user0,User user,ProfileType prof0){
 		Application app = new Application();
 		app.setDad("marcacao_consulta");
@@ -343,18 +346,18 @@ public class MigrationIGRPInitConfig {
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(4, "ENV", prof, user, org));
 		profiles.add(new Profile(6, "PROF", prof, user, org));
-		profiles.add(new Profile(30, "MEN", prof0, user0, org));
 		profiles.add(new Profile(31, "MEN", prof0, user0, org));
 		profiles.add(new Profile(32, "MEN", prof0, user0, org));
 		profiles.add(new Profile(33, "MEN", prof0, user0, org));
 		profiles.add(new Profile(34, "MEN", prof0, user0, org));
 		profiles.add(new Profile(35, "MEN", prof0, user0, org));
-		profiles.add(new Profile(30, "MEN", prof, user0, org));
+		profiles.add(new Profile(36, "MEN", prof0, user0, org));
 		profiles.add(new Profile(31, "MEN", prof, user0, org));
 		profiles.add(new Profile(32, "MEN", prof, user0, org));
 		profiles.add(new Profile(33, "MEN", prof, user0, org));
 		profiles.add(new Profile(34, "MEN", prof, user0, org));
 		profiles.add(new Profile(35, "MEN", prof, user0, org));
+		profiles.add(new Profile(36, "MEN", prof, user0, org));
 		
 		for(Profile p:profiles){
 			p.insert();
