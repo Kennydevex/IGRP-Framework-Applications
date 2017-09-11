@@ -46,14 +46,15 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 	@Column(nullable=false)
 	@Lob
 	private String conteudo;
-
+	@Column(nullable=false)
+	private String file_name;
 	
 	public Dados(){}
 
 	
 
 	public Dados(Objeto objeto, String descricao, String estante, String pasta, String livro, String folha,
-			String dt_registo, String conteudo) {
+			String dt_registo, String conteudo,String file_name) {
 		super();
 		this.objeto = objeto;
 		this.descricao = descricao;
@@ -63,8 +64,21 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 		this.folha = folha;
 		this.dt_registo = DateHelper.formatDate(dt_registo,"dd-MM-yyyy","yyyy-MM-dd");
 		this.conteudo = conteudo;
+		this.file_name = file_name;
 	}
 
+
+
+
+	public String getFile_name() {
+		return file_name;
+	}
+
+
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
 
 
 
@@ -180,7 +194,7 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 	public String toString() {
 		return "Dados [id=" + id + ", objeto=" + objeto + ", descricao=" + descricao + ", estante=" + estante
 				+ ", pasta=" + pasta + ", livro=" + livro + ", folha=" + folha + ", dt_registo=" + dt_registo
-				+ ", conteudo=" + conteudo + "]";
+				+ ", conteudo=" + conteudo + " ,filenmae = "+file_name+"]";
 	}
 
 

@@ -34,6 +34,7 @@ public class Campos extends BaseActiveRecord<Campos> implements Serializable{
 	
 	@Column(nullable=false)
 	private String campo;
+	private String valor;
 	private String estado;
 	
 	public Campos() {}
@@ -43,6 +44,11 @@ public class Campos extends BaseActiveRecord<Campos> implements Serializable{
 		this.id_objeto = id_objeto;
 		this.campo = campo;
 		this.estado = estado;
+	} 
+	
+	public Campos(Objeto id_objeto, String campo, String estado,String valor) {
+		this(id_objeto, campo, estado);
+		this.valor = valor;
 	} 
 	
 	public Integer getId() {
@@ -77,9 +83,17 @@ public class Campos extends BaseActiveRecord<Campos> implements Serializable{
 		this.estado = estado;
 	}
 
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+
 	@Override
 	public String toString() {
-		return "Campos [id=" + id + ", id_objeto=" + id_objeto + ", campo=" + campo + ", estado=" + estado + "]";
+		return "Campos [id=" + id + ", id_objeto=" + id_objeto + ", campo=" + campo + ", estado=" + estado + ", valor = "+valor+"]";
 	}
 	
 	@Override
