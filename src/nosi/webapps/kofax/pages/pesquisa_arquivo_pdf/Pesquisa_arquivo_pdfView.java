@@ -21,7 +21,7 @@ public class Pesquisa_arquivo_pdfView extends View {
 
 	public IGRPButton btn_pesquisar;
 	public Pesquisa_arquivo_pdfView(Pesquisa_arquivo_pdf model){
-		this.setPageTitle("Pesquisa os arquivos pdf de acordo com um determinado input");
+		this.setPageTitle("Pesquisar os arquivos pdf de acordo com um determinado input");
 			
 		form_1 = new IGRPForm("form_1","");
 		table_1 = new IGRPTable("table_1","");
@@ -43,11 +43,10 @@ public class Pesquisa_arquivo_pdfView extends View {
 		arquivo.propertie().add("name","p_arquivo").add("type","link").add("target","_blank").add("target_fields","").add("action","index").add("page","Pesquisa_arquivo_pdf").add("app","kofax").add("class","primary").add("btnSize","").add("iconColor","#333").add("iconClass","").add("img","fa-link").add("maxlength","30").add("align","left").add("lookup_parser","false").add("iskey","false").add("desc","true");
 		sectionheader_1_text = new TextField(model,"sectionheader_1_text");
 		sectionheader_1_text.setLabel("");
-		sectionheader_1_text.setValue("Pesquisa os Arquivos PDF");
-		sectionheader_1_text.setValue("Pesquisa os Arquivos PDF");
+		sectionheader_1_text.setValue("Pesquisar nos Arquivos PDF");
 		sectionheader_1_text.propertie().add("type","text").add("name","p_sectionheader_1_text").add("persist","true").add("maxlength","4000");
 
-		btn_pesquisar = new IGRPButton("Pesquisar","kofax","Pesquisa_arquivo_pdf","pesquisar","_blank","default|fa-search","","");
+		btn_pesquisar = new IGRPButton("Pesquisar","kofax","Pesquisa_arquivo_pdf","index","submit","default|fa-search","","");
 		btn_pesquisar.propertie.add("type","form").add("code","").add("class","default").add("rel","pesquisar");
 		
 	}
