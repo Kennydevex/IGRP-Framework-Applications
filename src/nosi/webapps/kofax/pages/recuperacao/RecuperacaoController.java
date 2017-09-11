@@ -10,14 +10,19 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.http.Part;
 import javax.swing.ImageIcon;
 
+import nosi.core.config.Config;
 import nosi.core.gui.components.IGRPSeparatorList.Pair;
 import nosi.core.webapp.Controller;
 import java.sql.Date;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import nosi.core.webapp.Response;
 import nosi.core.webapp.Igrp;
 import nosi.core.xml.XMLWritter;
@@ -26,7 +31,9 @@ import nosi.webapps.kofax.dao.Dados;
 import nosi.webapps.kofax.dao.Objeto;
 import nosi.webapps.kofax.pages.recuperacao.Recuperacao.Formlist_1;
 import nosi.core.webapp.helpers.DateHelper;
+import nosi.core.webapp.helpers.FileHelper;
 import nosi.core.webapp.helpers.IgrpHelper;
+import nosi.core.webapp.helpers.OCRHelper;
 import nosi.core.webapp.helpers.Permission;
 /*---- End ----*/
 
@@ -46,7 +53,7 @@ public class RecuperacaoController extends Controller {
 			for(Campos c:new Objeto().findOne(model.getTipo_objeto()).getCampos()){
 				Formlist_1 e = new Formlist_1();
 				e.setCampo(new Pair(c.getCampo(), ""+c.getId()));
-				e.setValor(new Pair(" ", " "));
+				e.setValor(new Pair(c.getValor()!=null?c.getValor():" ", " "));
 				campos.add(e);
 			}
 		}
@@ -59,35 +66,47 @@ public class RecuperacaoController extends Controller {
 									/*---- End ----*/
 	}
 	
-	public Response actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
-		/*---- Insert your code here... ----*/														
+	public PrintWriter actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
+		/*---- Insert your code here... ----*/
+		Igrp.getInstance().getResponse().setContentType("text/xml");															
 		Recuperacao model = new Recuperacao();
-//		if(Igrp.getInstance().getRequest().getMethod().toUpperCase().equals("POST")){
-//			model.load();
-//			XMLWritter xml = new XMLWritter();
-//			xml.startElement("columns");
-//			if(model.getP_campo_fk()!=null){
-//				for(int i=0;i<model.getP_campo_fk().length;i++){
-//					xml.setElement(model.getP_campo_fk_desc()[i], model.getP_valor_fk_desc()[i]);
-//				}
-//			}
-////			File file = new File("");
-//		    byte[] imgInBytes = new byte[(int) Igrp.getInstance().getRequest().getPart("p_imagem").getSize()];
-//		    Igrp.getInstance().getRequest().getPart("p_imagem").getInputStream().read(imgInBytes);
-////		    FileInputStream fileInputStream = new FileInputStream(file);
-////		    fileInputStream.read(imgInBytes);
-////		    fileInputStream.close();
-//            
-//			Objeto obj = new Objeto().findOne(model.getTipo_objeto());
-//			Dados dados = new Dados(obj, ""+model.getN_do_negocio(), model.getN_de_processo(), model.getNome(), model.getTipo_documento(), model.getN_de_documento(), model.getEstante(), model.getPasta(), model.getLivro(), model.getFolha(), model.getData_de_registo(), xml.toString(), imgInBytes);
-//			if(dados.insert()!=null){
-//				Igrp.getInstance().getFlashMessage().addMessage("success", "OperaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o realizada com sucesso!");
-//			}else{
-//				Igrp.getInstance().getFlashMessage().addMessage("error", "OperaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o falhau!");
-//			}
-//		}
-		return this.redirect("kofax","Recuperacao","index");
-									/*---- End ----*/
+		if(Igrp.getInstance().getRequest().getMethod().toUpperCase().equals("POST")){
+			model.load();
+			String pathImg = Config.getBasePathXsl()+"WebContent/images/IGRP2.3/app/kofax/recuperacao/images";
+			Part img = Igrp.getInstance().getRequest().getPart("p_imagem");
+			String fileName = img.getName()+"_"+System.currentTimeMillis();
+			Dados d = new Dados();
+			d.setDescricao(model.getDescricao());
+			d.setDt_registo(model.getData_de_registo());
+			d.setEstante(model.getEstante());
+			d.setFile_name(fileName);
+			d.setFolha(model.getFolha());
+			d.setLivro(model.getLivro());
+			d.setPasta(model.getPasta());
+			d.setObjeto(new Objeto().findOne(model.getTipo_objeto()));
+			d.setConteudo(" ");
+			d = d.insert();
+			if(d!=null){
+				d.setFile_name(d.getFile_name()+"_"+d.getId()+"."+FileHelper.getFileExtension(img));
+				FileHelper.saveFile(pathImg, d.getFile_name(), img);
+				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
+				ocr.open();
+				d.setConteudo(ocr.outputText());
+				ocr.outputPDF(pathImg+File.separator+d.getFile_name()+"_"+d.getId());
+				ocr.close();
+				d.update();
+				if(model.getformlist_1().size() > 0 ){
+					for(Recuperacao.Formlist_1 formList:model.getformlist_1()){
+						Campos c = new Campos().findOne(formList.getCampo().getValue());
+						c.setValor(formList.getValor().getKey());
+						c.update();
+					}
+				}	
+				return Igrp.getInstance().getResponse().getWriter().append("<messages><message type=\"success\">Opera��o efectuada com sucesso</message></messages>");
+			}
+		}	
+		return Igrp.getInstance().getResponse().getWriter().append("<messages><message type=\"error\">Opera��o falhada</message></messages>");
+		/*---- End ----*/
 	}
 	
 	/*---- Insert your actions here... ----*//*---- End ----*/
