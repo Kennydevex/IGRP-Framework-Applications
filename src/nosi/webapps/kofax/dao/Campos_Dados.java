@@ -39,6 +39,9 @@ public class Campos_Dados extends BaseActiveRecord<Campos_Dados> implements Seri
 	@Column(nullable=false)
 	private String valor;
 	
+	public Campos_Dados() {
+	}
+	
 	public Campos_Dados(Dados dados, Campos campo, String valor) {
 		super();
 		this.dados = dados;
@@ -74,5 +77,10 @@ public class Campos_Dados extends BaseActiveRecord<Campos_Dados> implements Seri
 	@Override
 	public String toString() {
 		return "Campos_Dados [id=" + id + ", dados=" + dados + ", campo=" + campo + ", valor=" + valor + "]";
+	}
+	
+	@Override
+	public String getConnectionName() {
+		return "hibernate-kofax";
 	}
 }
