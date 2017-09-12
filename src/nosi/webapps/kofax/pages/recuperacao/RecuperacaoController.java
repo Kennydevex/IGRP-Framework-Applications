@@ -1,7 +1,5 @@
 /*-------------------------*/
-
 /*Create Controller*/
-
 package nosi.webapps.kofax.pages.recuperacao;
 
 /*---- Import your packages here... ----*/
@@ -92,14 +90,13 @@ public class RecuperacaoController extends Controller {
 			}
 			d = d.insert();
 			if(d!=null){
-				d.setFile_name(d.getFile_name()+"_"+d.getId()+"."+FileHelper.getFileExtension(img));
-				
+				fileName +="_"+d.getId();
+				d.setFile_name(fileName+"."+FileHelper.getFileExtension(img));
 				FileHelper.saveFile(pathImg, d.getFile_name(), img);
-				
 				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
 				ocr.open();
 				d.setConteudo(ocr.outputText());
-				String aux = pathImg+File.separator+d.getFile_name();
+				String aux = pathImg+File.separator+fileName;
 				ocr.outputPDF(aux);
 				ocr.close();
 				
@@ -127,7 +124,7 @@ public class RecuperacaoController extends Controller {
       //create the indexer
         IndexWriter writer = new IndexWriter(indexDirectory, new StandardAnalyzer(Version.LUCENE_36),true, IndexWriter.MaxFieldLength.UNLIMITED);
        
-        File file = new File(fileUrl);
+        File file = new File(fileUrl+".pdf");
         Document document = new Document();
         
         PDDocument pdf = PDDocument.load(file);
