@@ -53,7 +53,7 @@ public class Pesquisa_arquivoController extends Controller {
 			tabela.setTipo_de_objecto(cd.getDados().getObjeto().getObjeto());
 			tabela.setDescricao(cd.getDados().getDescricao());
 			tabela.setData_registo(""+cd.getDados().getDt_registo());
-			tabela.setLink_1_desc(cd.getDados().getFile_name());
+			tabela.setLink_1_desc("Abrir");
 			tabela.setLink_1("kofax", "DetalhesArquivo", "index&amp;p_id="+cd.getDados().getId());
 			lista.add(tabela);
 		}
