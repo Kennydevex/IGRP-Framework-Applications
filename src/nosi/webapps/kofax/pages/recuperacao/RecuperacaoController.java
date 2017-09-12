@@ -9,6 +9,17 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.Part;
+
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+
 import nosi.core.config.Config;
 import nosi.core.gui.components.IGRPSeparatorList.Pair;
 import nosi.core.webapp.Controller;
@@ -85,11 +96,16 @@ public class RecuperacaoController extends Controller {
 				d.setFile_name(d.getFile_name()+"_"+d.getId()+"."+FileHelper.getFileExtension(img));
 				
 				FileHelper.saveFile(pathImg, d.getFile_name(), img);
+				
 				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
 				ocr.open();
 				d.setConteudo(ocr.outputText());
-				ocr.outputPDF(pathImg+File.separator+d.getFile_name()+"_"+d.getId());
+				String aux = pathImg+File.separator+d.getFile_name()+"_"+d.getId();
+				ocr.outputPDF(aux);
 				ocr.close();
+				
+				applyIndex(aux); // For Apache Lucene ...
+				
 				d = d.update();
 				if(model.getformlist_1().size() > 0 ){
 					for(Recuperacao.Formlist_1 formList:model.getformlist_1()){
@@ -103,6 +119,41 @@ public class RecuperacaoController extends Controller {
 		}	
 		return Igrp.getInstance().getResponse().getWriter().append("<?xml version=\"1.0\" encoding=\"UTF-8\"?><messages><message type=\"error\">Operação falhada</message></messages>");
 		/*---- End ----*/
+	}
+	
+	private static void applyIndex(String fileUrl) throws IOException {
+		String pathImg = Config.getBasePathXsl()+ "images/IGRP/IGRP2.3/app/kofax/recuperacao/images";
+		//this directory will contain the indexes
+        Directory indexDirectory = FSDirectory.open(new File(pathImg));
+      //create the indexer
+        IndexWriter writer = new IndexWriter(indexDirectory, new StandardAnalyzer(Version.LUCENE_36),true, IndexWriter.MaxFieldLength.UNLIMITED);
+       
+        File file = new File(fileUrl);
+        Document document = new Document();
+        
+        PDDocument pdf = PDDocument.load(file);
+        PDFTextStripper stripper = new PDFTextStripper();
+        stripper.setLineSeparator("\n");
+        stripper.setStartPage(1);
+        
+       // BufferedInputStream cin = new BufferedInputStream(new FileInputStream(file));
+        
+        //index file contents
+        Field contentField = new Field(file.getName() + "_contents", stripper.getText(pdf), Field.Store.NO, Field.Index.ANALYZED);
+        		//new Field("contents", new FileReader(file));
+        //index file name
+        Field fileNameField = new Field(file.getName() + "_my_index",
+           file.getName(),Field.Store.YES,Field.Index.NOT_ANALYZED);
+        //index file path
+        Field filePathField = new Field(file.getName() + "_res",file.getCanonicalPath(),Field.Store.YES,Field.Index.NOT_ANALYZED);
+
+        document.add(contentField);
+        document.add(fileNameField);
+        document.add(filePathField);
+        
+        writer.addDocument(document);
+        
+        writer.close();
 	}
 	
 	/*---- Insert your actions here... ----*//*---- End ----*/
