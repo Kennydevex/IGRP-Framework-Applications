@@ -32,6 +32,7 @@ public class DetalhesArquivoController extends Controller {
 			}
 		}
 		DetalhesArquivoView view = new DetalhesArquivoView(model);
+		Config.target = "_blank";
 		return this.renderView(view);
 		/*---- End ----*/
 	}
@@ -44,7 +45,7 @@ public class DetalhesArquivoController extends Controller {
 			Dados d = new Dados().findOne(id);
 			if(d!=null){
 				Igrp.getInstance().getResponse().setContentType(d.getMime_type());
-				String pathImg = Config.getBasePathXsl()+"WebContent/images/IGRP2.3/app/kofax/recuperacao/images/"+d.getFile_name();
+				String pathImg = Config.getBasePathXsl()+"images/IGRP/IGRP2.3/app/kofax/recuperacao/images/"+d.getFile_name();
 				pathImg = pathImg.replace("\\", "/");
 				ServletOutputStream outStream = Igrp.getInstance().getResponse().getOutputStream();
 		        FileInputStream fin = new FileInputStream(pathImg);

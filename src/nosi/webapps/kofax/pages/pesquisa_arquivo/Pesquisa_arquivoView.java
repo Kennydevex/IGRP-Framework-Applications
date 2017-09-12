@@ -30,35 +30,27 @@ public class Pesquisa_arquivoView extends View {
 		table_1 = new IGRPTable("table_1","");
 		sectionheader_1_text = new TextField(model,"sectionheader_1_text");
 		sectionheader_1_text.setLabel("");
-		sectionheader_1_text.setValue("Pesquiar Arquivo");
-		sectionheader_1_text.setValue("Pesquiar Arquivo");
 		sectionheader_1_text.propertie().add("type","text").add("name","p_sectionheader_1_text").add("persist","true").add("maxlength","4000");
 		tipo_de_objecto = new ListField(model,"tipo_de_objecto");
 		tipo_de_objecto.setLabel("Tipo de Objecto");
-		tipo_de_objecto.setValue("");
 		tipo_de_objecto.propertie().add("name","p_tipo_de_objecto").add("type","select").add("multiple","false").add("domain","").add("maxlength","30").add("required","false").add("change","true").add("disabled","false").add("right","false");
 		campo = new ListField(model,"campo");
 		campo.setLabel("Campo");
-		campo.setValue("");
 		campo.propertie().add("name","p_campo").add("type","select").add("multiple","false").add("domain","").add("maxlength","30").add("required","false").add("change","false").add("disabled","false").add("right","false");
 		valor = new TextAreaField(model,"valor");
 		valor.setLabel("Valor");
-		valor.setValue("Natus amet sed dolor lorem vol");
 		valor.propertie().add("name","p_valor").add("type","textarea").add("maxlength","30").add("required","false").add("change","false").add("readonly","false").add("disabled","false").add("placeholder","").add("right","false");
 		descricao = new TextField(model,"descricao");
 		descricao.setLabel("Descrição");
-		descricao.setValue("");
 		descricao.propertie().add("name","p_descricao").add("type","text").add("maxlength","30").add("align","left").add("lookup_parser","false").add("iskey","false");
 		data_registo = new TextField(model,"data_registo");
 		data_registo.setLabel("Data Registo");
-		data_registo.setValue("");
 		data_registo.propertie().add("name","p_data_registo").add("type","text").add("maxlength","30").add("align","left").add("lookup_parser","false").add("iskey","false");
 		link_1 = new LinkField(model,"link_1");
 		link_1.setLabel("Link");
-		link_1.setValue("");
 		link_1.propertie().add("name","p_link_1").add("type","link").add("target","_blank").add("target_fields","").add("action","index").add("page","Pesquisa_arquivo").add("app","kofax").add("class","primary").add("btnSize","").add("iconColor","#333").add("iconClass","").add("img","fa-link").add("maxlength","30").add("align","left").add("lookup_parser","false").add("iskey","false").add("desc","true");
 
-		btn_pesquisar = new IGRPButton("Pesquisar","kofax","Pesquisa_arquivo","pesquisar","submit","default|fa-search","","");
+		btn_pesquisar = new IGRPButton("Pesquisar","kofax","Pesquisa_arquivo","index","submit","default|fa-search","","");
 		btn_pesquisar.propertie.add("type","form").add("code","").add("class","default").add("rel","pesquisar");
 		
 	}
