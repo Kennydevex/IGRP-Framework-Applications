@@ -5,5 +5,6 @@
 		<mapping class="nosi.webapps.kofax.dao.Campos"/>
 		<mapping class="nosi.webapps.kofax.dao.Dados"/>
 		<mapping class="nosi.webapps.kofax.dao.Objeto"/>
+		<mapping class="nosi.webapps.kofax.dao.Campos_Dados"/>
 	</session-factory>
 </hibernate-configuration>

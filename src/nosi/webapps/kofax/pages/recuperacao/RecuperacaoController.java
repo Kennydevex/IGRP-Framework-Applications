@@ -5,28 +5,21 @@
 package nosi.webapps.kofax.pages.recuperacao;
 
 /*---- Import your packages here... ----*/
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.Part;
-import javax.swing.ImageIcon;
-
 import nosi.core.config.Config;
 import nosi.core.gui.components.IGRPSeparatorList.Pair;
 import nosi.core.webapp.Controller;
 import java.sql.Date;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import nosi.core.webapp.Response;
 import nosi.core.webapp.Igrp;
-import nosi.core.xml.XMLWritter;
 import nosi.webapps.kofax.dao.Campos;
+import nosi.webapps.kofax.dao.Campos_Dados;
 import nosi.webapps.kofax.dao.Dados;
 import nosi.webapps.kofax.dao.Objeto;
 import nosi.webapps.kofax.pages.recuperacao.Recuperacao.Formlist_1;
@@ -53,14 +46,13 @@ public class RecuperacaoController extends Controller {
 			for(Campos c:new Objeto().findOne(model.getTipo_objeto()).getCampos()){
 				Formlist_1 e = new Formlist_1();
 				e.setCampo(new Pair(c.getCampo(), ""+c.getId()));
-				e.setValor(new Pair(c.getValor()!=null?c.getValor():" ", " "));
+				e.setValor(new Pair(" ", " "));
 				campos.add(e);
 			}
 		}
 		RecuperacaoView view = new RecuperacaoView(model);
 		view.tipo_objeto.setValue(IgrpHelper.toMap(new Objeto().find().andWhere("id_organica", "=", Permission.getCurrentOrganization()).all(), "id", "objeto", "--- Escolher Tipo Objecto ---"));
 		view.data_de_registo.setValue(DateHelper.convertDate(new Date(System.currentTimeMillis()).toString(),"yyyy-MM-dd","dd-MM-yyyy"));
-		
 		view.formlist_1.addData(campos);
 		return this.renderView(view);
 									/*---- End ----*/
@@ -68,7 +60,7 @@ public class RecuperacaoController extends Controller {
 	
 	public PrintWriter actionGravar() throws IOException, IllegalArgumentException, IllegalAccessException, ServletException{
 		/*---- Insert your code here... ----*/
-		Igrp.getInstance().getResponse().setContentType("text/xml");															
+		Igrp.getInstance().getResponse().setContentType("application/xml");															
 		Recuperacao model = new Recuperacao();
 		if(Igrp.getInstance().getRequest().getMethod().toUpperCase().equals("POST")){
 			model.load();
@@ -85,27 +77,31 @@ public class RecuperacaoController extends Controller {
 			d.setPasta(model.getPasta());
 			d.setObjeto(new Objeto().findOne(model.getTipo_objeto()));
 			d.setConteudo(" ");
+			if(img!=null){
+				d.setMime_type(img.getContentType());
+			}
 			d = d.insert();
 			if(d!=null){
 				d.setFile_name(d.getFile_name()+"_"+d.getId()+"."+FileHelper.getFileExtension(img));
+				
 				FileHelper.saveFile(pathImg, d.getFile_name(), img);
 				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
 				ocr.open();
 				d.setConteudo(ocr.outputText());
 				ocr.outputPDF(pathImg+File.separator+d.getFile_name()+"_"+d.getId());
 				ocr.close();
-				d.update();
+				d = d.update();
 				if(model.getformlist_1().size() > 0 ){
 					for(Recuperacao.Formlist_1 formList:model.getformlist_1()){
 						Campos c = new Campos().findOne(formList.getCampo().getValue());
-						c.setValor(formList.getValor().getKey());
-						c.update();
+						Campos_Dados cd = new Campos_Dados(d, c, formList.getValor().getKey());
+						cd.insert();
 					}
 				}	
-				return Igrp.getInstance().getResponse().getWriter().append("<messages><message type=\"success\">Operação efectuada com sucesso</message></messages>");
+				return Igrp.getInstance().getResponse().getWriter().append("<?xml version=\"1.0\" encoding=\"UTF-8\"?><messages><message type=\"success\">Operação efectuada com sucesso</message></messages>");
 			}
 		}	
-		return Igrp.getInstance().getResponse().getWriter().append("<messages><message type=\"error\">Operação falhada</message></messages>");
+		return Igrp.getInstance().getResponse().getWriter().append("<?xml version=\"1.0\" encoding=\"UTF-8\"?><messages><message type=\"error\">Operação falhada</message></messages>");
 		/*---- End ----*/
 	}
 	

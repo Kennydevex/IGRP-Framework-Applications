@@ -48,13 +48,16 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 	private String conteudo;
 	@Column(nullable=false)
 	private String file_name;
+
+	@Column(nullable=false)
+	private String mime_type;
 	
 	public Dados(){}
 
 	
 
 	public Dados(Objeto objeto, String descricao, String estante, String pasta, String livro, String folha,
-			String dt_registo, String conteudo,String file_name) {
+			String dt_registo, String conteudo,String file_name,String mime_type) {
 		super();
 		this.objeto = objeto;
 		this.descricao = descricao;
@@ -65,8 +68,21 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 		this.dt_registo = DateHelper.formatDate(dt_registo,"dd-MM-yyyy","yyyy-MM-dd");
 		this.conteudo = conteudo;
 		this.file_name = file_name;
+		this.mime_type = mime_type;
 	}
 
+
+
+
+	public String getMime_type() {
+		return mime_type;
+	}
+
+
+
+	public void setMime_type(String mime_type) {
+		this.mime_type = mime_type;
+	}
 
 
 
