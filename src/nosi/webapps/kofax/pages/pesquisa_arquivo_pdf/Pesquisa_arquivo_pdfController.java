@@ -95,7 +95,6 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 		   	}	catch(ParseException e) {
 			   		e.printStackTrace();
 			   	}
-	   		
 	   	}
 	   	
 	   	indexSearcher.close();

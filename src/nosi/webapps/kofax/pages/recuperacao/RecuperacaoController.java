@@ -74,7 +74,7 @@ public class RecuperacaoController extends Controller {
 		Recuperacao model = new Recuperacao();
 		if(Igrp.getInstance().getRequest().getMethod().toUpperCase().equals("POST")){
 			model.load();
-			String pathImg = Config.getBasePathXsl()+"WebContent/images/IGRP2.3/app/kofax/recuperacao/images";
+			String pathImg = Config.getBasePathXsl()+"images/IGRP/IGRP2.3/app/kofax/recuperacao/images";
 			Part img = Igrp.getInstance().getRequest().getPart("p_imagem");
 			String fileName = img.getName()+"_"+System.currentTimeMillis();
 			Dados d = new Dados();
@@ -99,7 +99,7 @@ public class RecuperacaoController extends Controller {
 				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
 				ocr.open();
 				d.setConteudo(ocr.outputText());
-				String aux = pathImg+File.separator+d.getFile_name()+"_"+d.getId();
+				String aux = pathImg+File.separator+d.getFile_name();
 				ocr.outputPDF(aux);
 				ocr.close();
 				
