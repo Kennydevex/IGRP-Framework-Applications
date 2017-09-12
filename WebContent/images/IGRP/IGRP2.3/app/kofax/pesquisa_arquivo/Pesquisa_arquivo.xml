@@ -32,10 +32,19 @@
         <preserve_url>http://localhost:8080/IGRP/webapps?r=igrp/page/preserveUrl&amp;p_id=</preserve_url>
     </plsql>
     <content>
-        <title>Página para pesquisar o arquivo que queremos</title>
+        <title>Pesquisa arquivo</title>
+        <sectionheader_1 type="sectionheader" xml-type="form" gen-type="container" gen-group="">
+            <fields>
+                <sectionheader_1_text type="text" name="p_sectionheader_1_text" persist="true" maxlength="4000">
+                    <value>
+                        <![CDATA[Pesquiar Arquivo]]>
+                    </value>
+                </sectionheader_1_text>
+            </fields>
+        </sectionheader_1>
         <form_1 type="form" xml-type="form" gen-type="container" gen-group="">
             <fields>
-                <tipo_de_objecto name="p_tipo_de_objecto" type="select" multiple="false" domain="" maxlength="30" required="false" change="false" disabled="false" right="false">
+                <tipo_de_objecto name="p_tipo_de_objecto" type="select" multiple="false" domain="" maxlength="30" required="false" change="true" disabled="false" right="false">
                     <label>Tipo de Objecto</label>
                     <list>
                         <option/>
@@ -81,17 +90,17 @@
                 </campo>
                 <valor name="p_valor" type="textarea" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false">
                     <label>Valor</label>
-                    <value>Aliqua unde mollit sit aperiam</value>
+                    <value>Ipsum laudantium labore dolore</value>
                 </valor>
             </fields>
             <tools-bar>
                 <item type="form" code="" class="default" rel="pesquisar">
                     <title>Pesquisar</title>
                     <app>kofax</app>
-                    <page>Pesquisa_arquivo</page>
+                    <page>ListaObjeto</page>
                     <link>index</link>
-                    <parameter>undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl?</parameter>
-                    <target>_blank</target>
+                    <parameter>undefinedimages/IGRP/IGRP2.3/app/kofax/listaobjeto/ListaObjeto.xsl?</parameter>
+                    <target>submit</target>
                     <img>default|fa-search</img>
                 </item>
             </tools-bar>
@@ -101,59 +110,55 @@
                 <tipo_de_objecto name="p_tipo_de_objecto" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
                     <label>Tipo de Objecto</label>
                 </tipo_de_objecto>
-                <campo name="p_campo" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
-                    <label>Campo</label>
-                </campo>
-                <valor name="p_valor" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
-                    <label>Valor</label>
-                </valor>
-                <arquivo name="p_arquivo" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
-                    <label>Arquivo</label>
-                </arquivo>
+                <descricao name="p_descricao" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
+                    <label>Descrição</label>
+                </descricao>
+                <data_registo name="p_data_registo" type="text" maxlength="30" align="left" lookup_parser="false" iskey="false">
+                    <label>Data Registo</label>
+                </data_registo>
+                <link_1 name="p_link_1" type="link" target="_blank" target_fields="" action="index" page="Pesquisa_arquivo" app="kofax" class="primary" btnSize="" iconColor="#333" iconClass="" img="fa-link" maxlength="30" align="left" lookup_parser="false" iskey="false" desc="true">
+                    <label>Link</label>
+                </link_1>
             </fields>
             <table>
                 <value>
                     <row>
-                        <tipo_de_objecto name="p_tipo_de_objecto">Ut stract deserunt ipsum lauda</tipo_de_objecto>
-                        <campo name="p_campo">Perspiciatis natus unde accusa</campo>
-                        <valor name="p_valor">Mollit voluptatem elit adipisc</valor>
-                        <arquivo name="p_arquivo">Adipiscing perspiciatis adipis</arquivo>
+                        <tipo_de_objecto name="p_tipo_de_objecto">Totam aliqua totam aliqua sit</tipo_de_objecto>
+                        <descricao name="p_descricao">Stract ipsum natus voluptatem</descricao>
+                        <data_registo name="p_data_registo">Amet aperiam accusantium labor</data_registo>
+                        <link_1 name="p_link_1" desc="true">undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl</link_1>
+                        <link_1_desc name="p_link_1_desc">Link</link_1_desc>
                     </row>
                     <row>
-                        <tipo_de_objecto name="p_tipo_de_objecto">Rem lorem stract elit ipsum</tipo_de_objecto>
-                        <campo name="p_campo">Amet adipiscing perspiciatis d</campo>
-                        <valor name="p_valor">Ut stract perspiciatis rem lor</valor>
-                        <arquivo name="p_arquivo">Stract unde natus voluptatem u</arquivo>
+                        <tipo_de_objecto name="p_tipo_de_objecto">Rem adipiscing magna elit dese</tipo_de_objecto>
+                        <descricao name="p_descricao">Lorem natus adipiscing ut elit</descricao>
+                        <data_registo name="p_data_registo">Ut aliqua deserunt ipsum aliqu</data_registo>
+                        <link_1 name="p_link_1" desc="true">undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl</link_1>
+                        <link_1_desc name="p_link_1_desc">Link</link_1_desc>
                     </row>
                     <row>
-                        <tipo_de_objecto name="p_tipo_de_objecto">Anim stract officia doloremque</tipo_de_objecto>
-                        <campo name="p_campo">Rem accusantium voluptatem eli</campo>
-                        <valor name="p_valor">Totam lorem amet aliqua aperia</valor>
-                        <arquivo name="p_arquivo">Sit aliqua ut perspiciatis ist</arquivo>
+                        <tipo_de_objecto name="p_tipo_de_objecto">Accusantium ipsum totam laudan</tipo_de_objecto>
+                        <descricao name="p_descricao">Magna totam anim laudantium to</descricao>
+                        <data_registo name="p_data_registo">Mollit perspiciatis officia ap</data_registo>
+                        <link_1 name="p_link_1" desc="true">undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl</link_1>
+                        <link_1_desc name="p_link_1_desc">Link</link_1_desc>
                     </row>
                     <row>
-                        <tipo_de_objecto name="p_tipo_de_objecto">Perspiciatis mollit unde persp</tipo_de_objecto>
-                        <campo name="p_campo">Omnis rem natus iste sed</campo>
-                        <valor name="p_valor">Ut sed aperiam laudantium aper</valor>
-                        <arquivo name="p_arquivo">Stract omnis magna deserunt si</arquivo>
+                        <tipo_de_objecto name="p_tipo_de_objecto">Laudantium perspiciatis accusa</tipo_de_objecto>
+                        <descricao name="p_descricao">Officia natus aliqua sit magna</descricao>
+                        <data_registo name="p_data_registo">Perspiciatis sit anim aliqua r</data_registo>
+                        <link_1 name="p_link_1" desc="true">undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl</link_1>
+                        <link_1_desc name="p_link_1_desc">Link</link_1_desc>
                     </row>
                     <row>
-                        <tipo_de_objecto name="p_tipo_de_objecto">Labore deserunt voluptatem per</tipo_de_objecto>
-                        <campo name="p_campo">Aliqua anim iste elit accusant</campo>
-                        <valor name="p_valor">Anim perspiciatis labore amet</valor>
-                        <arquivo name="p_arquivo">Labore officia magna perspicia</arquivo>
+                        <tipo_de_objecto name="p_tipo_de_objecto">Magna mollit unde amet rem</tipo_de_objecto>
+                        <descricao name="p_descricao">Ipsum accusantium perspiciatis</descricao>
+                        <data_registo name="p_data_registo">Unde doloremque totam lorem re</data_registo>
+                        <link_1 name="p_link_1" desc="true">undefinedimages/IGRP/IGRP2.3/app/kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl</link_1>
+                        <link_1_desc name="p_link_1_desc">Link</link_1_desc>
                     </row>
                 </value>
             </table>
         </table_1>
-        <sectionheader_1 type="sectionheader" xml-type="form" gen-type="container" gen-group="">
-            <fields>
-                <sectionheader_1_text type="text" name="p_sectionheader_1_text" persist="true" maxlength="4000">
-                    <value>
-                        <![CDATA[Pesquiar Arquivo]]>
-                    </value>
-                </sectionheader_1_text>
-            </fields>
-        </sectionheader_1>
     </content>
 </rows>
