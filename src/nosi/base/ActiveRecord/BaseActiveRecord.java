@@ -2,6 +2,7 @@ package nosi.base.ActiveRecord;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Date;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -315,9 +316,6 @@ public class BaseActiveRecord <T> implements ActiveRecordIterface<T>{
 						e = this.getBuilder().isNotNull(this.getRoot().get(columnName));
 					}
 					break;
-	//			case ">":
-	//				e = this.getBuilder().gt(this.getRoot().get(columnName), value);
-	//				break;
 				}
 				this.predicates.add(e);
 			}
@@ -325,6 +323,151 @@ public class BaseActiveRecord <T> implements ActiveRecordIterface<T>{
 		return this.className;
 	}
 
+	@Override
+	public T andWhere(String columnName, String operator, Date value) {
+		if(value!=null && !value.toString().equals("") && this.entityManagerFactory!=null){
+			if(this.entityManagerFactory.isOpen()){
+				Predicate e = null;
+				switch (operator.toLowerCase()) {
+				case "=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Date> x = this.getRoot().join(aux[0]).<Date>get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().equal(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().equal(this.getRoot().<Date>get(columnName),value);
+					}
+					break;
+					
+				case ">":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Date> x = this.getRoot().join(aux[0]).<Date>get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().greaterThan(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().greaterThan(this.getRoot().<Date>get(columnName),value);
+					}
+					break;
+
+				case ">=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Date> x = this.getRoot().join(aux[0]).<Date>get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().greaterThanOrEqualTo(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().greaterThanOrEqualTo(this.getRoot().<Date>get(columnName),value);
+					}
+					break;
+
+				case "<":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Date> x = this.getRoot().join(aux[0]).<Date>get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lessThan(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lessThan(this.getRoot().get(columnName),value);
+					}
+					break;
+
+				case "<=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Date> x = this.getRoot().join(aux[0]).<Date>get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lessThanOrEqualTo(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lessThanOrEqualTo(this.getRoot().get(columnName),value);
+					}
+					break;
+				}
+				this.predicates.add(e);
+			}
+		}
+		return this.className;
+	}
+	
+	
+	@Override
+	public T andWhere(String columnName, String operator, Number value) {
+		if(value!=null && !value.toString().equals("") && this.entityManagerFactory!=null){
+			if(this.entityManagerFactory.isOpen()){
+				Predicate e = null;
+				switch (operator.toLowerCase()) {
+				case "=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Number> x = this.getRoot().join(aux[0]).get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().equal(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().equal(this.getRoot().get(columnName),value);
+					}
+					break;
+					
+				case ">":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Number> x = this.getRoot().join(aux[0]).get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().gt(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().gt(this.getRoot().get(columnName),value);
+					}
+					break;
+
+				case ">=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Number> x = this.getRoot().join(aux[0]).get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().ge(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().ge(this.getRoot().get(columnName),value);
+					}
+					break;
+
+				case "<":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Number> x = this.getRoot().join(aux[0]).get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lt(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().lt(this.getRoot().get(columnName),value);
+					}
+					break;
+
+				case "<=":
+					if(columnName.contains(".")){
+						String[] aux = columnName.split("\\.");
+						Expression<Number> x = this.getRoot().join(aux[0]).get(aux[1]);
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().le(x,value);
+					}else{
+						if(value!=null && !value.equals(""))
+							e = this.getBuilder().le(this.getRoot().get(columnName),value);
+					}
+					break;
+				}
+				this.predicates.add(e);
+			}
+		}
+		return this.className;
+	}
+	
 	@Override
 	public T one() {
 		this.opeConnection();
@@ -383,4 +526,9 @@ public class BaseActiveRecord <T> implements ActiveRecordIterface<T>{
 		return list;
 	}
 	
+	@Override
+	public Long getCount(){
+		List<T> list = this.all();
+		return list!=null?(long)list.size():0;
+	}
 }

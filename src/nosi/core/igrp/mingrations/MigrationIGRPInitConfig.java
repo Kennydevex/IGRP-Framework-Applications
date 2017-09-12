@@ -259,10 +259,16 @@ public class MigrationIGRPInitConfig {
 		actions.add(new Action("Pesquisa_arquivo", "index", null, "kofax/pesquisa_arquivo/Pesquisa_arquivo.xsl", "Pesquisa arquivo", "Pesquisa arquivo", "2.3", 1, app));
 		actions.add(new Action("Pesquisa_arquivo_pdf", "index", null, "kofax/pesquisa_arquivo_pdf/Pesquisa_arquivo_pdf.xsl", "Pesquisa arquivo Pdf", "Pesquisa arquivo Pdf", "2.3", 1, app));
 		actions.add(new Action("DetalhesArquivo", "index", null, "kofax/detalhesarquivo/DetalhesArquivo.xsl", "Detalhes Arquivo", "Detalhes Arquivo", "2.3", 1, app));
+		actions.add(new Action("DashBoard", "index", null, "kofax/dashboard/DashBoard.xsl", "DashBoard", "DashBoard", "2.3", 1, app));
 		
 		for(Action ac:actions){
 			ac.insert();
 		}
+		
+		app = app.find().andWhere("dad", "=", app.getDad()).one();
+		app.setAction(actions.get(6));
+		app = app.update();
+		
 		List<Menu> menus = new ArrayList<>();			
 		menus.add(new Menu("Recuperação de Arquivo", 1, 1, 0, null, null, app, null));		
 		menus.add(new Menu("Listar Objetos", 1, 1, 0, "_self", actions.get(0), app, menus.get(0)));
@@ -270,6 +276,7 @@ public class MigrationIGRPInitConfig {
 		menus.add(new Menu("Configurar Recuperação de Arquivo", 1, 1, 0, "_self", actions.get(2), app, menus.get(0)));
 		menus.add(new Menu("Pesquisar Arquivo", 1, 1, 0, "_self", actions.get(3), app, menus.get(0)));
 		menus.add(new Menu("Pesquisar Arquivo Pdf", 1, 1, 0, "_self", actions.get(4), app, menus.get(0)));
+		menus.add(new Menu("DashBoard", 1, 1, 0, "_self", actions.get(6), app, menus.get(0)));
 		for(Menu m:menus){
 			m.insert();
 		}
@@ -282,12 +289,14 @@ public class MigrationIGRPInitConfig {
 		profiles.add(new Profile(27, "MEN", prof0, user0, org));
 		profiles.add(new Profile(28, "MEN", prof0, user0, org));
 		profiles.add(new Profile(29, "MEN", prof0, user0, org));
+		profiles.add(new Profile(30, "MEN", prof0, user0, org));
 		
 		profiles.add(new Profile(25, "MEN", prof, user0, org));
 		profiles.add(new Profile(26, "MEN", prof, user0, org));
 		profiles.add(new Profile(27, "MEN", prof, user0, org));
 		profiles.add(new Profile(28, "MEN", prof, user0, org));
 		profiles.add(new Profile(29, "MEN", prof, user0, org));
+		profiles.add(new Profile(30, "MEN", prof, user0, org));
 		for(Profile p:profiles){
 			p.insert();
 		}
@@ -348,18 +357,18 @@ public class MigrationIGRPInitConfig {
 		List<Profile> profiles = new ArrayList<>();
 		profiles.add(new Profile(4, "ENV", prof, user, org));
 		profiles.add(new Profile(6, "PROF", prof, user, org));
-		profiles.add(new Profile(31, "MEN", prof0, user0, org));
 		profiles.add(new Profile(32, "MEN", prof0, user0, org));
 		profiles.add(new Profile(33, "MEN", prof0, user0, org));
 		profiles.add(new Profile(34, "MEN", prof0, user0, org));
 		profiles.add(new Profile(35, "MEN", prof0, user0, org));
 		profiles.add(new Profile(36, "MEN", prof0, user0, org));
-		profiles.add(new Profile(31, "MEN", prof, user0, org));
+		profiles.add(new Profile(37, "MEN", prof0, user0, org));
 		profiles.add(new Profile(32, "MEN", prof, user0, org));
 		profiles.add(new Profile(33, "MEN", prof, user0, org));
 		profiles.add(new Profile(34, "MEN", prof, user0, org));
 		profiles.add(new Profile(35, "MEN", prof, user0, org));
 		profiles.add(new Profile(36, "MEN", prof, user0, org));
+		profiles.add(new Profile(37, "MEN", prof, user0, org));
 		
 		for(Profile p:profiles){
 			p.insert();
