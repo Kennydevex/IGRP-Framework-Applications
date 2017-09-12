@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.Part;
-
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -17,7 +16,6 @@ import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-
 import nosi.core.config.Config;
 import nosi.core.gui.components.IGRPSeparatorList.Pair;
 import nosi.core.webapp.Controller;
@@ -54,7 +52,7 @@ public class RecuperacaoController extends Controller {
 			for(Campos c:new Objeto().findOne(model.getTipo_objeto()).getCampos()){
 				Formlist_1 e = new Formlist_1();
 				e.setCampo(new Pair(c.getCampo(), ""+c.getId()));
-				e.setValor(new Pair(" ", " "));
+				e.setValor(new Pair("", " "));
 				campos.add(e);
 			}
 		}
