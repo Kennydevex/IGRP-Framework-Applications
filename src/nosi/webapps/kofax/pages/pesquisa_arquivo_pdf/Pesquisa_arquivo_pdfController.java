@@ -89,7 +89,7 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 			   	for(ScoreDoc scoreDoc : hits.scoreDocs) {
 			   		Document doc = indexSearcher.doc(scoreDoc.doc);
 			   		fileUrl.add(doc.get(obj.getName() + "_res"));
-			   		fileSize.add(obj.length() + "");
+			   		fileSize.add(obj.length() + " B");
 			       // System.out.println("File: " + doc.get("res"));
 			   	 }
 		   	}	catch(ParseException e) {
