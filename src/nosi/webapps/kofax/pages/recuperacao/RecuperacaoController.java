@@ -1,7 +1,5 @@
 /*-------------------------*/
-
 /*Create Controller*/
-
 package nosi.webapps.kofax.pages.recuperacao;
 
 /*---- Import your packages here... ----*/

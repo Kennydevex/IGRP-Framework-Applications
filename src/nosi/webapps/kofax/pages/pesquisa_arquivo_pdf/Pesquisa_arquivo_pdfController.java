@@ -7,12 +7,19 @@ import nosi.core.config.Config;
 /*---- Import your packages here... ----*/
 import nosi.core.webapp.Controller;
 import nosi.core.webapp.Igrp;
+import nosi.core.webapp.RParam;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletOutputStream;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -49,9 +56,9 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 			
 			for(int i = 0; i < fileUrl.size(); i++) {
 				Pesquisa_arquivo_pdf.Table_1 obj = new Pesquisa_arquivo_pdf.Table_1();
-				obj.setArquivo_desc(fileUrl.get(i));
-				obj.setArquivo("kofax", "Pesquisa_arquivo_pdf", "index");
-				obj.setCaminho_do_arquivo("XPTO");
+				obj.setArquivo_desc("Abrir");
+				obj.setArquivo("kofax", "Pesquisa_arquivo_pdf", "pdf&amp;filePath=images/IGRP/IGRP2.3/app/kofax/recuperacao/images/" + new File(fileUrl.get(i)).getName());
+				obj.setCaminho_do_arquivo(".../" + new File(fileUrl.get(i)).getName());
 				obj.setTamanho_do_arquivo(fileSize.get(i));
 				dataProvider.add(obj); 
 			}
@@ -63,6 +70,27 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 		
 		return this.renderView(view);
 		/*---- End ----*/
+	}
+	
+	public ServletOutputStream actionPdf(@RParam(rParamName = "filePath") String filePath) throws IOException{
+		ServletOutputStream cout = Igrp.getInstance().getResponse().getOutputStream();
+		Igrp.getInstance().getResponse().setContentType("application/pdf");
+		Igrp.getInstance().getResponse().addHeader("Content-Transfer-Encoding", " binary");
+		Igrp.getInstance().getResponse().addHeader("Content-Disposition", " inline; filename=\"the.pdf\"");
+		if(filePath != null && !filePath.isEmpty()) {
+			File file = new File(Config.getBasePathXsl() + filePath);
+			FileInputStream fin = new FileInputStream(file);
+			
+		    BufferedInputStream bin = new BufferedInputStream(fin);
+		    BufferedOutputStream bout = new BufferedOutputStream(cout);
+		    int ch = 0; ;
+		    while((ch=bin.read())!=-1)
+		        bout.write(ch);
+		    bin.close();
+		    fin.close();
+		    bout.close();
+		}
+		return cout;
 	}
 	
 	private static void search(String search, List<String> fileUrl, List<String> fileSize) throws IOException {
@@ -77,7 +105,6 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 				return name.matches("[a-zA-Z0-9_]*.(PDF|pdf)");
 			}
 		})) {
-	   		
 	   		QueryParser queryParser = new QueryParser(Version.LUCENE_36, obj.getName() + "_contents", new StandardAnalyzer(Version.LUCENE_36));
 		   	try {
 			   	Query query = queryParser.parse(search);
@@ -95,7 +122,6 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 		   	}	catch(ParseException e) {
 			   		e.printStackTrace();
 			   	}
-	   		
 	   	}
 	   	
 	   	indexSearcher.close();
