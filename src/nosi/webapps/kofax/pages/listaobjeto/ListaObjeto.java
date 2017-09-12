@@ -35,7 +35,6 @@ public class ListaObjeto extends Model{
 
 	public static class Table_1{
 		private String objeto;
-		private String pagina;
 		private String organica;
 		private String estado;
 		private String p_id;
@@ -44,13 +43,6 @@ public class ListaObjeto extends Model{
 		}
 		public String getObjeto(){
 			return this.objeto;
-		}
-
-		public void setPagina(String pagina){
-			this.pagina = pagina;
-		}
-		public String getPagina(){
-			return this.pagina;
 		}
 
 		public void setOrganica(String organica){

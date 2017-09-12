@@ -13,12 +13,6 @@ public class NovoObjeto extends Model{
 	private String organica;
 	@RParam(rParamName = "p_objeto")
 	private String objeto;
-	@RParam(rParamName = "p_default_page")
-	private int default_page;
-	@RParam(rParamName = "p_preencher_automatico")
-	private int preencher_automatico;
-	@RParam(rParamName = "p_pagina")
-	private int pagina;
 	@RParam(rParamName = "p_formato_output")
 	private String formato_output;
 	@RParam(rParamName = "p_id")
@@ -49,26 +43,6 @@ public class NovoObjeto extends Model{
 		return this.objeto;
 	}
 	
-	public void setDefault_page(int default_page){
-		this.default_page = default_page;
-	}
-	public int getDefault_page(){
-		return this.default_page;
-	}
-	
-	public void setPreencher_automatico(int preencher_automatico){
-		this.preencher_automatico = preencher_automatico;
-	}
-	public int getPreencher_automatico(){
-		return this.preencher_automatico;
-	}
-	
-	public void setPagina(int pagina){
-		this.pagina = pagina;
-	}
-	public int getPagina(){
-		return this.pagina;
-	}
 	
 	public void setFormato_output(String formato_output){
 		this.formato_output = formato_output;
