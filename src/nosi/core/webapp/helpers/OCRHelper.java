@@ -13,6 +13,7 @@ public class OCRHelper {
 	private String fileName;
 	
 	public OCRHelper(String fileName) {
+		this.open();
 		this.ocr = new Ocr();
     	this.ocr.startEngine("eng", Ocr.SPEED_FASTEST); 
     	this.fileName = fileName;
