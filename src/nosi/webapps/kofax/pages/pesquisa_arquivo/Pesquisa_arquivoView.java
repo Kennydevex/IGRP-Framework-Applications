@@ -43,7 +43,6 @@ public class Pesquisa_arquivoView extends View {
 		campo.propertie().add("name","p_campo").add("type","select").add("multiple","false").add("domain","").add("maxlength","30").add("required","false").add("change","false").add("disabled","false").add("right","false");
 		valor = new TextAreaField(model,"valor");
 		valor.setLabel("Valor");
-		valor.setValue("Natus amet sed dolor lorem vol");
 		valor.propertie().add("name","p_valor").add("type","textarea").add("maxlength","30").add("required","false").add("change","false").add("readonly","false").add("disabled","false").add("placeholder","").add("right","false");
 		descricao = new TextField(model,"descricao");
 		descricao.setLabel("Descrição");

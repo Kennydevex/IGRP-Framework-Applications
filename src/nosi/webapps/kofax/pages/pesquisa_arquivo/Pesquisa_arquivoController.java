@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import nosi.core.webapp.Response;
 import nosi.core.webapp.helpers.IgrpHelper;
 import nosi.core.webapp.helpers.Permission;
+import nosi.webapps.kofax.dao.Campos;
+import nosi.webapps.kofax.dao.Campos_Dados;
 import nosi.webapps.kofax.dao.Dados;
 import nosi.webapps.kofax.dao.Objeto;
 
@@ -35,8 +37,17 @@ public class Pesquisa_arquivoController extends Controller {
 		if(ichange != null && model.getTipo_de_objecto()!= null && !model.getTipo_de_objecto().equals("")) {
 			view.campo.setValue(IgrpHelper.toMap(new ArrayList<>(new Objeto().findOne(model.getTipo_de_objecto()).getCampos()), "id", "campo", "--- Escolher Tipo campo ---"));
 		}
-		//ArrayList<Pesquisa_arquivo.Table_1> lista = new ArrayList<>();
-		//for(Dados d: new Dados().find().andWhere("objeto", "=", model.getTipo_de_objecto()).andWhere(columnName, operator, value)) {}
+		//Para alimentar a tabela
+		ArrayList<Pesquisa_arquivo.Table_1> lista = new ArrayList<>();
+		for(Campos_Dados cd: new Campos_Dados().find().andWhere("campo", "=", model.getCampo()).andWhere("valor", "like", model.getValor()).all()) {
+			Pesquisa_arquivo.Table_1 tabela = new Pesquisa_arquivo.Table_1();
+			tabela.setTipo_de_objecto(cd.getDados().getObjeto().getObjeto());
+			tabela.setDescricao(cd.getDados().getDescricao());
+			tabela.setData_registo(""+cd.getDados().getDt_registo());
+			tabela.setLink_1_desc(cd.getDados().getFile_name());
+			lista.add(tabela);
+		}
+		view.table_1.addData(lista);
 		
 		return this.renderView(view);
 			/*---- End ----*/
