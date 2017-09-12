@@ -43,7 +43,6 @@ import nosi.core.webapp.helpers.Permission;
 
 public class RecuperacaoController extends Controller {		
 
-
 	public Response actionIndex() throws IOException, IllegalArgumentException, IllegalAccessException{
 		/*---- Insert your code here... ----*/														
 		Recuperacao model = new Recuperacao();
