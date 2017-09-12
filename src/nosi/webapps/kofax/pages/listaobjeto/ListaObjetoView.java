@@ -13,7 +13,6 @@ public class ListaObjetoView extends View {
 	public Field sectionheader_1_text;
 	public Field objecto_pesquisar;
 	public Field objeto;
-	public Field pagina;
 	public Field organica;
 	public Field estado;
 	public Field p_id;
@@ -42,9 +41,6 @@ public class ListaObjetoView extends View {
 		objeto = new TextField(model,"objeto");
 		objeto.setLabel("Objeto");
 		objeto.propertie().add("name","p_objeto").add("type","text").add("maxlength","100").add("align","left").add("lookup_parser","false").add("iskey","false");
-		pagina = new TextField(model,"pagina");
-		pagina.setLabel("Página");
-		pagina.propertie().add("name","p_pagina").add("type","text").add("maxlength","50").add("align","left").add("lookup_parser","false").add("iskey","false");
 		organica = new TextField(model,"organica");
 		organica.setLabel("Orgânica");
 		organica.propertie().add("name","p_organica").add("type","text").add("maxlength","50").add("align","left").add("lookup_parser","false").add("iskey","false");
@@ -77,7 +73,6 @@ public class ListaObjetoView extends View {
 
 
 		table_1.addField(objeto);
-		table_1.addField(pagina);
 		table_1.addField(organica);
 		table_1.addField(estado);
 		table_1.addField(p_id);

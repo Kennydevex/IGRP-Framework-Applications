@@ -76,11 +76,7 @@ public class RecuperacaoController extends Controller {
 			Dados d = new Dados();
 			d.setDescricao(model.getDescricao());
 			d.setDt_registo(model.getData_de_registo());
-			d.setEstante(model.getEstante());
 			d.setFile_name(fileName);
-			d.setFolha(model.getFolha());
-			d.setLivro(model.getLivro());
-			d.setPasta(model.getPasta());
 			d.setObjeto(new Objeto().findOne(model.getTipo_objeto()));
 			d.setConteudo(" ");
 			if(img!=null){
@@ -115,6 +111,9 @@ public class RecuperacaoController extends Controller {
 		/*---- End ----*/
 	}
 	
+	
+	
+	/*---- Insert your actions here... ----*/
 	private static void applyIndex(String fileUrl) throws IOException {
 		String pathImg = Config.getBasePathXsl()+ "images/IGRP/IGRP2.3/app/kofax/recuperacao/images";
 		//this directory will contain the indexes
@@ -149,6 +148,5 @@ public class RecuperacaoController extends Controller {
         
         writer.close();
 	}
-	
-	/*---- Insert your actions here... ----*//*---- End ----*/
+	/*---- End ----*/
 }

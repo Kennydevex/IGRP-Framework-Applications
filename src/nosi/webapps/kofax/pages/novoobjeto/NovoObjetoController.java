@@ -34,23 +34,14 @@ public class NovoObjetoController extends Controller {
 		if(id != null) {
 			obj = obj.findOne(id);
 			if(obj != null) {
-				model.setDefault_page(obj.getDefault_page());
 				model.setP_estado(obj.getEstado());
 				model.setFormato_output(obj.getFormato_output());
-				model.setPagina(obj.getLink_pagina()!=null?Integer.parseInt(obj.getLink_pagina()):null);
 				model.setObjeto(obj.getObjeto());
 				model.setOrganica(""+obj.getId_organica());
-				model.setPreencher_automatico(obj.getAutomatico());
 			}
 		}
 		NovoObjetoView view = new NovoObjetoView(model);
 		view.organica.setValue(IgrpHelper.toMap(new Organization().find().andWhere("application.dad", "=",Permission.getCurrentEnv()).all(), "id", "name"));
-		HashMap<Integer,String> sim_nao = new HashMap<>();
-		sim_nao.put(1, "Sim");
-		sim_nao.put(0, "Não");
-		view.default_page.setValue(sim_nao);
-		view.preencher_automatico.setValue(sim_nao);
-
 		HashMap<String,String> formato = new HashMap<>();
 		formato.put("xml", "XML");
 		formato.put("pdf", "PDF");
@@ -83,12 +74,8 @@ public class NovoObjetoController extends Controller {
 		/*---- Insert your code here... ----*/				
 		NovoObjeto model = new NovoObjeto();
 		model.load();
-		if(model.getDefault_page()==0 && model.getPagina()==0){
-			Igrp.getInstance().getFlashMessage().addMessage("error","Campo pagina obrigatorio");
-			return this.redirect("kofax","NovoObjeto","index");
-		}
 		Organization o = new Organization().findOne(model.getOrganica());
-		Objeto obj = new Objeto(o.getId(), model.getObjeto(), ""+model.getPagina(), model.getDefault_page(), model.getFormato_output(),"",model.getP_estado(), model.getPreencher_automatico(),null);
+		Objeto obj = new Objeto(o.getId(), model.getObjeto(), model.getFormato_output(),model.getP_estado(),null);
 		obj.setEstado("ATIVO");
 		Collection<Campos> campos = new LinkedHashSet<>();
 		for(NovoObjeto.Separatorlist_1 s:model.getseparatorlist_1()){

@@ -36,10 +36,6 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 	@JoinColumn(name = "id_objeto",foreignKey = @ForeignKey(name="OBJETO_DADOS_ID_OBJETO"),nullable=false)
 	private Objeto objeto;
 	private String descricao;
-	private String estante;
-	private String pasta;
-	private String livro;
-	private String folha;
 	@Column(nullable=false)
 	@Temporal(TemporalType.DATE)
 	private Date dt_registo;
@@ -56,15 +52,10 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 
 	
 
-	public Dados(Objeto objeto, String descricao, String estante, String pasta, String livro, String folha,
-			String dt_registo, String conteudo,String file_name,String mime_type) {
+	public Dados(Objeto objeto, String descricao, String dt_registo, String conteudo,String file_name,String mime_type) {
 		super();
 		this.objeto = objeto;
 		this.descricao = descricao;
-		this.estante = estante;
-		this.pasta = pasta;
-		this.livro = livro;
-		this.folha = folha;
 		this.dt_registo = DateHelper.formatDate(dt_registo,"dd-MM-yyyy","yyyy-MM-dd");
 		this.conteudo = conteudo;
 		this.file_name = file_name;
@@ -134,54 +125,6 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 
 
 
-	public String getEstante() {
-		return estante;
-	}
-
-
-
-	public void setEstante(String estante) {
-		this.estante = estante;
-	}
-
-
-
-	public String getPasta() {
-		return pasta;
-	}
-
-
-
-	public void setPasta(String pasta) {
-		this.pasta = pasta;
-	}
-
-
-
-	public String getLivro() {
-		return livro;
-	}
-
-
-
-	public void setLivro(String livro) {
-		this.livro = livro;
-	}
-
-
-
-	public String getFolha() {
-		return folha;
-	}
-
-
-
-	public void setFolha(String folha) {
-		this.folha = folha;
-	}
-
-
-
 	public Date getDt_registo() {
 		return dt_registo;
 	}
@@ -208,8 +151,7 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Dados [id=" + id + ", objeto=" + objeto + ", descricao=" + descricao + ", estante=" + estante
-				+ ", pasta=" + pasta + ", livro=" + livro + ", folha=" + folha + ", dt_registo=" + dt_registo
+		return "Dados [id=" + id + ", objeto=" + objeto + ", descricao=" + descricao + ", dt_registo=" + dt_registo
 				+ ", conteudo=" + conteudo + " ,filenmae = "+file_name+"]";
 	}
 

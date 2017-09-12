@@ -34,7 +34,6 @@ public class ListaObjetoController extends Controller {
 		for(Objeto o:lista_obj) {
 			ListaObjeto.Table_1 tabela = new ListaObjeto.Table_1();
 			tabela.setObjeto(o.getObjeto());
-			tabela.setPagina(o.getLink_pagina());
 			Organization org = new Organization().findOne(o.getId_organica());
 			tabela.setOrganica(org!=null?org.getName():"");
 			tabela.setEstado(o.getEstado());
