@@ -1,7 +1,12 @@
 package nosi.webapps.kofax.dao;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -15,7 +20,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import nosi.base.ActiveRecord.BaseActiveRecord;
+import nosi.core.config.Connection;
 import nosi.core.webapp.helpers.DateHelper;
+import nosi.webapps.kofax.pages.dashboard.DashBoard;
 
 /**
  * @author: Emanuel Pereira
@@ -160,5 +167,27 @@ public class Dados extends BaseActiveRecord<Dados> implements Serializable{
 	@Override
 	public String getConnectionName() {
 		return "hibernate-kofax";
+	}
+	
+	public List<DashBoard.Chart_1> getChart1(String filter){
+		String sql = "select o.objeto, count(d.id) as quantidade FROM tbl_dados d, tbl_objeto o"
+				+ " where d.id_objeto=o.id "+filter+" group by o.objeto";
+		List<DashBoard.Chart_1> dash = new ArrayList<>();
+		try {
+			PreparedStatement ps = Connection.getConnection(this.getConnectionName()).prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				DashBoard.Chart_1 c = new DashBoard.Chart_1();
+				c.setObjeto(rs.getString("objeto"));
+				c.setQuantidade(rs.getInt("quantidade"));
+				dash.add(c);
+			}
+			ps.close();
+			rs.close();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dash;
 	}
 }
