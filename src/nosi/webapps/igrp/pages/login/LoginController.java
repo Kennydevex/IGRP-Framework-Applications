@@ -6,9 +6,7 @@ import nosi.core.webapp.FlashMessage;
 import nosi.core.webapp.Igrp;
 import nosi.core.webapp.Response;
 import nosi.webapps.igrp.dao.User;
-import nosi.webapps.igrp.dao.Organization;
 import nosi.webapps.igrp.dao.Profile;
-import nosi.webapps.igrp.dao.ProfileType;
 import nosi.webapps.igrp.dao.Session;
 import java.io.IOException;
 
