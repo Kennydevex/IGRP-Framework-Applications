@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import javax.xml.bind.JAXB;
 
-import nosi.core.webapp.Igrp;
 
 public class Test {
 

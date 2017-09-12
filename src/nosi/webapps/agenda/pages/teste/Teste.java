@@ -1,7 +1,6 @@
 /*---------------------- Create Model ----------------------*/
 package nosi.webapps.agenda.pages.teste;
 import nosi.core.webapp.Model;
-import nosi.core.webapp.RParam;
 import nosi.core.gui.components.IGRPSeparatorList.Pair;
 import nosi.core.webapp.SeparatorList;
 import java.util.ArrayList;

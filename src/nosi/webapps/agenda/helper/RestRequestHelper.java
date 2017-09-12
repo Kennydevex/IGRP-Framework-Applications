@@ -14,12 +14,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.client.urlconnection.HTTPSProperties;
 import java.lang.reflect.Type;
 
-import nosi.webapps.agenda.dao.Entidade;
 import nosi.webapps.agenda.dao.Fault;
 /**
  * Marcel Iekiny

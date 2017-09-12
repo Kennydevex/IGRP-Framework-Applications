@@ -5,7 +5,6 @@
 package nosi.webapps.marcacao_consulta.pages.dashboard;
 import nosi.core.webapp.View;
 import nosi.core.gui.components.*;
-import nosi.core.gui.fields.*;
 
 public class DashBoardView extends View {
 	

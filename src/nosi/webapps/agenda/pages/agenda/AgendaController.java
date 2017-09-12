@@ -25,11 +25,8 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
 import nosi.core.webapp.Response;
-import nosi.webapps.agenda.dao.Balcao;
-import nosi.webapps.agenda.dao.Fault;
 import nosi.webapps.agenda.dao.ODFault;
 import nosi.webapps.agenda.dao.ServBalcao;
-import nosi.webapps.agenda.dao.Servicos;
 import nosi.webapps.agenda.helper.RestRequestHelper;
 import nosi.webapps.agenda.pages.agenda.Agenda.Separatorlist_1;
 
