@@ -8,7 +8,6 @@ package nosi.webapps.agenda.pages.agenda;
 import nosi.core.webapp.Controller;
 import nosi.core.webapp.FlashMessage;
 import nosi.core.webapp.Igrp;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
