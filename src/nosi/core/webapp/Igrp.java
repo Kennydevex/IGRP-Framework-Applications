@@ -203,30 +203,31 @@ public class Igrp {
 		List<DbInfo> listDbI = new ArrayList<>();
 		DbInfo dbI = new DbInfo();
 		dbI.setDefault_db("true");
-		dbI.setConnectionName(model.getTipo_base_dados());
+		dbI.setConnectionName("hibernate-igrp-core");
 		dbI.setDbmsName(model.getTipo_base_dados());
 		dbI.setDbName(model.getNome_de_bade_dados());
 		dbI.setHostName(model.getHostname());
 		dbI.setPassword(model.getPassword());
 		dbI.setUser(model.getUsername());
 		dbI.setPort(model.getPort());
-		if(!this.getDbConfig().getDbInfo().contains(dbI)){
-			listDbI.add(dbI);
-		}
-		for(DbInfo db:this.getDbConfig().getDbInfo()){
-			db.setDefault_db("false");
-			if(db.getDbmsName().equals(model.getTipo_base_dados())){
-				db.setDefault_db("true");
-				db.setConnectionName(model.getTipo_base_dados());
-				db.setDbmsName(model.getTipo_base_dados());
-				db.setDbName(model.getNome_de_bade_dados());
-				db.setHostName(model.getHostname());
-				db.setPassword(model.getPassword());
-				db.setUser(model.getUsername());
-				db.setPort(model.getPort());
-			}
-			listDbI.add(db);
-		}
+		listDbI.add(dbI);
+//		if(!this.getDbConfig().getDbInfo().contains(dbI)){
+//			listDbI.add(dbI);
+//		}
+//		for(DbInfo db:this.getDbConfig().getDbInfo()){
+//			db.setDefault_db("false");
+//			if(db.getDbmsName().equals(model.getTipo_base_dados())){
+//				db.setDefault_db("true");
+//				db.setConnectionName(model.getTipo_base_dados());
+//				db.setDbmsName(model.getTipo_base_dados());
+//				db.setDbName(model.getNome_de_bade_dados());
+//				db.setHostName(model.getHostname());
+//				db.setPassword(model.getPassword());
+//				db.setUser(model.getUsername());
+//				db.setPort(model.getPort());
+//			}
+//			listDbI.add(db);
+//		}
 		this.dbConfig.setDbInfo(listDbI);
 		path = this.servlet.getServletContext().getRealPath("/WEB-INF/config/db/db.xml");
 		file = new File(path);
