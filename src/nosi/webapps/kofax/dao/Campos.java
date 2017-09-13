@@ -28,7 +28,7 @@ public class Campos extends BaseActiveRecord<Campos> implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;	
-	@ManyToOne(cascade=CascadeType.REMOVE)
+	@ManyToOne
 	@JoinColumn(name="id_objeto_fk", foreignKey = @ForeignKey(name = "Campos_obj_fk"), nullable=false)
 	private Objeto id_objeto;
 	

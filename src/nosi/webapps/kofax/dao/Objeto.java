@@ -36,7 +36,7 @@ public class Objeto extends BaseActiveRecord<Objeto> implements Serializable{
 	private String formato_output;
 	@Column(nullable=false)
 	private String estado;
-	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="id_objeto")
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="id_objeto")
 	private Collection<Campos> campos;
 	
 	
