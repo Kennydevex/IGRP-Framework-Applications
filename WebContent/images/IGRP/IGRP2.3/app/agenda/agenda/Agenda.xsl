@@ -26,7 +26,7 @@
                             <xsl:call-template name="IGRP-sidebar"/>
                             <div class="col-sm-9 col-md-10 col-md-offset-2 col-sm-offset-3 main" id="igrp-contents">
                                 <div class="content">
-                                    <div class="row" id="row-c49e3881">
+                                    <div class="row" id="row-9e9ae285">
                                         <div class="gen-column col-md-12">
                                             <div class="gen-inner">
                                                 <xsl:apply-templates mode="igrp-messages" select="rows/content/messages"/>
@@ -35,7 +35,7 @@
                                                         <div class="box-body" gen-preserve-content="true">
                                                             <xsl:apply-templates mode="form-hidden-fields" select="rows/content/box_1/fields"/>
                                                             <div>
-                                                                <div class="row" id="row-c2ae491f">
+                                                                <div class="row" id="row-5b8d97e2">
                                                                     <div class="gen-column col-sm-6">
                                                                         <div class="gen-inner">
                                                                             <xsl:if test="rows/content/page_title">
@@ -73,11 +73,14 @@
                                                                 <div class="splist-form" role="form">
                                                                     <xsl:apply-templates mode="form-hidden-fields" select="rows/content/separatorlist_1/fields"/>
                                                                     <xsl:if test="rows/content/separatorlist_1/fields/servico">
-                                                                        <div class="col-sm-3 form-group  gen-fields-holder" item-name="servico" item-type="select" required="required">
+                                                                        <div class="col-sm-4 form-group  gen-fields-holder" item-name="servico" item-type="select" required="required">
                                                                             <label for="{rows/content/separatorlist_1/fields/servico/@name}">
                                                                                 <xsl:value-of select="rows/content/separatorlist_1/fields/servico/label"/>
                                                                             </label>
                                                                             <select class="form-control select2 " id="separatorlist_1_servico" name="{rows/content/separatorlist_1/fields/servico/@name}" required="required">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/servico"/>
+                                                                                </xsl:call-template>
                                                                                 <xsl:for-each select="rows/content/separatorlist_1/fields/servico/list/option">
                                                                                     <option value="{value}" label="{text}">
                                                                                         <xsl:if test="@selected='true'">
@@ -92,21 +95,70 @@
                                                                         </div>
                                                                     </xsl:if>
                                                                     <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendimentos">
-                                                                        <div class="form-group col-sm-3   gen-fields-holder" item-name="numero_de_atendimentos" item-type="number" required="required">
+                                                                        <div class="form-group col-sm-2   gen-fields-holder" item-name="numero_de_atendimentos" item-type="number" required="required">
                                                                             <label for="{rows/content/separatorlist_1/fields/numero_de_atendimentos/@name}">
                                                                                 <span>
                                                                                     <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendimentos/label"/>
                                                                                 </span>
                                                                             </label>
-                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/numero_de_atendimentos/value}" class="form-control " id="{rows/content/separatorlist_1/fields/numero_de_atendimentos/@name}" name="{rows/content/separatorlist_1/fields/numero_de_atendimentos/@name}" required="required" min="" max="" maxlength="30" placeholder=""></input>
+                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/numero_de_atendimentos/value}" class="form-control " id="{rows/content/separatorlist_1/fields/numero_de_atendimentos/@name}" name="{rows/content/separatorlist_1/fields/numero_de_atendimentos/@name}" required="required" min="" max="" maxlength="30" placeholder="">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/numero_de_atendimentos"/>
+                                                                                </xsl:call-template>
+                                                                            </input>
+                                                                        </div>
+                                                                    </xsl:if>
+                                                                    <xsl:if test="rows/content/separatorlist_1/fields/hora_inicio">
+                                                                        <div class="form-group col-sm-2  gen-fields-holder" item-name="hora_inicio" item-type="date">
+                                                                            <label for="{rows/content/separatorlist_1/fields/hora_inicio/@name}">
+                                                                                <span>
+                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/hora_inicio/label"/>
+                                                                                </span>
+                                                                            </label>
+                                                                            <div class="input-group">
+                                                                                <input type="text" value="{rows/content/separatorlist_1/fields/hora_inicio/value}" class="form-control gen-date " id="separatorlist_1-hora_inicio" name="{rows/content/separatorlist_1/fields/hora_inicio/@name}" format="IGRP_timePicker" maxlength="30">
+                                                                                    <xsl:call-template name="setAttributes">
+                                                                                        <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/hora_inicio"/>
+                                                                                    </xsl:call-template>
+                                                                                </input>
+                                                                                <span class="input-group-btn gen-date-icon">
+                                                                                    <span class="btn btn-default">
+                                                                                        <i class="fa fa-calendar"/>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </xsl:if>
+                                                                    <xsl:if test="rows/content/separatorlist_1/fields/hora_fim">
+                                                                        <div class="form-group col-sm-2  gen-fields-holder" item-name="hora_fim" item-type="date">
+                                                                            <label for="{rows/content/separatorlist_1/fields/hora_fim/@name}">
+                                                                                <span>
+                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/hora_fim/label"/>
+                                                                                </span>
+                                                                            </label>
+                                                                            <div class="input-group">
+                                                                                <input type="text" value="{rows/content/separatorlist_1/fields/hora_fim/value}" class="form-control gen-date " id="separatorlist_1-hora_fim" name="{rows/content/separatorlist_1/fields/hora_fim/@name}" format="IGRP_timePicker" maxlength="30">
+                                                                                    <xsl:call-template name="setAttributes">
+                                                                                        <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/hora_fim"/>
+                                                                                    </xsl:call-template>
+                                                                                </input>
+                                                                                <span class="input-group-btn gen-date-icon">
+                                                                                    <span class="btn btn-default">
+                                                                                        <i class="fa fa-calendar"/>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </xsl:if>
                                                                     <xsl:if test="rows/content/separatorlist_1/fields/dias_de_semana">
-                                                                        <div class="col-sm-3 form-group  gen-fields-holder" item-name="dias_de_semana" item-type="select" required="required">
+                                                                        <div class="col-sm-2 form-group  gen-fields-holder" item-name="dias_de_semana" item-type="select" required="required">
                                                                             <label for="{rows/content/separatorlist_1/fields/dias_de_semana/@name}">
                                                                                 <xsl:value-of select="rows/content/separatorlist_1/fields/dias_de_semana/label"/>
                                                                             </label>
                                                                             <select class="form-control select2 " id="separatorlist_1_dias_de_semana" name="{rows/content/separatorlist_1/fields/dias_de_semana/@name}" required="required" multiple="multiple">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/dias_de_semana"/>
+                                                                                </xsl:call-template>
                                                                                 <xsl:for-each select="rows/content/separatorlist_1/fields/dias_de_semana/list/option">
                                                                                     <option value="{value}" label="{text}">
                                                                                         <xsl:if test="@selected='true'">
@@ -120,50 +172,6 @@
                                                                             </select>
                                                                         </div>
                                                                     </xsl:if>
-                                                                    <xsl:if test="rows/content/separatorlist_1/fields/hora_inicio">
-                                                                        <div class="form-group col-sm-3  gen-fields-holder" item-name="hora_inicio" item-type="date">
-                                                                            <label for="{rows/content/separatorlist_1/fields/hora_inicio/@name}">
-                                                                                <span>
-                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/hora_inicio/label"/>
-                                                                                </span>
-                                                                            </label>
-                                                                            <div class="input-group">
-                                                                                <input type="text" value="{rows/content/separatorlist_1/fields/hora_inicio/value}" class="form-control gen-date " id="separatorlist_1-hora_inicio" name="{rows/content/separatorlist_1/fields/hora_inicio/@name}" format="IGRP_timePicker" maxlength="30"/>
-                                                                                <span class="input-group-btn gen-date-icon">
-                                                                                    <span class="btn btn-default">
-                                                                                        <i class="fa fa-calendar"/>
-                                                                                    </span>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </xsl:if>
-                                                                    <xsl:if test="rows/content/separatorlist_1/fields/hora_fim">
-                                                                        <div class="form-group col-sm-3  gen-fields-holder" item-name="hora_fim" item-type="date">
-                                                                            <label for="{rows/content/separatorlist_1/fields/hora_fim/@name}">
-                                                                                <span>
-                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/hora_fim/label"/>
-                                                                                </span>
-                                                                            </label>
-                                                                            <div class="input-group">
-                                                                                <input type="text" value="{rows/content/separatorlist_1/fields/hora_fim/value}" class="form-control gen-date " id="separatorlist_1-hora_fim" name="{rows/content/separatorlist_1/fields/hora_fim/@name}" format="IGRP_timePicker" maxlength="30"/>
-                                                                                <span class="input-group-btn gen-date-icon">
-                                                                                    <span class="btn btn-default">
-                                                                                        <i class="fa fa-calendar"/>
-                                                                                    </span>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </xsl:if>
-                                                                    <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendedores">
-                                                                        <div class="form-group col-sm-3   gen-fields-holder" item-name="numero_de_atendedores" item-type="number" required="required">
-                                                                            <label for="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}">
-                                                                                <span>
-                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendedores/label"/>
-                                                                                </span>
-                                                                            </label>
-                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/numero_de_atendedores/value}" class="form-control " id="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}" name="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}" required="required" min="" max="" maxlength="2" placeholder=""></input>
-                                                                        </div>
-                                                                    </xsl:if>
                                                                     <xsl:if test="rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn">
                                                                         <div class="form-group col-sm-3   gen-fields-holder" item-name="tempo_medio_de_atendimento_mn" item-type="number" required="required">
                                                                             <label for="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@name}">
@@ -171,7 +179,11 @@
                                                                                     <xsl:value-of select="rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/label"/>
                                                                                 </span>
                                                                             </label>
-                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/value}" class="form-control " id="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@name}" name="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@name}" required="required" min="" max="" maxlength="30" placeholder=""></input>
+                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/value}" class="form-control " id="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@name}" name="{rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@name}" required="required" min="" max="" maxlength="30" placeholder="">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn"/>
+                                                                                </xsl:call-template>
+                                                                            </input>
                                                                         </div>
                                                                     </xsl:if>
                                                                     <xsl:if test="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr">
@@ -180,6 +192,9 @@
                                                                                 <xsl:value-of select="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr/label"/>
                                                                             </label>
                                                                             <select class="form-control select2 " id="separatorlist_1_antecedencia_alterarcancelar_hr" name="{rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr/@name}" required="required">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr"/>
+                                                                                </xsl:call-template>
                                                                                 <xsl:for-each select="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr/list/option">
                                                                                     <option value="{value}" label="{text}">
                                                                                         <xsl:if test="@selected='true'">
@@ -199,6 +214,9 @@
                                                                                 <xsl:value-of select="rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr/label"/>
                                                                             </label>
                                                                             <select class="form-control select2 " id="separatorlist_1_antecedencia_de_agendamento_hr" name="{rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr/@name}" required="required">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr"/>
+                                                                                </xsl:call-template>
                                                                                 <xsl:for-each select="rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr/list/option">
                                                                                     <option value="{value}" label="{text}">
                                                                                         <xsl:if test="@selected='true'">
@@ -219,7 +237,25 @@
                                                                                     <xsl:value-of select="rows/content/separatorlist_1/fields/periodo/label"/>
                                                                                 </span>
                                                                             </label>
-                                                                            <input type="text" value="{rows/content/separatorlist_1/fields/periodo/value}" class="form-control " id="{rows/content/separatorlist_1/fields/periodo/@name}" name="{rows/content/separatorlist_1/fields/periodo/@name}" maxlength="30" placeholder=""></input>
+                                                                            <input type="text" value="{rows/content/separatorlist_1/fields/periodo/value}" class="form-control " id="{rows/content/separatorlist_1/fields/periodo/@name}" name="{rows/content/separatorlist_1/fields/periodo/@name}" maxlength="30" placeholder="">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/periodo"/>
+                                                                                </xsl:call-template>
+                                                                            </input>
+                                                                        </div>
+                                                                    </xsl:if>
+                                                                    <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendedores">
+                                                                        <div class="form-group col-sm-3   gen-fields-holder" item-name="numero_de_atendedores" item-type="number" required="required">
+                                                                            <label for="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}">
+                                                                                <span>
+                                                                                    <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendedores/label"/>
+                                                                                </span>
+                                                                            </label>
+                                                                            <input type="number" value="{rows/content/separatorlist_1/fields/numero_de_atendedores/value}" class="form-control " id="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}" name="{rows/content/separatorlist_1/fields/numero_de_atendedores/@name}" required="required" min="" max="" maxlength="2" placeholder="">
+                                                                                <xsl:call-template name="setAttributes">
+                                                                                    <xsl:with-param name="field" select="rows/content/separatorlist_1/fields/numero_de_atendedores"/>
+                                                                                </xsl:call-template>
+                                                                            </input>
                                                                         </div>
                                                                     </xsl:if>
                                                                 </div>
@@ -229,7 +265,7 @@
                                                                     <thead>
                                                                         <tr>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/servico">
-                                                                                <xsl:if test="not(servico/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/servico/@visible)">
                                                                                     <th align="" item-name="servico">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/servico/label"/>
@@ -238,7 +274,7 @@
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendimentos">
-                                                                                <xsl:if test="not(numero_de_atendimentos/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/numero_de_atendimentos/@visible)">
                                                                                     <th align="" item-name="numero_de_atendimentos">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendimentos/label"/>
@@ -246,17 +282,8 @@
                                                                                     </th>
                                                                                 </xsl:if>
                                                                             </xsl:if>
-                                                                            <xsl:if test="rows/content/separatorlist_1/fields/dias_de_semana">
-                                                                                <xsl:if test="not(dias_de_semana/@visible)">
-                                                                                    <th align="" item-name="dias_de_semana">
-                                                                                        <span>
-                                                                                            <xsl:value-of select="rows/content/separatorlist_1/fields/dias_de_semana/label"/>
-                                                                                        </span>
-                                                                                    </th>
-                                                                                </xsl:if>
-                                                                            </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/hora_inicio">
-                                                                                <xsl:if test="not(hora_inicio/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/hora_inicio/@visible)">
                                                                                     <th align="" item-name="hora_inicio">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/hora_inicio/label"/>
@@ -265,7 +292,7 @@
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/hora_fim">
-                                                                                <xsl:if test="not(hora_fim/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/hora_fim/@visible)">
                                                                                     <th align="" item-name="hora_fim">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/hora_fim/label"/>
@@ -273,17 +300,17 @@
                                                                                     </th>
                                                                                 </xsl:if>
                                                                             </xsl:if>
-                                                                            <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendedores">
-                                                                                <xsl:if test="not(numero_de_atendedores/@visible)">
-                                                                                    <th align="" item-name="numero_de_atendedores">
+                                                                            <xsl:if test="rows/content/separatorlist_1/fields/dias_de_semana">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/dias_de_semana/@visible)">
+                                                                                    <th align="" item-name="dias_de_semana">
                                                                                         <span>
-                                                                                            <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendedores/label"/>
+                                                                                            <xsl:value-of select="rows/content/separatorlist_1/fields/dias_de_semana/label"/>
                                                                                         </span>
                                                                                     </th>
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn">
-                                                                                <xsl:if test="not(tempo_medio_de_atendimento_mn/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/@visible)">
                                                                                     <th align="" item-name="tempo_medio_de_atendimento_mn">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/tempo_medio_de_atendimento_mn/label"/>
@@ -292,7 +319,7 @@
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr">
-                                                                                <xsl:if test="not(antecedencia_alterarcancelar_hr/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr/@visible)">
                                                                                     <th align="" item-name="antecedencia_alterarcancelar_hr">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/antecedencia_alterarcancelar_hr/label"/>
@@ -301,7 +328,7 @@
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr">
-                                                                                <xsl:if test="not(antecedencia_de_agendamento_hr/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr/@visible)">
                                                                                     <th align="" item-name="antecedencia_de_agendamento_hr">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/antecedencia_de_agendamento_hr/label"/>
@@ -310,10 +337,19 @@
                                                                                 </xsl:if>
                                                                             </xsl:if>
                                                                             <xsl:if test="rows/content/separatorlist_1/fields/periodo">
-                                                                                <xsl:if test="not(periodo/@visible)">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/periodo/@visible)">
                                                                                     <th align="" item-name="periodo">
                                                                                         <span>
                                                                                             <xsl:value-of select="rows/content/separatorlist_1/fields/periodo/label"/>
+                                                                                        </span>
+                                                                                    </th>
+                                                                                </xsl:if>
+                                                                            </xsl:if>
+                                                                            <xsl:if test="rows/content/separatorlist_1/fields/numero_de_atendedores">
+                                                                                <xsl:if test="not(rows/content/separatorlist_1/fields/numero_de_atendedores/@visible)">
+                                                                                    <th align="" item-name="numero_de_atendedores">
+                                                                                        <span>
+                                                                                            <xsl:value-of select="rows/content/separatorlist_1/fields/numero_de_atendedores/label"/>
                                                                                         </span>
                                                                                     </th>
                                                                                 </xsl:if>
@@ -363,23 +399,6 @@
                                                                                         </xsl:otherwise>
                                                                                     </xsl:choose>
                                                                                 </xsl:if>
-                                                                                <xsl:if test="dias_de_semana">
-                                                                                    <xsl:choose>
-                                                                                        <xsl:when test="not(dias_de_semana/@visible)">
-                                                                                            <td field="dias_de_semana" data-row="{position()}" data-title="{../../../fields/dias_de_semana/label}" class="select" item-name="dias_de_semana">
-                                                                                                <span class="separator-list-td-val">
-                                                                                                    <xsl:value-of select="dias_de_semana_desc"/>
-                                                                                                </span>
-                                                                                                <input type="hidden" name="p_dias_de_semana_fk" value="{dias_de_semana}"/>
-                                                                                                <input type="hidden" name="p_dias_de_semana_fk_desc" value="{dias_de_semana_desc}"/>
-                                                                                            </td>
-                                                                                        </xsl:when>
-                                                                                        <xsl:otherwise>
-                                                                                            <input type="hidden" name="p_dias_de_semana_fk" value="{dias_de_semana}"/>
-                                                                                            <input type="hidden" name="p_dias_de_semana_fk_desc" value="{dias_de_semana_desc}"/>
-                                                                                        </xsl:otherwise>
-                                                                                    </xsl:choose>
-                                                                                </xsl:if>
                                                                                 <xsl:if test="hora_inicio">
                                                                                     <xsl:choose>
                                                                                         <xsl:when test="not(hora_inicio/@visible)">
@@ -414,20 +433,20 @@
                                                                                         </xsl:otherwise>
                                                                                     </xsl:choose>
                                                                                 </xsl:if>
-                                                                                <xsl:if test="numero_de_atendedores">
+                                                                                <xsl:if test="dias_de_semana">
                                                                                     <xsl:choose>
-                                                                                        <xsl:when test="not(numero_de_atendedores/@visible)">
-                                                                                            <td field="numero_de_atendedores" data-row="{position()}" data-title="{../../../fields/numero_de_atendedores/label}" class="number" item-name="numero_de_atendedores">
+                                                                                        <xsl:when test="not(dias_de_semana/@visible)">
+                                                                                            <td field="dias_de_semana" data-row="{position()}" data-title="{../../../fields/dias_de_semana/label}" class="select" item-name="dias_de_semana">
                                                                                                 <span class="separator-list-td-val">
-                                                                                                    <xsl:value-of select="numero_de_atendedores_desc"/>
+                                                                                                    <xsl:value-of select="dias_de_semana_desc"/>
                                                                                                 </span>
-                                                                                                <input type="hidden" name="p_numero_de_atendedores_fk" value="{numero_de_atendedores}"/>
-                                                                                                <input type="hidden" name="p_numero_de_atendedores_fk_desc" value="{numero_de_atendedores_desc}"/>
+                                                                                                <input type="hidden" name="p_dias_de_semana_fk" value="{dias_de_semana}"/>
+                                                                                                <input type="hidden" name="p_dias_de_semana_fk_desc" value="{dias_de_semana_desc}"/>
                                                                                             </td>
                                                                                         </xsl:when>
                                                                                         <xsl:otherwise>
-                                                                                            <input type="hidden" name="p_numero_de_atendedores_fk" value="{numero_de_atendedores}"/>
-                                                                                            <input type="hidden" name="p_numero_de_atendedores_fk_desc" value="{numero_de_atendedores_desc}"/>
+                                                                                            <input type="hidden" name="p_dias_de_semana_fk" value="{dias_de_semana}"/>
+                                                                                            <input type="hidden" name="p_dias_de_semana_fk_desc" value="{dias_de_semana_desc}"/>
                                                                                         </xsl:otherwise>
                                                                                     </xsl:choose>
                                                                                 </xsl:if>
@@ -499,6 +518,23 @@
                                                                                         </xsl:otherwise>
                                                                                     </xsl:choose>
                                                                                 </xsl:if>
+                                                                                <xsl:if test="numero_de_atendedores">
+                                                                                    <xsl:choose>
+                                                                                        <xsl:when test="not(numero_de_atendedores/@visible)">
+                                                                                            <td field="numero_de_atendedores" data-row="{position()}" data-title="{../../../fields/numero_de_atendedores/label}" class="number" item-name="numero_de_atendedores">
+                                                                                                <span class="separator-list-td-val">
+                                                                                                    <xsl:value-of select="numero_de_atendedores_desc"/>
+                                                                                                </span>
+                                                                                                <input type="hidden" name="p_numero_de_atendedores_fk" value="{numero_de_atendedores}"/>
+                                                                                                <input type="hidden" name="p_numero_de_atendedores_fk_desc" value="{numero_de_atendedores_desc}"/>
+                                                                                            </td>
+                                                                                        </xsl:when>
+                                                                                        <xsl:otherwise>
+                                                                                            <input type="hidden" name="p_numero_de_atendedores_fk" value="{numero_de_atendedores}"/>
+                                                                                            <input type="hidden" name="p_numero_de_atendedores_fk_desc" value="{numero_de_atendedores_desc}"/>
+                                                                                        </xsl:otherwise>
+                                                                                    </xsl:choose>
+                                                                                </xsl:if>
                                                                                 <td data-row="{position()}" class="table-btn">
                                                                                     <xsl:if test="not(@noupdate)">
                                                                                         <span class="table-row-edit btn btn-default " rel="separatorlist_1">
@@ -540,9 +576,9 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:include href="../../../xsl/tmpl/IGRP-functions.tmpl.xsl?v=1503922977425"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-variables.tmpl.xsl?v=1503922977425"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-home-include.tmpl.xsl?v=1503922977425"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-utils.tmpl.xsl?v=1503922977425"/>
-    <xsl:include href="../../../xsl/tmpl/IGRP-form-utils.tmpl.xsl?v=1503922977425"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-functions.tmpl.xsl?v=1505320359369"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-variables.tmpl.xsl?v=1505320359369"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-home-include.tmpl.xsl?v=1505320359369"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-utils.tmpl.xsl?v=1505320359369"/>
+    <xsl:include href="../../../xsl/tmpl/IGRP-form-utils.tmpl.xsl?v=1505320359369"/>
 </xsl:stylesheet>

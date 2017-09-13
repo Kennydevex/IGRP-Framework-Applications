@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="images/IGRP/IGRP2.3/app/agenda/agenda/Agenda.xsl" type="text/xsl"?>
 <rows>
-    <link_img>/IGRP/images/IGRP/IGRP2.3</link_img>
     <site>
         <welcome_note>Ola</welcome_note>
         <footer_note>2011 - Copyright NOSI</footer_note>
@@ -33,7 +32,7 @@
         <preserve_url>http://localhost:8080/IGRP/webapps?r=igrp/page/preserveUrl&amp;p_id=</preserve_url>
     </plsql>
     <content>
-        <title>Efetuar uma agenda</title>
+        <title>Configurar agenda</title>
         <box_1 type="box" xml-type="form" gen-type="container" gen-group="">
             <fields/>
         </box_1>
@@ -48,7 +47,7 @@
         </page_title>
         <separatorlist_1 type="separatorlist" xml-type="separatorlist" gen-clean="true" gen-type="container" gen-group="true">
             <fields>
-                <servico name="p_servico" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" visible="true" domain="" desc="true">
+                <servico name="p_servico" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" domain="" desc="true">
                     <label>Serviço/Balcão</label>
                     <list>
                         <option/>
@@ -70,11 +69,19 @@
                         </option>
                     </list>
                 </servico>
-                <numero_de_atendimentos name="p_numero_de_atendimentos" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" desc="true">
-                    <label>Número de atendimentos</label>
-                    <value>0</value>
+                <numero_de_atendimentos name="p_numero_de_atendimentos" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" desc="true">
+                    <label>Nº de atendimentos</label>
+                    <value>8</value>
                 </numero_de_atendimentos>
-                <dias_de_semana name="p_dias_de_semana" type="select" multiple="true" maxlength="30" required="true" change="false" disabled="false" right="false" visible="true" domain="" desc="true">
+                <hora_inicio name="p_hora_inicio" type="date" format="IGRP_timePicker" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" class="default" desc="true">
+                    <label>Hora Inicio</label>
+                    <value/>
+                </hora_inicio>
+                <hora_fim name="p_hora_fim" type="date" format="IGRP_timePicker" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" class="default" desc="true">
+                    <label>Hora Fim</label>
+                    <value/>
+                </hora_fim>
+                <dias_de_semana name="p_dias_de_semana" type="select" multiple="true" maxlength="30" required="true" change="false" disabled="false" right="false" domain="" desc="true">
                     <label>Dias de semana</label>
                     <list>
                         <option/>
@@ -96,23 +103,11 @@
                         </option>
                     </list>
                 </dias_de_semana>
-                <hora_inicio name="p_hora_inicio" type="date" format="IGRP_timePicker" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" class="default" desc="true">
-                    <label>Hora Inicio</label>
-                    <value/>
-                </hora_inicio>
-                <hora_fim name="p_hora_fim" type="date" format="IGRP_timePicker" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" class="default" desc="true">
-                    <label>Hora Fim</label>
-                    <value/>
-                </hora_fim>
-                <numero_de_atendedores name="p_numero_de_atendedores" type="number" maxlength="2" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" desc="true">
-                    <label>Número de atendedores</label>
-                    <value>1</value>
-                </numero_de_atendedores>
-                <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" min="" max="" desc="true">
+                <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" type="number" maxlength="30" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" min="" max="" desc="true">
                     <label>Tempo médio de atendimento (mn)</label>
-                    <value>7</value>
+                    <value>9</value>
                 </tempo_medio_de_atendimento_mn>
-                <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" visible="true" domain="" desc="true">
+                <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" domain="" desc="true">
                     <label>Antecedência alterar/cancelar (hr)</label>
                     <list>
                         <option/>
@@ -134,7 +129,7 @@
                         </option>
                     </list>
                 </antecedencia_alterarcancelar_hr>
-                <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" visible="true" domain="" desc="true">
+                <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" type="select" multiple="false" maxlength="30" required="true" change="false" disabled="false" right="false" domain="" desc="true">
                     <label>Antecedência de agendamento (hr)</label>
                     <list>
                         <option/>
@@ -156,122 +151,126 @@
                         </option>
                     </list>
                 </antecedencia_de_agendamento_hr>
-                <periodo name="p_periodo" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" visible="true" desc="true">
+                <periodo name="p_periodo" type="text" maxlength="30" required="false" change="false" readonly="false" disabled="false" placeholder="" right="false" desc="true">
                     <label>Periodo</label>
-                    <value>Sit sed anim adipiscing laudan</value>
+                    <value>Lorem mollit totam dolor sit</value>
                 </periodo>
+                <numero_de_atendedores name="p_numero_de_atendedores" type="number" maxlength="2" required="true" change="false" readonly="false" disabled="false" placeholder="" right="false" desc="true">
+                    <label>Número de atendedores</label>
+                    <value>0</value>
+                </numero_de_atendedores>
             </fields>
             <table>
                 <value>
                     <row>
                         <servico name="p_servico" desc="true">2</servico>
                         <servico_desc name="p_servico_desc">2</servico_desc>
-                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">2</numero_de_atendimentos>
-                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">2</numero_de_atendimentos_desc>
-                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
-                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">5</numero_de_atendimentos>
+                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">5</numero_de_atendimentos_desc>
                         <hora_inicio name="p_hora_inicio" desc="true"/>
                         <hora_inicio_desc name="p_hora_inicio_desc"/>
                         <hora_fim name="p_hora_fim" desc="true"/>
                         <hora_fim_desc name="p_hora_fim_desc"/>
-                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
-                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
-                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">10</tempo_medio_de_atendimento_mn>
-                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">10</tempo_medio_de_atendimento_mn_desc>
+                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
+                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">4</tempo_medio_de_atendimento_mn>
+                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">4</tempo_medio_de_atendimento_mn_desc>
                         <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
                         <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
                         <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
                         <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
-                        <periodo name="p_periodo" desc="true">Totam aliqua perspiciatis rem</periodo>
-                        <periodo_desc name="p_periodo_desc">Totam aliqua perspiciatis rem</periodo_desc>
+                        <periodo name="p_periodo" desc="true">Lorem consectetur totam perspi</periodo>
+                        <periodo_desc name="p_periodo_desc">Lorem consectetur totam perspi</periodo_desc>
+                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
+                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
                     </row>
                     <row>
                         <servico name="p_servico" desc="true">2</servico>
                         <servico_desc name="p_servico_desc">2</servico_desc>
-                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">16</numero_de_atendimentos>
-                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">16</numero_de_atendimentos_desc>
-                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
-                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">17</numero_de_atendimentos>
+                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">17</numero_de_atendimentos_desc>
                         <hora_inicio name="p_hora_inicio" desc="true"/>
                         <hora_inicio_desc name="p_hora_inicio_desc"/>
                         <hora_fim name="p_hora_fim" desc="true"/>
                         <hora_fim_desc name="p_hora_fim_desc"/>
-                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
-                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
-                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">18</tempo_medio_de_atendimento_mn>
-                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">18</tempo_medio_de_atendimento_mn_desc>
+                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
+                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">29</tempo_medio_de_atendimento_mn>
+                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">29</tempo_medio_de_atendimento_mn_desc>
                         <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
                         <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
                         <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
                         <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
-                        <periodo name="p_periodo" desc="true">Sed deserunt adipiscing accusa</periodo>
-                        <periodo_desc name="p_periodo_desc">Sed deserunt adipiscing accusa</periodo_desc>
-                    </row>
-                    <row>
-                        <servico name="p_servico" desc="true">2</servico>
-                        <servico_desc name="p_servico_desc">2</servico_desc>
-                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">22</numero_de_atendimentos>
-                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">22</numero_de_atendimentos_desc>
-                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
-                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
-                        <hora_inicio name="p_hora_inicio" desc="true"/>
-                        <hora_inicio_desc name="p_hora_inicio_desc"/>
-                        <hora_fim name="p_hora_fim" desc="true"/>
-                        <hora_fim_desc name="p_hora_fim_desc"/>
+                        <periodo name="p_periodo" desc="true">Sed adipiscing totam consectet</periodo>
+                        <periodo_desc name="p_periodo_desc">Sed adipiscing totam consectet</periodo_desc>
                         <numero_de_atendedores name="p_numero_de_atendedores" desc="true">1</numero_de_atendedores>
                         <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">1</numero_de_atendedores_desc>
-                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">1</tempo_medio_de_atendimento_mn>
-                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">1</tempo_medio_de_atendimento_mn_desc>
-                        <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
-                        <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
-                        <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
-                        <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
-                        <periodo name="p_periodo" desc="true">Sit labore aliqua sit sit</periodo>
-                        <periodo_desc name="p_periodo_desc">Sit labore aliqua sit sit</periodo_desc>
                     </row>
                     <row>
                         <servico name="p_servico" desc="true">2</servico>
                         <servico_desc name="p_servico_desc">2</servico_desc>
-                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">27</numero_de_atendimentos>
-                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">27</numero_de_atendimentos_desc>
-                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
-                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">9</numero_de_atendimentos>
+                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">9</numero_de_atendimentos_desc>
                         <hora_inicio name="p_hora_inicio" desc="true"/>
                         <hora_inicio_desc name="p_hora_inicio_desc"/>
                         <hora_fim name="p_hora_fim" desc="true"/>
                         <hora_fim_desc name="p_hora_fim_desc"/>
-                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
-                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
-                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">1</tempo_medio_de_atendimento_mn>
-                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">1</tempo_medio_de_atendimento_mn_desc>
+                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
+                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">29</tempo_medio_de_atendimento_mn>
+                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">29</tempo_medio_de_atendimento_mn_desc>
                         <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
                         <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
                         <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
                         <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
-                        <periodo name="p_periodo" desc="true">Sed rem natus ut amet</periodo>
-                        <periodo_desc name="p_periodo_desc">Sed rem natus ut amet</periodo_desc>
+                        <periodo name="p_periodo" desc="true">Aliqua ipsum labore ut deserun</periodo>
+                        <periodo_desc name="p_periodo_desc">Aliqua ipsum labore ut deserun</periodo_desc>
+                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
+                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
                     </row>
                     <row>
                         <servico name="p_servico" desc="true">2</servico>
                         <servico_desc name="p_servico_desc">2</servico_desc>
                         <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">3</numero_de_atendimentos>
                         <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">3</numero_de_atendimentos_desc>
-                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
-                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
                         <hora_inicio name="p_hora_inicio" desc="true"/>
                         <hora_inicio_desc name="p_hora_inicio_desc"/>
                         <hora_fim name="p_hora_fim" desc="true"/>
                         <hora_fim_desc name="p_hora_fim_desc"/>
-                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
-                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
-                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">25</tempo_medio_de_atendimento_mn>
-                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">25</tempo_medio_de_atendimento_mn_desc>
+                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
+                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">0</tempo_medio_de_atendimento_mn>
+                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">0</tempo_medio_de_atendimento_mn_desc>
                         <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
                         <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
                         <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
                         <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
-                        <periodo name="p_periodo" desc="true">Totam rem magna natus dolor</periodo>
-                        <periodo_desc name="p_periodo_desc">Totam rem magna natus dolor</periodo_desc>
+                        <periodo name="p_periodo" desc="true">Totam sit unde lorem iste</periodo>
+                        <periodo_desc name="p_periodo_desc">Totam sit unde lorem iste</periodo_desc>
+                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">0</numero_de_atendedores>
+                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">0</numero_de_atendedores_desc>
+                    </row>
+                    <row>
+                        <servico name="p_servico" desc="true">2</servico>
+                        <servico_desc name="p_servico_desc">2</servico_desc>
+                        <numero_de_atendimentos name="p_numero_de_atendimentos" desc="true">15</numero_de_atendimentos>
+                        <numero_de_atendimentos_desc name="p_numero_de_atendimentos_desc">15</numero_de_atendimentos_desc>
+                        <hora_inicio name="p_hora_inicio" desc="true"/>
+                        <hora_inicio_desc name="p_hora_inicio_desc"/>
+                        <hora_fim name="p_hora_fim" desc="true"/>
+                        <hora_fim_desc name="p_hora_fim_desc"/>
+                        <dias_de_semana name="p_dias_de_semana" desc="true">12</dias_de_semana>
+                        <dias_de_semana_desc name="p_dias_de_semana_desc">12</dias_de_semana_desc>
+                        <tempo_medio_de_atendimento_mn name="p_tempo_medio_de_atendimento_mn" desc="true">7</tempo_medio_de_atendimento_mn>
+                        <tempo_medio_de_atendimento_mn_desc name="p_tempo_medio_de_atendimento_mn_desc">7</tempo_medio_de_atendimento_mn_desc>
+                        <antecedencia_alterarcancelar_hr name="p_antecedencia_alterarcancelar_hr" desc="true">2</antecedencia_alterarcancelar_hr>
+                        <antecedencia_alterarcancelar_hr_desc name="p_antecedencia_alterarcancelar_hr_desc">2</antecedencia_alterarcancelar_hr_desc>
+                        <antecedencia_de_agendamento_hr name="p_antecedencia_de_agendamento_hr" desc="true">2</antecedencia_de_agendamento_hr>
+                        <antecedencia_de_agendamento_hr_desc name="p_antecedencia_de_agendamento_hr_desc">2</antecedencia_de_agendamento_hr_desc>
+                        <periodo name="p_periodo" desc="true">Laudantium deserunt amet labor</periodo>
+                        <periodo_desc name="p_periodo_desc">Laudantium deserunt amet labor</periodo_desc>
+                        <numero_de_atendedores name="p_numero_de_atendedores" desc="true">1</numero_de_atendedores>
+                        <numero_de_atendedores_desc name="p_numero_de_atendedores_desc">1</numero_de_atendedores_desc>
                     </row>
                 </value>
             </table>

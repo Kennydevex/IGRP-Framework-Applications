@@ -36,10 +36,10 @@ public class AgendaController extends Controller {
 
 
 	public Response actionIndex() throws IOException, IllegalArgumentException, IllegalAccessException{
-		/*---- Insert your code here... ----*/								
+		/*---- Insert your code here... ----*/										
 		Agenda model = new Agenda();
 		
-		List<Separatorlist_1> lista = new ArrayList<Separatorlist_1>();
+		/*List<Separatorlist_1> lista = new ArrayList<Separatorlist_1>();
 		
 		if(Igrp.getInstance().getRequest().getMethod().equalsIgnoreCase("POST")) {
 			model.load();
@@ -116,9 +116,9 @@ public class AgendaController extends Controller {
 				Igrp.getInstance().getFlashMessage().addMessage(FlashMessage.ERROR, errorMessage);
 			
 		}
-		
+		*/
 		AgendaView view = new AgendaView(model);
-		
+		/*
 		Map<Integer, String> comboBox1 = new HashMap<Integer,String>();
 		comboBox1.put(null, "--- Escolher ---");
 		for(ServBalcao obj : ServBalcao.getAllServico_por_Balcao())
@@ -143,16 +143,16 @@ public class AgendaController extends Controller {
 		view.antecedencia_de_agendamento_hr.setValue(comboBox2);
 		
 		view.separatorlist_1.addData(lista);
-		
+		*/
 		return this.renderView(view);
-		/*---- End ----*/
+			/*---- End ----*/
 	}
 
 
 	public Response actionGravar() throws IOException{
-		/*---- Insert your code here... ----*/								
+		/*---- Insert your code here... ----*/										
 		return this.redirect("agenda","AddServicos","index");
-						/*---- End ----*/
+							/*---- End ----*/
 	}
 	
 	/*---- Insert your actions here... ----*//*---- End ----*/
