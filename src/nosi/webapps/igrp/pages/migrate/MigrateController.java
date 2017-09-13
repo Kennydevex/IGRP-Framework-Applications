@@ -29,7 +29,7 @@ public class MigrateController extends Controller {
 		tipos.put("h2", "H2");
 		tipos.put("oracle", "Oracle");
 		view.tipo_base_dados.setValue(tipos);
-		view.aplicacao.setValue(IgrpHelper.toMap(new Application().findAll(), "id", "name","--- Selecionar Aplicação ---"));
+		view.aplicacao.setValue(IgrpHelper.toMap(new Application().find().andWhere("id", "=", 1).all(), "id", "name","--- Selecionar Aplicação ---"));
 		return this.renderView(view);
 				/*---- End ----*/
 	}

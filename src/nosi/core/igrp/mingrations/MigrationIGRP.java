@@ -70,7 +70,7 @@ public class MigrationIGRP {
 		}
 		if(applications.size() > 0){
 			for(Application app:applications){
-				Application a = new Application(app.getDad(), app.getName(), app.getImg_src(), app.getDescription(), app.getStatus(), app.getAction());
+				Application a = new Application(app.getDad(), app.getName(), app.getImg_src(), app.getDescription(), app.getStatus(),null);
 				a.insert();
 			}
 		}
@@ -78,6 +78,14 @@ public class MigrationIGRP {
 			for(Action a:actions){
 				Action ac = new Action(a.getPage(), a.getAction(), a.getPackage_name(), a.getXsl_src(), a.getPage_descr(), a.getAction_descr(), a.getVersion(), a.getStatus(), a.getApplication());
 				ac.insert();
+			}
+		}
+		if(applications.size() > 0){
+			for(Application app:applications){
+				Action action = app.getAction();
+				app = app.findOne(app.getId());
+				app.setAction(action);
+				app.update();
 			}
 		}
 		if(clobs.size() > 0){
