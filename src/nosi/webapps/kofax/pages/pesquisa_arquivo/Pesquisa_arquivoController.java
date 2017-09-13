@@ -14,6 +14,7 @@ import java.util.Map;
 import nosi.core.webapp.Response;
 import nosi.core.webapp.helpers.IgrpHelper;
 import nosi.core.webapp.helpers.Permission;
+import nosi.webapps.kofax.dao.Campos;
 import nosi.webapps.kofax.dao.Campos_Dados;
 import nosi.webapps.kofax.dao.Objeto;
 
@@ -34,7 +35,7 @@ public class Pesquisa_arquivoController extends Controller {
 		view.tipo_de_objecto.setValue(IgrpHelper.toMap(new Objeto().find().andWhere("id_organica", "=", Permission.getCurrentOrganization()).all(), "id", "objeto", "--- Escolher Tipo Objecto ---"));
 		String ichange = Igrp.getInstance().getRequest().getParameter("ichange");
 		if(ichange != null && model.getTipo_de_objecto()!= null && !model.getTipo_de_objecto().equals("")) {
-			view.campo.setValue(IgrpHelper.toMap(new ArrayList<>(new Objeto().findOne(model.getTipo_de_objecto()).getCampos()), "id", "campo", "--- Escolher Tipo campo ---"));
+			view.campo.setValue(IgrpHelper.toMap(new ArrayList<>(new Campos().find().andWhere("id_objeto", "=", Integer.parseInt(model.getTipo_de_objecto())).all()), "id", "campo", "--- Escolher Tipo campo ---"));
 		}
 		//Para alimentar a tabela
 		ArrayList<Pesquisa_arquivo.Table_1> lista = new ArrayList<>();

@@ -51,7 +51,7 @@ public class NovoObjetoController extends Controller {
 		if(id != null && obj!=null) {
 			view.btn_gravar.setLink("gravar&p_id="+id);
 			List<NovoObjeto.Separatorlist_1> list = new ArrayList<>();
-			Collection<Campos> campos = obj.getCampos();
+			Collection<Campos> campos = new Campos().find().andWhere("id_objeto", "=",obj.getId()).all();
 			if(campos!=null && campos.size() > 0){
 				for(Campos c:campos){
 					if(c.getEstado().equalsIgnoreCase("ATIVO")){
@@ -88,9 +88,8 @@ public class NovoObjetoController extends Controller {
 		boolean isNewRecord = true;
 		if(id != null && !id.equals("")){
 			obj.setId(Integer.parseInt(id));
-			for(Campos c:new Objeto().findOne(Integer.parseInt(id)).getCampos()){
-				c.setEstado("INATIVO");
-				c = c.update();
+			for(Campos c:new Campos().find().andWhere("id_objeto", "=", Integer.parseInt(id)).all()){
+				c.delete();
 			}
 			obj = obj.update();
 			isNewRecord = false;
