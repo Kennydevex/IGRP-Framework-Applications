@@ -136,7 +136,7 @@ public class AgendarController extends Controller {
 		Map<String, String> comboBox1= new HashMap<String,String>();
 		comboBox1.put(null, "--- Escolher Agenda ---");
 		for(Agenda obj : Agenda.getAllAgenda())
-			comboBox1.put(obj.getId() + "", "Serviço (" + obj.getId_serv_balcao() + ") / Balcão (" + obj.getId_serv_balcao() + ")");
+			comboBox1.put(obj.getId() + "", "Serviço (" + obj.getNome_servico() + ") / Balcão (" + obj.getNome_balcao() + ")");
 		view.agenda.setValue(comboBox1);
 		
 		Map<String, String> comboBox5 = new HashMap<String,String>();

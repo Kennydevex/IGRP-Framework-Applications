@@ -34,6 +34,10 @@ public class Agenda {
 	private String periodo;
 	private String hora_inicio;
 	private String hora_fim;
+	@Expose(serialize = false, deserialize = true)
+	private String nome_balcao;
+	@Expose(serialize = false, deserialize = true)
+	private String nome_servico;
 	
 	public int getId_serv_balcao() {
 		return id_serv_balcao;
@@ -124,6 +128,20 @@ public class Agenda {
 		this.estado = estado;
 	}
 	
+	
+	
+	public String getNome_balcao() {
+		return nome_balcao;
+	}
+	public void setNome_balcao(String nome_balcao) {
+		this.nome_balcao = nome_balcao;
+	}
+	public String getNome_servico() {
+		return nome_servico;
+	}
+	public void setNome_servico(String nome_servico) {
+		this.nome_servico = nome_servico;
+	}
 	public static List<Agenda> getAllAgenda() {
 		
 		List<Agenda> aux = null;
@@ -133,7 +151,7 @@ public class Agenda {
 			 
 	        Client client = Client.create(RestRequestHelper.applySslSecurity(config));
 	        
-	        String url = RestRequestHelper.baseUrl + "/ag_t_agenda";
+	        String url = RestRequestHelper.baseUrl_ + "/list_agendas";
 	        
 	        WebResource resource = client.resource(url);
 	        
@@ -142,8 +160,8 @@ public class Agenda {
 	   	 	String jsonResult = response.getEntity(String.class);
 	   	 	
 	        if(response.getStatus() == 200) {
-		        aux = RestRequestHelper.convertJsonToListDao(jsonResult, new TypeToken<List<Agenda>>(){}.getType());
-	        }
+	            aux = (List<Agenda>) RestRequestHelper.convertJsonToDaoColl(jsonResult, "Agendas", "Agenda", new TypeToken<List<Agenda>>(){}.getType());
+		    }
 	        else {
 	       	 System.out.println("Error");
 	       	 //System.out.println(RestRequestHelper.convertToDefaultFault(jsonResult));
