@@ -137,7 +137,7 @@ public class AgendaController extends Controller {
 		view.antecedencia_alterarcancelar_hr.setValue(comboBox5);
 		
 		Map<String, String> comboBox2 = new HashMap<String,String>();
-		comboBox2.put(null, "--- Escolher ---");
+		comboBox2.put(null, "--- Escolher ---"); 
 		for(String value : Arrays.asList(new String[]{"12","10"}))
 			comboBox2.put(value, value);
 		view.antecedencia_de_agendamento_hr.setValue(comboBox2);
@@ -147,7 +147,6 @@ public class AgendaController extends Controller {
 		return this.renderView(view);
 		/*---- End ----*/
 	}
-
 
 	public Response actionGravar() throws IOException{
 		/*---- Insert your code here... ----*/								

@@ -71,6 +71,7 @@ public class IGRPSeparatorList extends IGRPTable {
 						val = field.getValue().toString();
 					}
 					String []aux = val.split("_"); // this symbol underscore ... will be the reserved char
+					aux = aux.length == 2 ? aux : new String[] {"", ""};
 					this.xml.text(aux[0]);
 					this.xml.endElement();
 					

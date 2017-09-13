@@ -49,6 +49,7 @@ public class Agenda extends Model{
 	private String[] p_periodo_fk_desc;
 
 	private ArrayList<Separatorlist_1> separatorlist_1 = new ArrayList<>();
+	
 	public void setSeparatorlist_1(ArrayList<Separatorlist_1> separatorlist_1){
 		this.separatorlist_1 = separatorlist_1;
 	}
