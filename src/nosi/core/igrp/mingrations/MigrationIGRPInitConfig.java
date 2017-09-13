@@ -238,18 +238,18 @@ public class MigrationIGRPInitConfig {
 	private static void configAppKofax(User user0,User user,ProfileType prof0){
 		Application app = new Application();
 		app.setDad("kofax");
-		app.setDescription("NoScan - Recuperação de Arquivo");
-		app.setName("NoScan");
+		app.setDescription("NosScan - Recuperação de Arquivo");
+		app.setName("NosScan");
 		app.setImg_src("noscan.png");
 		app.setStatus(1);
 		app = app.insert();
 		
-		Config_env config = new Config_env(0, "h2", "~", "kofax_db", "root", "root", "utf-8", "hibernate-kofax", app);
+		Config_env config = new Config_env(0, "h2", "~", "nosscan_db", "root", "root", "utf-8", "hibernate-kofax", app);
 		config = config.insert();
-		Organization org = new Organization("Org.Kofax", "Kofax", 1, app, user, null);
+		Organization org = new Organization("NosScan - Organica Administrador", "NosScan.Org.Admin", 1, app, user, null);
 		org = org.insert();
 		
-		ProfileType prof = new ProfileType("Administrador", "Kofax.Admin", 1, org, app, null);
+		ProfileType prof = new ProfileType("NosScan - Perfil Administrador", "NosScan.Profile.Admin", 1, org, app, null);
 		prof = prof.insert();
 		
 		List<Action> actions = new ArrayList<>();
