@@ -56,7 +56,10 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 			for(int i = 0; i < fileUrl.size(); i++) {
 				Pesquisa_arquivo_pdf.Table_1 obj = new Pesquisa_arquivo_pdf.Table_1();
 				obj.setArquivo_desc("Abrir");
-				obj.setArquivo("kofax", "Pesquisa_arquivo_pdf", "pdf&amp;filePath=images/IGRP/IGRP2.3/app/kofax/recuperacao/images/" + new File(fileUrl.get(i)).getName());
+				String fileName = new File(fileUrl.get(i)).getName();
+				String aux[] = fileName.split("\\.");
+				String result = aux.length == 2 ? aux[0] : fileName;
+				obj.setArquivo("kofax", "Pesquisa_arquivo_pdf", "pdf&amp;filePath=images/IGRP/IGRP2.3/app/kofax/recuperacao/images/" + result + "/" + fileName);
 				obj.setCaminho_do_arquivo(".../" + new File(fileUrl.get(i)).getName());
 				obj.setTamanho_do_arquivo(fileSize.get(i));
 				dataProvider.add(obj); 
@@ -94,37 +97,39 @@ public class Pesquisa_arquivo_pdfController extends Controller {
 	
 	private static void search(String search, List<String> fileUrl, List<String> fileSize) throws IOException {
 		String pathImg = Config.getBasePathXsl()+ "images/IGRP/IGRP2.3/app/kofax/recuperacao/images";
-		Directory indexDirectory = FSDirectory.open(new File(pathImg));
-	   	IndexSearcher indexSearcher = new IndexSearcher(indexDirectory);
-	   	
-	   	File file = new File(pathImg);
-	   	for(File obj : file.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.matches("[a-zA-Z0-9_]*.(PDF|pdf)");
-			}
-		})) {
-	   		QueryParser queryParser = new QueryParser(Version.LUCENE_36, obj.getName() + "_contents", new StandardAnalyzer(Version.LUCENE_36));
-		   	try {
-			   	Query query = queryParser.parse(search);
-			   	
-			   	TopDocs hits = indexSearcher.search(query, 1000);
-			   	 
-			   //	System.out.println("Size -> " + hits.scoreDocs.length);
-			   	 
-			   	for(ScoreDoc scoreDoc : hits.scoreDocs) {
-			   		Document doc = indexSearcher.doc(scoreDoc.doc);
-			   		fileUrl.add(doc.get(obj.getName() + "_res"));
-			   		fileSize.add(obj.length() + " B");
-			       // System.out.println("File: " + doc.get("res"));
-			   	 }
-		   	}	catch(ParseException e) {
-			   		e.printStackTrace();
-			   	}
-	   	}
-	   	
-	   	indexSearcher.close();
-	   	indexDirectory.close();
+	   	File parent = new File(pathImg);
+	   	File child[] = parent.listFiles();
+	   	for(File file : child) {
+	   		Directory indexDirectory = FSDirectory.open(file);
+		   	IndexSearcher indexSearcher = new IndexSearcher(indexDirectory);
+		   	for(File obj : file.listFiles(new FilenameFilter() {
+				@Override
+				public boolean accept(File dir, String name) {
+					return name.matches("[a-zA-Z0-9_]*.(PDF|pdf)");
+				}
+			})) {
+		   		QueryParser queryParser = new QueryParser(Version.LUCENE_36, obj.getName() + "_contents", new StandardAnalyzer(Version.LUCENE_36));
+			   	try {
+				   	Query query = queryParser.parse(search);
+				   	
+				   	TopDocs hits = indexSearcher.search(query, 1000);
+				   	 
+				   //	System.out.println("Size -> " + hits.scoreDocs.length);
+				   	 
+				   	for(ScoreDoc scoreDoc : hits.scoreDocs) {
+				   		Document doc = indexSearcher.doc(scoreDoc.doc);
+				   		fileUrl.add(doc.get(obj.getName() + "_res"));
+				   		fileSize.add(obj.length() + " B");
+				       // System.out.println("File: " + doc.get("res"));
+				   	 }
+			   	}catch(ParseException e) {
+				   		e.printStackTrace();
+				   	}
+		   	}
+
+		   	indexSearcher.close();
+		   	indexDirectory.close();
+	   }
 	}
 
 	public Response actionPesquisar() throws IOException{

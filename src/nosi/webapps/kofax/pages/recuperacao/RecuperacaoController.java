@@ -86,15 +86,15 @@ public class RecuperacaoController extends Controller {
 			if(d!=null){
 				fileName +="_"+d.getId();
 				d.setFile_name(fileName+"."+FileHelper.getFileExtension(img));
+				pathImg += "/" + fileName;
 				FileHelper.saveFile(pathImg, d.getFile_name(), img);
 				OCRHelper ocr = new OCRHelper(pathImg+File.separator+d.getFile_name());
 				ocr.open();
 				d.setConteudo(ocr.outputText());
-				String aux = pathImg+File.separator+fileName;
-				ocr.outputPDF(aux);
+				ocr.outputPDF(pathImg+File.separator+fileName);
 				ocr.close();
 				
-				applyIndex(aux); // For Apache Lucene ...
+				applyIndex(pathImg, fileName); // For Apache Lucene ...
 				
 				d = d.update();
 				if(model.getformlist_1().size() > 0 ){
@@ -114,21 +114,21 @@ public class RecuperacaoController extends Controller {
 	
 	
 	/*---- Insert your actions here... ----*/
-	private static void applyIndex(String fileUrl) throws IOException {
-		String pathImg = Config.getBasePathXsl()+ "images/IGRP/IGRP2.3/app/kofax/recuperacao/images";
-		//this directory will contain the indexes
-        Directory indexDirectory = FSDirectory.open(new File(pathImg));
+	private static void applyIndex(String fileUrl, String fileName) throws IOException {
+		
+        File file = new File(fileUrl + "/" + fileName + ".pdf");
+        
+      //this directory will contain the indexes
+        Directory indexDirectory = FSDirectory.open(file.getParentFile());
       //create the indexer
         IndexWriter writer = new IndexWriter(indexDirectory, new StandardAnalyzer(Version.LUCENE_36),true, IndexWriter.MaxFieldLength.UNLIMITED);
-       
-        File file = new File(fileUrl+".pdf");
+
         Document document = new Document();
         
         PDDocument pdf = PDDocument.load(file);
         PDFTextStripper stripper = new PDFTextStripper();
         stripper.setLineSeparator("\n");
         stripper.setStartPage(1);
-        
        // BufferedInputStream cin = new BufferedInputStream(new FileInputStream(file));
         
         //index file contents
@@ -147,6 +147,7 @@ public class RecuperacaoController extends Controller {
         writer.addDocument(document);
         
         writer.close();
+        pdf.close();
 	}
 	/*---- End ----*/
 }
