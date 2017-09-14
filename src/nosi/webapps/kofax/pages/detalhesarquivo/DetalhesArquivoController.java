@@ -13,6 +13,8 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+
 import javax.servlet.ServletOutputStream;
 import nosi.core.webapp.Response;
 import nosi.webapps.kofax.dao.Dados;
@@ -45,7 +47,9 @@ public class DetalhesArquivoController extends Controller {
 			Dados d = new Dados().findOne(id);
 			if(d!=null){
 				Igrp.getInstance().getResponse().setContentType(d.getMime_type());
-				String pathImg = Config.getBasePathXsl()+"images/IGRP/IGRP2.3/app/kofax/recuperacao/images/"+d.getFile_name();
+				String aux[] = d.getFile_name().split("\\.");
+				String result = aux.length == 2 ? aux[0] : d.getFile_name();
+				String pathImg = Config.getBasePathXsl()+"images/IGRP/IGRP2.3/app/kofax/recuperacao/images/" + result + "/" +d.getFile_name();
 				pathImg = pathImg.replace("\\", "/");
 				ServletOutputStream outStream = Igrp.getInstance().getResponse().getOutputStream();
 		        FileInputStream fin = new FileInputStream(pathImg);
