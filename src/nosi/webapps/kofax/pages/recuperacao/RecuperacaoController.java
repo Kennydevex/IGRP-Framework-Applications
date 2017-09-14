@@ -49,7 +49,7 @@ public class RecuperacaoController extends Controller {
 		}
 		List<Recuperacao.Formlist_1> campos = new ArrayList<>();
 		if(ichange!=null && model.getTipo_objeto()!=null && !model.getTipo_objeto().equals("")){
-			for(Campos c:new Objeto().findOne(model.getTipo_objeto()).getCampos()){
+			for(Campos c:new Campos().find().andWhere("id_objeto", "=", Integer.parseInt(model.getTipo_objeto())).all()){
 				Formlist_1 e = new Formlist_1();
 				e.setCampo(new Pair(c.getCampo(), ""+c.getId()));
 				e.setValor(new Pair("", " "));
